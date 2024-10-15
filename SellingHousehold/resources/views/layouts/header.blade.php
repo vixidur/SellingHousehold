@@ -30,15 +30,17 @@
                     <div class="line"></div>
                 </div>
                 <div class="phone-ring">
-                    <span class="fa-solid fa-phone-volume">
+                    <span class="phone-icon">
+                        <i class="fa-solid fa-phone-volume"></i>
                     </span>
-                    <p>Hotline <br><b>0862587229</b></p>
+
+                    <span>Hotline <br><b>0862587229</b></span>
                 </div>
                 <div class="icon-user">
                     <i class="fa-regular fa-circle-user"></i>
                 </div>
                 <div class="label-user">
-                    <p><a href="#">Đăng nhập</a><br><a href="#">Đăng ký</a></p>
+                    <p><a href="{{ route('login') }}">Đăng nhập</a><br><a href="{{ route('register') }}">Đăng ký</a></p>
                 </div>
             </div>
         </div>

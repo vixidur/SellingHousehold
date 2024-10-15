@@ -137,7 +137,7 @@ body {
     }
 }
 
-span {
+span.phone-icon .fa-phone-volume {
     font-size: 25px;
     animation: phoneRing 1s ease infinite;
 }

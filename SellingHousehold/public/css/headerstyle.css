@@ -12,13 +12,16 @@ body {
     box-sizing: border-box;
     background-color: #2d61c2;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    /* Adjusted for better spacing */
     align-items: center;
     max-width: 1357px;
     width: 100%;
     margin: 0 auto;
     flex-wrap: wrap;
-    /* Cho phép xuống dòng khi không đủ không gian */
+    /* Allows wrapping */
+    padding: 10px;
+    /* Added padding for better spacing */
 }
 
 .logo {
@@ -26,7 +29,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0.38;
+    flex: 0.3;
+    /* Adjusted flex basis for responsiveness */
 }
 
 .system-shop {
@@ -36,14 +40,27 @@ body {
 .search-products {
     flex: 1;
     display: flex;
+    justify-content: flex-end;
+    /* Align search items to the right */
 }
 
 .search-items {
     padding: 10px;
-    width: 500px;
-    /* Có thể thay đổi thành width: 100%; */
     border-radius: 10px;
+    outline: none;
     border: none;
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4), 0 8px 30px rgba(0, 123, 255, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+    width: 602px;
+}
+
+.search-items:focus {
+    box-shadow: 0 5px 5px 0 rgba(0, 255, 64, 0.4),
+        0 8px 30px rgba(0, 255, 64, 0.3);
+}
+
+.search-items:hover {
+    border: 1px solid #057949;
 }
 
 .system-shop a {
@@ -91,7 +108,6 @@ body {
 }
 
 .label-user p a:hover {
-    text-decoration: none;
     color: rgb(9, 204, 145);
 }
 
@@ -108,32 +124,21 @@ body {
 }
 
 @keyframes phoneRing {
-    0% {
+
+    0%,
+    50%,
+    100% {
         transform: translateX(0);
     }
 
-    10% {
-        transform: translateX(-5px);
-    }
-
-    20% {
-        transform: translateX(5px);
-    }
-
+    10%,
     30% {
         transform: translateX(-5px);
     }
 
+    20%,
     40% {
         transform: translateX(5px);
-    }
-
-    50% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(0);
     }
 }
 
@@ -143,13 +148,59 @@ span.phone-icon .fa-phone-volume {
 }
 
 @media (max-width: 1024px) {
+    .fa-solid .fa-magnifying-glass {
+        margin-right: 2%;
+    }
+
+    .search-items {
+        margin-right: -5%;
+    }
+
+    .search-products {
+        margin-right: -6%;
+        padding-left: 10px;
+    }
+
+    .line {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .phone-ring,
+    .icon-user {
+        display: none;
+    }
+
+    .line {
+        visibility: hidden;
+    }
+
+    .label-user {
+        margin-right: 7px;
+    }
+
     .search-items {
         margin-left: 10%;
-        width: 211px;
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 1366px) {
+    .container-nav nav {
+        padding-left: 107px;
+    }
+
+
+    .search-items {
+        margin-left: 5%;
+        width: 80%;
     }
 
     .system-shop {
-        margin-right: -2%;
+        margin-right: 0;
     }
 
     .icon-user {
@@ -157,7 +208,7 @@ span.phone-icon .fa-phone-volume {
     }
 
     .phone-ring {
-        margin-left: -15px;
+        margin-left: 80px;
     }
 
     .label-user {
@@ -169,34 +220,11 @@ span.phone-icon .fa-phone-volume {
     }
 
     .logo {
-        margin-left: 8%;
+        margin-left: 6%;
     }
 
     .fa-solid {
-        right: 8%;
-    }
-}
-
-@media (max-width: 768px) {
-    .phone-ring {
-        display: none;
-    }
-
-    .line {
-        visibility: hidden;
-    }
-
-    .icon-user {
-        visibility: hidden;
-    }
-
-    .label-user {
-        margin-right: 7px;
-    }
-
-    .search-items {
-        margin-left: 15%;
-        width: 211px;
+        right: 5%;
     }
 }
 

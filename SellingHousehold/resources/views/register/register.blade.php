@@ -13,11 +13,13 @@
     <!-- Include header -->
     @include('layouts.header')
     <div class="container-register">
-        <div class="form-header">
-            <img src="{{ asset('images/logo-ver-color.png') }}" alt="Logo" class="logo">
-            <h2>Đăng kí tài khoản mới!</h2>
-            <p>Xin mời bạn nhập đầy đủ thông tin đăng kí.</p>
-        </div>
+        <center>
+            <div class="form-header">
+                <img src="{{ asset('images/logo-ver-color.png') }}" alt="Logo" class="logo">
+                <h2>Đăng kí tài khoản mới!</h2>
+                <p class="register-desc">Xin mời bạn nhập đầy đủ thông tin đăng kí.</p>
+            </div>
+        </center>
         <form>
             <div class="input-group">
                 <label for="fullname">Họ và tên</label>

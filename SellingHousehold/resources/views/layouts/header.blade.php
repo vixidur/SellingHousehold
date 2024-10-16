@@ -40,7 +40,8 @@
                     <i class="fa-regular fa-circle-user"></i>
                 </div>
                 <div class="label-user">
-                    <p><a href="{{ route('login') }}">Đăng nhập</a><br><a href="{{ route('register') }}">Đăng ký</a></p>
+                    <p id="label-txtLogin"><a href="{{ route('login') }}">Đăng nhập</a><br><a
+                            href="{{ route('register') }}">Đăng ký</a></p>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 # Đối với Admin (Quản trị viên)
 ## 1. Đăng nhập
-###•	Đăng nhập để truy cập vào hệ thống.
+###	Đăng nhập để truy cập vào hệ thống.
 ## 2. Quản lý danh mục sản phẩm
 •	Danh sách danh mục sản phẩm.
 •	Tìm kiếm và lọc danh mục.

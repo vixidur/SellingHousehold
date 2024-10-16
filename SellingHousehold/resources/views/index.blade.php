@@ -13,13 +13,8 @@
     @if (Route::currentRouteName() !== 'login')
         @include('layouts.header')
     @endif
-<<<<<<< HEAD
-    @include('maincontent.main')
-=======
-
     @include('maincontents.subheader')
-
->>>>>>> 8f4b6d3086f031739f067d63861ea159fffb03c1
+    @include('maincontent.main')
     @if (Route::currentRouteName() !== 'login')
         @include('layouts.footer')
     @endif

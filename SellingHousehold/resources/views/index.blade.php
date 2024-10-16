@@ -14,26 +14,7 @@
     @if (Route::currentRouteName() !== 'login')
         @include('layouts.header')
     @endif
-    <div class="content">
-        <center>
-            <h1>Welcome to the Homepage</h1>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-            <p>Nội dung chính ở đây nè</p>
-
-        </center>
-    </div>
+    @include('maincontent.main')
     @if (Route::currentRouteName() !== 'login')
         @include('layouts.footer')
     @endif

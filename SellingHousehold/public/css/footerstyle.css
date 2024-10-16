@@ -103,7 +103,6 @@ footer {
     border-top: 1px solid #e0e0e0;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;

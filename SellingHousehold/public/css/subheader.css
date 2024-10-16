@@ -1,0 +1,35 @@
+.slideshow-container {
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+}
+
+.list-image {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.list-image img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 1920px) {
+    .slideshow-container {
+        height: 480px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slideshow-container {
+        height: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slideshow-container {
+        height: 180px;
+    }
+}

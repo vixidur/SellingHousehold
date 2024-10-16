@@ -11,16 +11,16 @@
 </head>
 
 <body class="login-page">
-    <!-- Include header -->
     @include('layouts.header')
 
-    <!-- Login form content -->
     <div class="login-container">
-        <div class="logo">
-            <img src="{{ asset('images/logo-ver-color.png') }}" alt="Logo" class="login-logo" height="120px">
-        </div>
-        <h2>Đăng nhập vào hệ thống!</h2>
-        <p class="login-desc">Xin mời bạn nhập đầy đủ thông tin đăng nhập.</p>
+        <center>
+            <div class="logo">
+                <img src="{{ asset('images/logo-ver-color.png') }}" alt="Logo" class="login-logo" height="120px">
+            </div>
+            <h2>Đăng nhập vào hệ thống!</h2>
+            <p class="login-desc">Xin mời bạn nhập đầy đủ thông tin đăng nhập.</p>
+        </center>
 
         <form class="login-form">
             <div class="input-group">

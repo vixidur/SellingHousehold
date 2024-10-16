@@ -44,8 +44,10 @@ footer {
     outline: none;
 }
 
+
 .form-header img {
-    width: 100px;
+    /* width: 100px; */
+    height: 120px;
     margin-bottom: 20px;
 }
 

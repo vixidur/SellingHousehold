@@ -7,13 +7,25 @@
 
 .list-image {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    will-change: transform;
+    width: 400%;
 }
 
-.list-image img {
-    width: 100%;
-    height: auto;
+.swiper-slide {
+    width: 100vw;
+    /* Đảm bảo mỗi banner rộng bằng chiều rộng cửa sổ */
+    flex-shrink: 0;
+}
+
+.swiper-slide-duplicate {
+    opacity: 0;
+    /* Ẩn các slide duplicate trong suốt quá trình */
+}
+
+.swiper-slide-prev,
+.swiper-slide-next,
+.swiper-slide-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 @media (min-width: 1920px) {

@@ -66,7 +66,19 @@
             icon.classList.toggle('fa-eye-slash');
         });
     </script>
-
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Đăng ký thành công!',
+                text: '{{ session('success') }}',
+                showConfirmButton: true,
+                timer: 3000
+            }).then(() => {
+                window.location.href = "{{ route('login') }}";
+            });
+        </script>
+    @endif
 </body>
 
 </html>

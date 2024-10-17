@@ -13,7 +13,7 @@
     @if (Route::currentRouteName() !== 'login')
         @include('layouts.header')
     @endif
-    @include('maincontents.subheader')
+    @include('subheader.subheader')
     @include('maincontent.main')
     @if (Route::currentRouteName() !== 'login')
         @include('layouts.footer')

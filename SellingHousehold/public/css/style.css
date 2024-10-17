@@ -7,7 +7,7 @@
 
 body {
     background-color: #f4f4f4;
-    
+
 }
 
 .product-container {
@@ -17,20 +17,62 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
     margin-bottom: 20px;
 }
 
-.header-item {
+.header {
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.header .header-item {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 0 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header .header-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header .header-item img {
+    max-width: 50px;
+    margin-bottom: 10px;
+}
+
+.header .header-item b {
+    color: #007bff;
+    font-size: 16px;
+}
+
+.header .header-item {
+    color: #333;
     font-size: 14px;
-    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .header .header-item {
+        margin-bottom: 20px;
+    }
 }
 
 .product-section h2 {
@@ -129,6 +171,7 @@ body {
 }
 
 .categories {
+    /* flex-direction: column; */
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -161,6 +204,7 @@ body {
     font-size: 14px;
     color: #333;
 }
+
 /* BST giải nhiệt mùa hè */
 .summer-collection {
     margin: 30px 0;
@@ -218,7 +262,8 @@ body {
 }
 
 .product-rating span:first-child {
-    color: #FFD700; /* màu vàng sao */
+    color: #FFD700;
+    /* màu vàng sao */
 }
 
 .product-old-price {
@@ -240,6 +285,7 @@ body {
 .add-to-cart-btn:hover {
     background-color: darkred;
 }
+
 /* Điện gia dụng */
 /* Bố cục chính */
 .main-container {

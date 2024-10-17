@@ -1,12 +1,16 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<div class="header">
+    <div class="header-item"><img src="{{ asset('images/icon/img_poli_1.png') }}" alt=""> <b>FREESHIP</b> cho đơn
+        hàng từ 1.000.000đ</div>
+    <div class="header-item"><img src="{{ asset('images/icon/img_poli_2.png') }}" alt=""> Hỗ trợ giao 4h nội thành
+        HN/HCM theo nhu cầu</div>
+    <div class="header-item"><img src="{{ asset('images/icon/img_poli_3.png') }}" alt=""> Đổi trả trong 30 ngày
+    </div>
+    <div class="header-item"><img src="{{ asset('images/icon/img_poli_4.png') }}" alt=""> NHẬP MÃ YEUUNETI -
+        Giảm 10% cho đơn hàng từ 800.000đ</div>
+</div>
 <div class="content">
     <div class="product-container">
-        <div class="header">
-            <div class="header-item">FREESHIP cho đơn hàng từ 1.000.000đ</div>
-            <div class="header-item">Hỗ trợ giao 4h nội thành HN/HCM theo nhu cầu</div>
-            <div class="header-item">Đổi trả trong 30 ngày</div>
-            <div class="header-item">NHẬP MÃ YEUUNETI - Giảm 10% cho đơn hàng từ 800.000đ</div>
-        </div>
 
         <div class="product-section">
             <h2>Giá Tốt Mỗi Ngày</h2>
@@ -92,6 +96,63 @@
                     </div>
                 </div>
 
+                <div class="product-card">
+                    <div class="discount-badge">Giảm 20%</div>
+                    <img src="{{ asset('images/Products/product5.png') }}" alt="Product 1">
+                    <div class="product-info">
+                        <h3>Bộ nồi inox nguyên khối Elmich Trimax classic</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="price">
+                            <span class="new-price">3.200.000đ</span>
+                            <span class="old-price">4.000.000đ</span>
+                        </p>
+                        <button class="buy-button"><i class="fas fa-cart-plus"></i> Mua Ngay</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="discount-badge">Giảm 20%</div>
+                    <img src="{{ asset('images/Products/product5.png') }}" alt="Product 1">
+                    <div class="product-info">
+                        <h3>Bộ nồi inox nguyên khối Elmich Trimax classic</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="price">
+                            <span class="new-price">3.200.000đ</span>
+                            <span class="old-price">4.000.000đ</span>
+                        </p>
+                        <button class="buy-button"><i class="fas fa-cart-plus"></i> Mua Ngay</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="discount-badge">Giảm 20%</div>
+                    <img src="{{ asset('images/Products/product5.png') }}" alt="Product 1">
+                    <div class="product-info">
+                        <h3>Bộ nồi inox nguyên khối Elmich Trimax classic</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="price">
+                            <span class="new-price">3.200.000đ</span>
+                            <span class="old-price">4.000.000đ</span>
+                        </p>
+                        <button class="buy-button"><i class="fas fa-cart-plus"></i> Mua Ngay</button>
+                    </div>
+                </div>
                 <div class="product-card">
                     <div class="discount-badge">Giảm 20%</div>
                     <img src="{{ asset('images/Products/product5.png') }}" alt="Product 1">
@@ -228,90 +289,90 @@
         </div>
         <!-- Điện gia dụng -->
         <div class="main-container">
-    <!-- Phần tiêu đề -->
-    <h2>ĐIỆN GIA DỤNG</h2>
+            <!-- Phần tiêu đề -->
+            <h2>ĐIỆN GIA DỤNG</h2>
 
-    <div class="content">
-        <!-- Cột bên trái chứa hình ảnh lớn -->
-        <div class="left-column">
-            <img src="https://via.placeholder.com/300" alt="Sản phẩm 1">
-            <img src="https://via.placeholder.com/300" alt="Sản phẩm 2">
-        </div>
+            <div class="content">
+                <!-- Cột bên trái chứa hình ảnh lớn -->
+                <div class="left-column">
+                    <img src="https://via.placeholder.com/300" alt="Sản phẩm 1">
+                    <img src="https://via.placeholder.com/300" alt="Sản phẩm 2">
+                </div>
 
-        <!-- Cột bên phải chứa các sản phẩm -->
-        <div class="right-column">
-            <div class="filter-buttons">
-                <button>Ấm siêu tốc</button>
-                <button>Bếp điện</button>
-                <button>Máy xay, máy ép</button>
-                <button>Xem thêm</button>
+                <!-- Cột bên phải chứa các sản phẩm -->
+                <div class="right-column">
+                    <div class="filter-buttons">
+                        <button>Ấm siêu tốc</button>
+                        <button>Bếp điện</button>
+                        <button>Máy xay, máy ép</button>
+                        <button>Xem thêm</button>
+                    </div>
+                    <div class="product-list">
+                        <!-- Card sản phẩm -->
+                        <div class="product-item">
+                            <div class="product-discount">Giảm 62%</div>
+                            <img src="https://via.placeholder.com/150" alt="Bếp từ đôi">
+                            <h3>Bếp từ đôi Elmich ICE-3496</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                            <p class="product-old-price">9.500.000đ</p>
+                            <p class="product-price">3.590.000đ</p>
+                            <button class="add-to-cart-btn">🛒</button>
+                        </div>
+
+                        <!-- Thêm nhiều sản phẩm khác tương tự -->
+                        <div class="product-item">
+                            <div class="product-discount">Giảm 54%</div>
+                            <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
+                            <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                            <p class="product-old-price">3.890.000đ</p>
+                            <p class="product-price">1.790.000đ</p>
+                            <button class="add-to-cart-btn">🛒</button>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="product-discount">Giảm 54%</div>
+                            <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
+                            <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                            <p class="product-old-price">3.890.000đ</p>
+                            <p class="product-price">1.790.000đ</p>
+                            <button class="add-to-cart-btn">🛒</button>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="product-discount">Giảm 54%</div>
+                            <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
+                            <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                            <p class="product-old-price">3.890.000đ</p>
+                            <p class="product-price">1.790.000đ</p>
+                            <button class="add-to-cart-btn">🛒</button>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="product-discount">Giảm 54%</div>
+                            <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
+                            <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                            <p class="product-old-price">3.890.000đ</p>
+                            <p class="product-price">1.790.000đ</p>
+                            <button class="add-to-cart-btn">🛒</button>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="product-discount">Giảm 54%</div>
+                            <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
+                            <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
+                            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+                            <p class="product-old-price">3.890.000đ</p>
+                            <p class="product-price">1.790.000đ</p>
+                            <button class="add-to-cart-btn">🛒</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="product-list">
-                <!-- Card sản phẩm -->
-                <div class="product-item">
-                    <div class="product-discount">Giảm 62%</div>
-                    <img src="https://via.placeholder.com/150" alt="Bếp từ đôi">
-                    <h3>Bếp từ đôi Elmich ICE-3496</h3>
-                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="product-old-price">9.500.000đ</p>
-                    <p class="product-price">3.590.000đ</p>
-                    <button class="add-to-cart-btn">🛒</button>
-                </div>
-
-                <!-- Thêm nhiều sản phẩm khác tương tự -->
-                <div class="product-item">
-                    <div class="product-discount">Giảm 54%</div>
-                    <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
-                    <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
-                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="product-old-price">3.890.000đ</p>
-                    <p class="product-price">1.790.000đ</p>
-                    <button class="add-to-cart-btn">🛒</button>
-                </div>
-
-                <div class="product-item">
-                    <div class="product-discount">Giảm 54%</div>
-                    <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
-                    <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
-                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="product-old-price">3.890.000đ</p>
-                    <p class="product-price">1.790.000đ</p>
-                    <button class="add-to-cart-btn">🛒</button>
-                </div>
-
-                <div class="product-item">
-                    <div class="product-discount">Giảm 54%</div>
-                    <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
-                    <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
-                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="product-old-price">3.890.000đ</p>
-                    <p class="product-price">1.790.000đ</p>
-                    <button class="add-to-cart-btn">🛒</button>
-                </div>
-
-                <div class="product-item">
-                    <div class="product-discount">Giảm 54%</div>
-                    <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
-                    <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
-                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="product-old-price">3.890.000đ</p>
-                    <p class="product-price">1.790.000đ</p>
-                    <button class="add-to-cart-btn">🛒</button>
-                </div>
-
-                <div class="product-item">
-                    <div class="product-discount">Giảm 54%</div>
-                    <img src="https://via.placeholder.com/150" alt="Máy ép chậm">
-                    <h3>Máy ép chậm trái cây Elmich JEE 1855OL</h3>
-                    <div class="product-rating">⭐⭐⭐⭐⭐</div>
-                    <p class="product-old-price">3.890.000đ</p>
-                    <p class="product-price">1.790.000đ</p>
-                    <button class="add-to-cart-btn">🛒</button>
-                </div>
-            </div>
         </div>
-    </div>
-</div>
 
     </div>
 </div>

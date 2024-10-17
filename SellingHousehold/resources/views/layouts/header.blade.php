@@ -26,9 +26,14 @@
                     <a href="{{ url('/info-shop') }}">Hệ thống cửa hàng</a>
                 </div>
                 <div class="search-products">
-                    <input type="text" name="search-products" class="search-items" placeholder="Tìm kiếm sản phẩm"><i
-                        class="fa-solid fa-magnifying-glass"></i>
-                    <div class="line"></div>
+                    <div class="search-wrapper">
+                        <input type="text" name="search-products" class="search-items"
+                            placeholder="Tìm kiếm sản phẩm">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="line">
+
+                    </div>
                 </div>
                 <div class="phone-ring">
                     <span class="phone-icon">
@@ -37,16 +42,22 @@
 
                     <span>Hotline <br><b>0862587229</b></span>
                 </div>
-                <div class="icon-user">
-                    <i class="fa-regular fa-circle-user"></i>
-                </div>
-                <div class="label-user">
-                    <p id="label-txtLogin"><a href="{{ route('login') }}">Đăng nhập</a><br><a
-                            href="{{ route('register') }}">Đăng ký</a></p>
+                <div class="label-icon">
+                    <div class="icon-user">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </div>
+                    <div class="label-user">
+                        <p id="label-txtLogin"><a href="{{ route('login') }}">Đăng nhập</a><br><a
+                                href="{{ route('register') }}">Đăng ký</a></p>
+                    </div>
                 </div>
                 <div class="cart-header">
-                    <a href="{{route('cart')}}">Gio Hang</a>
-
+                    <div class="shopping-cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <div class="cart-label">
+                        <a href="{{ route('cart') }}">Gio Hang</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 @include('layouts.header')
-@include('subheader.subheader')
+{{-- @include('subheader.subheader') --}}
 <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 <div class="container-cart">
     <div class="promo-container">
@@ -13,7 +13,8 @@
     <div class="cart-container">
         <h3>GIỎ HÀNG</h3>
         <div class="empty-cart">
-            <p>Không có sản phẩm nào. Quay lại <a href="#" class="store-link">cửa hàng</a> để tiếp tục mua sắm.
+            <p>Không có sản phẩm nào. Quay lại <a href="{{ url('/') }}" class="store-link">cửa hàng</a> để tiếp tục
+                mua sắm.
             </p>
         </div>
     </div>

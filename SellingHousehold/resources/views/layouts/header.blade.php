@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/headerstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-6.6.0-web/css/all.min.css') }}">
     <link rel="icon" href="{{ asset('images/logo-web.png') }}" type="image/x-icon" />
+
 </head>
 
 <body>
@@ -42,6 +43,10 @@
                 <div class="label-user">
                     <p id="label-txtLogin"><a href="{{ route('login') }}">Đăng nhập</a><br><a
                             href="{{ route('register') }}">Đăng ký</a></p>
+                </div>
+                <div class="cart-header">
+                    <a href="{{route('cart')}}">Gio Hang</a>
+
                 </div>
             </div>
         </div>

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Đăng Ký</title>
+    <title>ĐĂNG KÝ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/registerstyle.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -24,15 +24,15 @@
             @csrf
             <div class="input-group">
                 <label for="fullname">Họ và tên</label>
-                <input type="text" id="fullname" placeholder="Vui lòng nhập họ và tên" name="full_name" required>
+                <input type="text" id="fullname" placeholder="Vui lòng nhập họ và tên" name="full_name" value="{{ old('full_name') }}" required>
             </div>
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Vui lòng nhập địa chỉ email" name="email" required>
+                <input type="email" id="email" placeholder="Vui lòng nhập địa chỉ email" name="email" value="{{ old('email') }}" required>
             </div>
             <div class="input-group">
                 <label for="username">Tài khoản</label>
-                <input type="text" id="username" placeholder="Vui lòng nhập tài khoản" name="username" required>
+                <input type="text" id="username" placeholder="Vui lòng nhập tài khoản" name="username" value="{{ old('username') }}" required>
             </div>
             <div class="input-group password-group">
                 <label for="password">Mật khẩu</label>
@@ -46,11 +46,15 @@
             <button type="submit" class="btn">Đăng Ký</button>
             <p class="login-link">Bạn đã có tài khoản? <a href="{{ route('login') }}">Đăng nhập</a>.</p>
         </form>
-
     </div>
     @include('layouts.footer')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-    <script src="{{ mix('js/app.js') }}"></script>
+
+    <!-- Tạo biến JavaScript từ session -->
+    <script>
+        // Nếu không có session 'success', trả về null
+        const successMessage = {!! json_encode(session('success') ?? '') !!};  // Sử dụng json_encode() để chuyển PHP sang JS
+    </script>
+
     <script>
         // hide/show password
         const togglePassword = document.querySelector('#togglePassword');
@@ -63,16 +67,16 @@
             this.classList.toggle('fa-eye-slash');
         });
 
-        // sweet alert 2
+        // sweet alert 2 for success message
         document.addEventListener('DOMContentLoaded', function() {
-            @if (session('success'))
+            if (successMessage) {  // Kiểm tra nếu có thông báo thành công từ server
                 Swal.fire({
                     title: 'Thành công!',
-                    text: {!! json_encode(session('success')) !!},
+                    text: successMessage,
                     icon: 'success',
                     confirmButtonText: 'Đồng ý'
                 });
-            @endif
+            }
         });
     </script>
 </body>

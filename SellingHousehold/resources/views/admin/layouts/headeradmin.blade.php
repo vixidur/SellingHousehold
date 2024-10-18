@@ -9,7 +9,14 @@
                     <a href="#" class="dropdown-toggle">Xin chao, {{ 'VAN CHIEN' }}</a>
                     <ul class="dropdown">
                         <li><a href=""><i class="fas fa-id-card"></i> My profile</a></li>
-                        <li><a href=""><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+                        <li>
+                            <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> Log out
+                            </a>
+                        </li>                        
                     </ul>
                 </div>
             </li>

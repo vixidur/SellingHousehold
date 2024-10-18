@@ -3,7 +3,7 @@
     @include('admin.layouts.nav')
     @include('admin.layouts.headeradmin')
     <div class="maindashboard">
-        <h1>tét</h1>
+        <h1>Welcome to Admin Dashboard</h1>
     </div>
 </div>
 @include('admin.layouts.footeradmin')

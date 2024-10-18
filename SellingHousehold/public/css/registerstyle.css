@@ -32,18 +32,76 @@ footer {
     width: 100%;
 }
 
-#myInput {
+#fullname, 
+#email,
+#username,
+#password{
     border: 1px solid #2d61c2;
     border-radius: 10px;
     box-shadow: 0 0 5px #2d61c2;
     padding: 10px;
 }
-
-#myInput:focus {
+#terms {
+    border: 1px solid #2d61c2;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #2d61c2;
+    padding: 10px;
+}
+#fullname:focus,
+#email:focus,
+#username:focus,
+#password:focus {
     border: 1px solid rgb(255, 0, 0);
     outline: none;
 }
 
+.form-check-input {
+    border-radius: 0.125em;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    -webkit-transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+#terms:focus{
+    outline: none;
+}
+.form-check-input:checked {
+    background-color: #007D88;
+    border-color: #007D88;
+    transform: scale(1.1); /* Tăng kích thước một chút khi được checked */
+}
+
+.form-check-input:checked[type=checkbox] {
+    background-image: url('https://i.imgur.com/4cu6FG5.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.form-check-input {
+    height: 0.875rem;
+    width: 0.875rem;
+    margin-top: 0.275em;
+}
+
+/* Mặc định checkbox */
+.form-check-input[type=checkbox] {
+    border: 2px solid #ccc;
+    background-color: #fff;
+}
+
+/* input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+} */
+
+/* Hiệu ứng hover */
+.form-check-input:hover {
+    border-color: #005f6b;
+}
+
+input[type="checkbox"] {
+    outline: none;
+    cursor: pointer;
+}
 
 .form-header img {
     /* width: 100px; */

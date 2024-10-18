@@ -2,19 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // Change to extend User model
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Notifications\Notifiable;
 
-class RegisterModel extends Model
+class RegisterModel extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory;
+    use Notifiable;
 
-    protected $table = 'accounts'; 
+    protected $table = 'accounts';
+
     protected $fillable = [
         'full_name',
         'email',
         'username',
         'password',
         'agreed_to_terms',
+        'email_verified_at',
     ];
 }

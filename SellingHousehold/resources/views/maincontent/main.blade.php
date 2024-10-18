@@ -295,8 +295,8 @@
             <div class="content">
                 <!-- Cột bên trái chứa hình ảnh lớn -->
                 <div class="left-column">
-                    <img src="https://via.placeholder.com/300" alt="Sản phẩm 1">
-                    <img src="https://via.placeholder.com/300" alt="Sản phẩm 2">
+                    <img src="https://bizweb.dktcdn.net/100/489/006/themes/949658/assets/bn_pr_3_1.png" alt="Sản phẩm 1">
+                    <img src="https://bizweb.dktcdn.net/100/489/006/themes/949658/assets/bn_pr_3_2.png" alt="Sản phẩm 2">
                 </div>
 
                 <!-- Cột bên phải chứa các sản phẩm -->

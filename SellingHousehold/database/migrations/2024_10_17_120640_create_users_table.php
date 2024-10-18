@@ -13,16 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
-            $table->string('full_name'); 
-            $table->string('email')->unique(); 
-            $table->string('username')->unique(); 
-            $table->string('password'); 
-            $table->boolean('agreed_to_terms')->default(false); 
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('accounts')) {
+            Schema::create('accounts', function (Blueprint $table) {
+                $table->id();
+                $table->string('full_name');
+                $table->string('email')->unique();
+                $table->string('username')->unique();
+                $table->string('password');
+                $table->boolean('agreed_to_terms')->default(false);
+                $table->timestamp('email_verified_at')->nullable(); // for email verification
+                $table->timestamps();
+            });
+        }
     }
+    
 
     /**
      * Reverse the migrations.

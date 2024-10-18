@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 10:27 PM
+-- Generation Time: Oct 17, 2024 at 11:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,16 +35,16 @@ CREATE TABLE `accounts` (
   `password` varchar(255) NOT NULL,
   `agreed_to_terms` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `full_name`, `email`, `username`, `password`, `agreed_to_terms`, `created_at`, `updated_at`) VALUES
-(12, 'Tran Van Chien', 'chien27122402@gmail.com', 'haruki24022003', '$2y$10$cBsR1i35lVJIR4hh7rIEhuSh27FNjokNtrQXl9wABkaSMmJ1lVTd.', 1, '2024-10-17 09:41:49', '2024-10-17 09:41:49'),
-(13, 'Trần Văn chiến', 'ssssss@gmail.com', 'hoangvanhung', '$2y$10$xhtLFaQrIHkvR8or8M02Wu08aq4jkc7vUCr7lTqjOPn74zsZsjWyW', 1, '2024-10-17 12:16:00', '2024-10-17 12:16:00');
+INSERT INTO `accounts` (`id`, `full_name`, `email`, `username`, `password`, `agreed_to_terms`, `created_at`, `updated_at`, `email_verified_at`) VALUES
+(15, 'Trần Anh KIên', 'chien27122402@gmail.com', 'haruki24022003', '$2y$10$Cw1cj.O3HH8rKN2NGyk75.9LQxIw3rwtWSXodCI4wVdPXk0RmzgZi', 1, '2024-10-17 14:04:05', '2024-10-17 14:04:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2024_10_17_115719_create_users_table', 2),
-(6, '2014_10_12_200000_add_two_factor_columns_to_users_table', 3);
+(6, '2014_10_12_200000_add_two_factor_columns_to_users_table', 3),
+(7, '2024_10_17_120640_create_users_table', 4),
+(8, '2024_10_17_205215_add_email_verified_at_to_accounts_table', 4);
 
 -- --------------------------------------------------------
 
@@ -191,7 +193,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -203,7 +205,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

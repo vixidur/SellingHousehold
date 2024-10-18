@@ -22,6 +22,7 @@ return new class extends Migration
                 $table->string('password');
                 $table->boolean('agreed_to_terms')->default(false);
                 $table->timestamp('email_verified_at')->nullable(); // for email verification
+                $table->enum('role', ['admin', 'user'])->default('user');
                 $table->timestamps();
             });
         }

@@ -40,7 +40,19 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [ // Thêm guard admin
+            'driver' => 'session',
+            'provider' => 'accounts', // Chỉ định provider cho guard admin
+        ],
+        
+        'accounts' => [
+            'driver' => 'session',
+            'provider' => 'accounts',
+        ],
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -58,18 +70,19 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
+    
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'accounts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Account::class,
+        ],
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------

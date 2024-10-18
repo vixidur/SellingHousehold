@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+
 // Route chính
 Route::get('/', function () {
     return view('index');
@@ -20,7 +22,21 @@ Route::post('register', [RegisterController::class, 'register']);
 // Route giỏ hàng
 Route::get('cart', [CartController::class, 'cartForm'])->name('cart');
 // Route admin 
-Route::get('admin', [AdminController::class, 'admin']);
+// Route admin 
+Route::prefix('admin')->group(function() {
+    // Hiển thị form đăng nhập admin
+    Route::get('auth/login', [AuthController::class, 'AdminLogin'])->name('admin.login');
+    
+    // Xử lý đăng nhập admin
+    Route::post('auth/login', [AuthController::class, 'login'])->name('admin.login.post');
+    
+    // Đăng xuất admin
+    Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
+    
+    // Trang dashboard admin (sau khi đăng nhập thành công)
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
+});
+
 // Route yêu cầu xác thực email
 Route::get('/email/verify', function () {
     return view('auth.verify');  // Tạo trang auth.verify để người dùng xác thực email

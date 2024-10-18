@@ -40,7 +40,7 @@
                 <i class="fas fa-eye toggle-password" id="togglePassword"></i>
             </div>
             <div class="input-group">
-                <input type="checkbox" id="terms" name="agreed_to_terms" required>
+                <input type="checkbox" id="terms" class="form-check-input" name="agreed_to_terms" required>
                 <label for="terms">Tôi đồng ý các điều khoản của hệ thống.</label>
             </div>
             <button type="submit" class="btn">Đăng Ký</button>

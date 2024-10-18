@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
-
+use App\Http\Controllers\AdminController;
 // Route chính
 Route::get('/', function () {
     return view('index');
@@ -19,7 +19,8 @@ Route::post('register', [RegisterController::class, 'register']);
 
 // Route giỏ hàng
 Route::get('cart', [CartController::class, 'cartForm'])->name('cart');
-
+// Route admin 
+Route::get('admin', [AdminController::class, 'admin']);
 // Route yêu cầu xác thực email
 Route::get('/email/verify', function () {
     return view('auth.verify');  // Tạo trang auth.verify để người dùng xác thực email

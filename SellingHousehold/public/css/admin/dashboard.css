@@ -1,0 +1,185 @@
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2d61c2;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2d61c2;
+}
+
+.scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #2d61c2 #f1f1f1;
+}
+
+/* RESET MARGIN AND PADDING */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* DASHBOARD LAYOUT */
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+.maindashboard {
+    background-color: #007bff;
+    margin-top: 140px;
+    margin-left: 290px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    position: relative;
+    height: 100vh;
+}
+/* HEADER ADMIN */
+.profiles {
+    position: relative;
+    right: 24%;
+}
+.headeradmin {
+    background-color: #536493;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 250px; 
+    width: calc(100% - 250px); 
+    z-index: 90;
+}
+
+.manager-admin {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    position: relative;
+}
+
+.manager-admin i {
+    margin-right: 10px;
+}
+
+.manager-admin ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.manager-admin ul li {
+    position: relative;
+}
+
+.manager-admin .dropdown-toggle {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.manager-admin .dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    list-style-type: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100;
+}
+
+.manager-admin .dropdown li {
+    padding: 10px 0;
+}
+
+.manager-admin .dropdown li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.manager-admin .dropdown li a:hover {
+    color: #007bff; /* Đổi màu khi hover */
+}
+
+.manager-admin li:hover .dropdown {
+    opacity: 1;
+    visibility: visible; /* Hiển thị dropdown */
+}
+/* NAVIGATION STYLES */
+.logo img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 40px; /* Tạo khoảng cách giữa logo và menu */
+}
+
+.navbar {
+    background-color: #536493; /* Màu nền của navbar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 250px;
+    position: fixed; /* Giữ navbar cố định */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Đảm bảo navbar nằm phía trên */
+}
+
+.nav-list ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-list ul li {
+    margin: 20px 0;
+}
+
+.nav-list ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    padding: 10px 20px;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-list ul li a:hover {
+    background-color: #43547a; /* Đổi màu nền khi hover */
+    color: #ffcc00; /* Đổi màu chữ khi hover */
+    border-radius: 5px;
+}
+
+
+/* FOOTER */
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f8f8f8;
+    font-size: 13px;
+    color: #666;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 1366px) {
+    .navbar {
+        flex: 3;
+    }
+}

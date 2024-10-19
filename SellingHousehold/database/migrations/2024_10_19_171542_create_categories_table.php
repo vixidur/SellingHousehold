@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('accounts', function (Blueprint $table) {
-            $table->timestamp('email_verified_at')->nullable();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('accounts', function (Blueprint $table) {
-            $table->dropColumn('email_verified_at');
-        });
+        Schema::dropIfExists('categories');
     }
 };

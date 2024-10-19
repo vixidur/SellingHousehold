@@ -10,7 +10,7 @@ class RegisterModel extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
-    protected $table = 'accounts'; // Use the correct table
+    protected $table = 'users'; // Use the correct table
     protected $primaryKey = 'id'; // Set primary key
     protected $fillable = [
         'full_name',
@@ -18,7 +18,6 @@ class RegisterModel extends Authenticatable implements MustVerifyEmail
         'username',
         'password',
         'agreed_to_terms',
-        'email_verified_at', // Ensure this column exists in your database
     ];
 
     protected $dates = ['email_verified_at'];

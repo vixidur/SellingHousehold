@@ -16,14 +16,16 @@ header {
     align-items: center;
     padding: 20px 0;
 }
-
+header img{
+    width: 150px;
+}
 .logo {
     height: 50px;
 }
-
+/* 
 .user-actions {
     font-size: 14px;
-}
+} */
 
 .main-content {
     display: flex;
@@ -78,9 +80,52 @@ select {
 }
 
 .payment-options {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: solid 1px #000;
+}
+.payment-options1,
+.payment-options2,
+.payment-options3{
+    border-bottom: 1px solid #000;
 }
 
+.payment-options1,
+.payment-options2,
+.payment-options3,
+.payment-options4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    min-height: 60px;
+}
+
+.content {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    flex: 1;
+    padding-right: 10px;
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Giữ nguyên kích thước hình ảnh, không bị co */
+}
+
+.payment-options1 img,
+.payment-options2 img,
+.payment-options3 img,
+.payment-options4 img {
+    max-width: 50px;
+    height: auto;
+    display: block;
+    color: #007bff;
+}
 .payment-options div {
     margin: 10px 0;
 }
@@ -101,7 +146,56 @@ button.order-btn {
     cursor: pointer;
     margin-top: 10px;
 }
+.apply-btn:hover{
+    background-color: #2b6aad;
+    color: white;
+}
 
+.back-link{
+    text-decoration: none;
+}
+
+.back-link:hover{
+    text-decoration: none;
+    color: #ff0000;
+}
+
+.order-btn:hover{
+    background-color: #2b6aad;
+    color: white;
+}
+
+.discount-code {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 20px; 
+}
+.discount-code input{
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+    margin-right: 20px;
+    width: 100%;
+}
+
+.discount-code button{
+    width: 50%;
+}
+
+.order-actions {
+    display: flex;
+    margin-top: 20px;
+    align-items: baseline;
+}
+
+.order-actions a{
+    width: 100%;
+}
+
+.order-actions button{
+    width: 50%;
+}
 footer {
     text-align: center;
     padding: 20px 0;
@@ -110,4 +204,5 @@ footer {
 
 footer a {
     margin-right: 15px;
+    text-decoration: none;
 }

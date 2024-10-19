@@ -44,6 +44,12 @@ class AuthController extends Controller
     public function category(){
         return view('admin.category'); 
     }
+
+    //payment
+    public function payment(){
+        return view('auth.payment'); 
+    }
+
     // Xử lý đăng xuất admin
     public function logout()
     {

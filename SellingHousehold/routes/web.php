@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\PaymentController;
+
 // Route cho trang overview
 Route::get('overview', function () {
     return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần

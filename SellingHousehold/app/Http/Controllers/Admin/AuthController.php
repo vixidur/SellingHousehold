@@ -28,19 +28,16 @@ class AuthController extends Controller
             $user = Auth::guard('admin')->user();
             if ($user->role !== 'admin') {
                 Auth::guard('admin')->logout();
-                return redirect()->back()->with('not_admin', true); // Thông báo không phải admin
+                return response()->json(['status' => 'not_admin']); 
             }
-
-            return redirect()->intended(route('admin.dashboard'))->with('success', 'Đăng nhập thành công!');
-        }        
-
-        return redirect()->back()->withInput($request->only('email'))->withErrors([
-            'email' => 'Thông tin đăng nhập không chính xác.',
-        ]);
+            return response()->json(['status' => 'success', 'role' => 'admin', 'redirectUrl' => route('admin.dashboard')]);
+        } else {
+            return response()->json(['status' => 'error']);
+        }
     }
 
 
-    // my profile
+    // My profile
     public function myprofile(){
         return view('admin.layouts.myprofile'); 
     }

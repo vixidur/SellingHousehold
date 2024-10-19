@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'accounts',
+        'passwords' => 'accounts',
     ],
 
     /*
@@ -72,10 +72,15 @@ return [
     */
     
     'providers' => [
-        'users' => [
+
+        // dung cho user
+        'register' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\RegisterModel::class,
         ],
+
+
+        // dung cho admin
         'accounts' => [
             'driver' => 'eloquent',
             'model' => App\Models\Account::class,

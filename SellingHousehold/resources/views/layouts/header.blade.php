@@ -8,8 +8,7 @@
     <title>@yield('title', 'UNETI HOUSEHOLD | BÁN ĐỒ GIA DỤNG UNETI')</title>
     <link rel="stylesheet" href="{{ asset('css/headerstyle.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-6.6.0-web/css/all.min.css') }}">
-    <link rel="icon" href="{{ asset('images/logo-web.png') }}" type="image/x-icon" />
-
+    <link rel="icon" href="{{ asset('images/logo-home.png') }}" type="image/x-icon" />
 </head>
 
 <body>
@@ -47,8 +46,22 @@
                         <i class="fa-regular fa-circle-user"></i>
                     </div>
                     <div class="label-user">
-                        <p id="label-txtLogin"><a href="{{ route('login') }}">Đăng nhập</a><br><a
-                                href="{{ route('register') }}">Đăng ký</a></p>
+                        @auth
+                            <p id="label-txtLogin" style="color: white">Xin chào, {{ Auth::user()->username }}<br>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng
+                                    xuất</a>
+                            </p>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        @endauth
+
+                        @guest
+                            <p id="label-txtLogin"><a href="{{ route('login') }}">Đăng nhập</a><br>
+                                <a href="{{ route('register') }}">Đăng ký</a>
+                            </p>
+                        @endguest
                     </div>
                 </div>
                 <div class="cart-header">

@@ -1,5 +1,5 @@
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 0.1px;
 }
 
 ::-webkit-scrollbar-track {
@@ -7,16 +7,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #2d61c2;
+    background: red
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #2d61c2;
+    background: red;
 }
 
 .scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: #2d61c2 #f1f1f1;
+    scrollbar-color: red #f1f1f1;
 }
 
 .scrollable {

@@ -21,8 +21,8 @@ class RegisterController extends Controller
         // Validate input data
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:accounts',
-            'username' => 'required|string|max:255|unique:accounts',
+            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:8',
             'agreed_to_terms' => 'required|accepted',
         ]);

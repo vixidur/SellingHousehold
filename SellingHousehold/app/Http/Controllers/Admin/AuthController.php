@@ -39,7 +39,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // my profile
     public function myprofile(){
         return view('admin.layouts.myprofile'); 
     }

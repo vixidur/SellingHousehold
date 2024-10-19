@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
-
+use App\Http\Controllers\Auth\PaymentController;
 // Route chính
 Route::get('/', function () {
     return view('index');
@@ -21,7 +21,9 @@ Route::post('register', [RegisterController::class, 'register']);
 
 // Route giỏ hàng
 Route::get('cart', [CartController::class, 'cartForm'])->name('cart');
-// Route admin 
+// Route thanh toán
+Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
+
 // Route admin 
 Route::prefix('admin')->group(function() {
     // Hiển thị form đăng nhập admin

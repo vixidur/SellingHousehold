@@ -11,4 +11,8 @@ class CartController extends Controller
     {
         return view('cart.cart');
     }
+
+    public function overviewCart(){
+        return view('overview.layouts.cart');
+    }
 }

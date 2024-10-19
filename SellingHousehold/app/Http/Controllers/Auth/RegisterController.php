@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\RegisterModel;
+use App\Models\RegisterModel; // Make sure this points to your model
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Auth\Events\Registered; 
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -18,6 +18,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
+        // Validate input data
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:accounts',
@@ -42,7 +43,10 @@ class RegisterController extends Controller
         // Trigger the Registered event to send the email verification notification
         event(new Registered($user));
 
-        session()->flash('success', 'Đăng ký thành công! Vui lòng kiểm tra email để xác minh.');
+        // Lưu thông tin email vào session để hiển thị thông báo
+        session()->flash('success', 'Đăng ký thành công! Vui lòng kiểm tra email của bạn để xác nhận.');
+
+        // Redirect to the login page
         return redirect()->route('login');
     }
 }

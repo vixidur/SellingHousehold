@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/loginstyle.css') }}">
     <link rel="icon" href="{{ asset('images/logo-home.png') }}" type="image/x-icon" />
+    <!-- Thêm link SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 
 <body class="login-page">
@@ -22,7 +24,8 @@
             <p class="login-desc">Xin mời bạn nhập đầy đủ thông tin đăng nhập.</p>
         </center>
 
-        <form class="login-form">
+        <form class="login-form" method="POST" action="{{ route('login.post') }}">
+            @csrf
             <div class="input-group">
                 <label for="username">Tài khoản</label>
                 <input type="text" id="myInput" name="username" placeholder="Nhập tài khoản" required>
@@ -54,6 +57,8 @@
     <!-- Include footer -->
     @include('layouts.footer')
 
+    <!-- Thêm SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
@@ -66,16 +71,15 @@
             icon.classList.toggle('fa-eye-slash');
         });
     </script>
-    @if (session('success'))
+
+    @if (session('verify_email'))
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Đăng ký thành công!',
-                text: '{{ session('success') }}',
-                showConfirmButton: true,
-                timer: 3000
-            }).then(() => {
-                window.location.href = "{{ route('login') }}";
+                title: 'Xác minh email của bạn',
+                text: 'Chúng tôi đã gửi email đến {{ session('verify_email') }}. Vui lòng kiểm tra email để xác nhận đăng ký.',
+                showConfirmButton: false,
+                timer: 5000
             });
         </script>
     @endif

@@ -6,7 +6,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Auth\PaymentController;
+// Route cho trang overview
+Route::get('overview', function () {
+    return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần
+})->name('overview');
 // Route chính
 Route::get('/', function () {
     return view('index');
@@ -14,10 +17,12 @@ Route::get('/', function () {
 
 // Route đăng nhập
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login'])->name('login.post');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route đăng ký
-Route::get('register', [RegisterController::class, 'showRegisterForm'])->name('register');
-Route::post('register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 // Route giỏ hàng
 Route::get('cart', [CartController::class, 'cartForm'])->name('cart');

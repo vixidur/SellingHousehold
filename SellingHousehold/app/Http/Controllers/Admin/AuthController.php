@@ -36,12 +36,14 @@ class AuthController extends Controller
         }
     }
 
-
-    // My profile
     public function myprofile(){
         return view('admin.layouts.myprofile'); 
     }
     
+    //Category
+    public function category(){
+        return view('admin.category'); 
+    }
     // Xử lý đăng xuất admin
     public function logout()
     {

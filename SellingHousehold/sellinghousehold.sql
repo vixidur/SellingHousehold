@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2024 at 11:05 PM
+-- Generation Time: Oct 18, 2024 at 08:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,17 +34,18 @@ CREATE TABLE `accounts` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `agreed_to_terms` tinyint(1) NOT NULL DEFAULT 0,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `role` enum('admin','user') NOT NULL DEFAULT 'user',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `full_name`, `email`, `username`, `password`, `agreed_to_terms`, `created_at`, `updated_at`, `email_verified_at`) VALUES
-(15, 'Trần Anh KIên', 'chien27122402@gmail.com', 'haruki24022003', '$2y$10$Cw1cj.O3HH8rKN2NGyk75.9LQxIw3rwtWSXodCI4wVdPXk0RmzgZi', 1, '2024-10-17 14:04:05', '2024-10-17 14:04:05', NULL);
+INSERT INTO `accounts` (`id`, `full_name`, `email`, `username`, `password`, `agreed_to_terms`, `email_verified_at`, `role`, `created_at`, `updated_at`) VALUES
+(3, 'Trần Văn Chiến', 'tranvanchien24022003@gmail.com', 'haruki24022003', '$2y$10$/7Yxc5g5./k1t.am3MW2Luz8Mne8MvPhzxFsFAMi4UFY3x4zc27CW', 1, NULL, 'user', '2024-10-18 10:53:04', '2024-10-18 10:53:04');
 
 -- --------------------------------------------------------
 
@@ -79,14 +80,13 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (5, '2024_10_17_115719_create_users_table', 2),
 (6, '2014_10_12_200000_add_two_factor_columns_to_users_table', 3),
-(7, '2024_10_17_120640_create_users_table', 4),
-(8, '2024_10_17_205215_add_email_verified_at_to_accounts_table', 4);
+(21, '2014_10_12_000000_create_users_table', 4),
+(22, '2014_10_12_100000_create_password_resets_table', 4),
+(23, '2019_08_19_000000_create_failed_jobs_table', 4),
+(24, '2019_12_14_000001_create_personal_access_tokens_table', 4),
+(25, '2024_10_17_120640_create_users_table', 4);
 
 -- --------------------------------------------------------
 
@@ -131,9 +131,6 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `two_factor_secret` text DEFAULT NULL,
-  `two_factor_recovery_codes` text DEFAULT NULL,
-  `two_factor_confirmed_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -193,7 +190,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -205,7 +202,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

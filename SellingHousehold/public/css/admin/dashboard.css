@@ -370,3 +370,66 @@
 .btn-save:hover {
     background-color: #218838;
 }
+
+/* CATEGORY */
+.maincategory{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f6fa;
+}
+table{
+    border-collapse: collapse;
+    width: 70%;
+    height: 60%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+}
+
+thead th{
+    background-color: #4c544d;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody td{
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody td .edit-btn{
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;
+}
+tbody td .edit-btn:hover{
+    color: #ee3030;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+tbody td .delete-btn{
+    color: #dc3545;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;
+}
+tbody td .delete-btn:hover{
+    color: #3c3c3c;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    margin-left: 20px;
+    cursor: pointer;
+}

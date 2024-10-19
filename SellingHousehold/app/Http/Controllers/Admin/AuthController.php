@@ -25,6 +25,12 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {
+            $user = Auth::guard('admin')->user();
+            if ($user->role !== 'admin') {
+                Auth::guard('admin')->logout();
+                return redirect()->back()->with('not_admin', true); // Thông báo không phải admin
+            }
+
             return redirect()->intended(route('admin.dashboard'))->with('success', 'Đăng nhập thành công!');
         }        
 
@@ -33,6 +39,12 @@ class AuthController extends Controller
         ]);
     }
 
+
+    // my profile
+    public function myprofile(){
+        return view('admin.layouts.myprofile'); 
+    }
+    
     // Xử lý đăng xuất admin
     public function logout()
     {

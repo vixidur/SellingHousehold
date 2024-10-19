@@ -77,15 +77,120 @@
         <div class="container-nav">
             <nav>
                 <ul>
-                    <li><a href="#">Nồi, chảo</a><i class="fa-solid fa-caret-down"></i></li>
-                    <li><a href="#">Sản phẩm giữ nhiệt</a><i class="fa-solid fa-caret-down"></i></li>
-                    <li><a href="#">Gia dụng bếp</a><i class="fa-solid fa-caret-down"></i></li>
-                    <li><a href="#">Máy xay, máy ép</a><i class="fa-solid fa-caret-down"></i></li>
-                    <li><a href="#">Thiết bị bếp</a><i class="fa-solid fa-caret-down"></i></li>
-                    <li><a href="#">Chăm sóc thiết bị</a><i class="fa-solid fa-caret-down"></i></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Nồi, chảo<i class="fa-solid fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <div class="column">
+                                <h3>Nồi</h3>
+                                <a href="#">Nồi inox, bộ nồi inox</a>
+                                <a href="#">Nồi chống dính</a>
+                                <a href="#">Nồi hấp, nồi lẩu</a>
+                                <a href="#">Nồi áp suất bếp từ</a>
+                                
+                            </div>
+                            <div class="column">
+                                <h3>Chảo</h3>
+                                <a href="#">Chảo inox</a>
+                                <a href="#">Chảo nhôm</a>
+                                <a href="#">Chảo chống dính</a>
+                                <a href="#">Chảo siêu nhẹ</a>
+                            </div>
+                       
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#">Sản phẩm giữ nhiệt<i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                            <div class="column">
+                                <h3>Cốc giữ nhiệt</h3>
+                                <a href="#">Cốc giữ nhiệt Cốc giữ nhiệt inox 304 Elmich EL8312 </a>
+                                <a href="#">Cốc giữ nhiệt inox</a>
+                            </div>
+                            <div class="column">
+                                <h3>Bình đựng thức ăn giữ nhiệt</h3>
+                                <a href="#">Bình đựng thức ăn giữ nhiệt inox 304</a>
+                                <a href="#">Bình đựng thức ăn giữ nhiệt inox 304 Elmich</a>
+                            </div>
+                            <div class="column">
+                                <h3>Hộp cơm giữ nhiệt</h3>
+                                <a href="#">Hộp cơm 2 tầng inox 304</a>
+                                <a href="#">Hộp cơm 2 tầng inox 304 Elimich</a>
+                            </div>
+                            <div class="column">
+                                <h3>Bình,phích giữ nhiệt</h3>
+                                <a href="#">Phích giữ nhiệt gia đình inox 304</a>
+                                <a href="#">Phích giữ nhiệt gia đình inox 304 Elmich</a>
+                            </div>
+                    </div>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#">Gia dụng bếp<i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                            <div class="column">
+                                <h3>Bộ dao</h3>
+                                <a href="#">Dao gọt hoa quả Elmich Diamond </a>
+                                <a href="#">Dao thái Elmich Ultra Sharp</a>
+                                <a href="#">Dao đa năng Elmich Ultra Sharp</a>
+                            </div>
+                            <div class="column">
+                                <h3>Bộ thớt</h3>
+                                <a href="#">Thớt an toàn- đa năng</a>
+                                <a href="#">Bộ thớt nhựa đa năng Smartcook</a>
+                                <a href="#">Bộ thớt nhựa đa năng Elmich</a>
+                            </div>
+                            <div class="column">
+                                <h3>Dụng cụ nhà bếp</h3>
+                                <a href="#">Hộp nhựa thực phẩm Elmich </a>
+                                <a href="#">Hộp đựng thực phẩm inox</a>
+                            </div>
+                    </div>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#">Máy xay, máy ép<i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                            <div class="column">
+                                <h3>Máy xay sinh tố</h3>
+                                <a href="#">Máy xay sinh tố</a>
+                                <a href="#">Máy xay sinh tố cầm tay</a>
+                                <a href="#">Máy xay sinh tố Elmich BLE</a>
+                                <a href="#">Máy xay sinh tố Elmich </a>
+                            </div>
+                            <div class="column">
+                                <h3>Máy ép chậm</h3>
+                                <a href="#">Máy ép chậm trái cây mini Smartcook</a>
+                                <a href="#">Máy ép chậm JEE-8723</a>
+                                <a href="#">BMáy ép chậm Elmich JEE-8759</a>
+                                <a href="#">Máy ép chậm Elmich JEE</a>
+                            </div>
+                    </div>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#">Thiết bị bếp<i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                            <div class="column">
+                                <h3>Ấm siêu tốc</h3>
+                                <a href="#">Cốc giữ nhiệt Cốc giữ nhiệt inox 304 Elmich EL8312 </a>
+                                <a href="#">Cốc giữ nhiệt inox</a>
+                            </div>
+                            <div class="column">
+                                <h3>Bếp điện</h3>
+                                <a href="#"></a>
+                                <a href="#">Bình đựng thức ăn giữ nhiệt inox 304 Elmich</a>
+                            </div>
+                          
+                    </div>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#" >Chăm sóc thiết bị<i class="fa-solid fa-caret-down"></i> </a>
+                    <div class="dropdown-content">
+
+                    </div>
+                    </li>
                 </ul>
             </nav>
         </div>
+    </header>
     </header>
     @yield('content')
 </body>

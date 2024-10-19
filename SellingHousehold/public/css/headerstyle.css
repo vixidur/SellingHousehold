@@ -206,7 +206,7 @@ nav ul {
 }
 
 nav ul li {
-    padding: 10px 20px;
+    padding: 5px 1px;
     display: inline-block;
 }
 
@@ -309,4 +309,89 @@ nav ul li i {
         position: relative;
         left: -6%;
     }
+}
+/* General styling */
+/* Container styles */
+.container-nav {
+    
+    padding: 2px;
+    
+}
+
+.container-nav nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.container-nav nav ul li {
+    position: relative;
+}
+
+/* Dropdown menu styles */
+/* Dropdown - Mục chính */
+.dropdown {
+    margin-right: 10px; /* Khoảng cách giữa các mục chính trong menu */
+}
+
+.dropdown a {
+    text-decoration: none;
+    color: whitesmoke; /* Màu chữ trắng khói */
+    font-weight: bold; /* Chữ đậm */
+    padding: 15px 10px; /* Khoảng cách bên trong cho liên kết */
+    display: inline-block;
+}
+
+.dropdown a:hover {
+    color: black; /* Màu chữ đen khi hover */
+    border-radius: 4px; /* Bo tròn góc */
+}
+
+/* Dropdown content - Mục con */
+.dropdown-content {
+    display: none; /* Ẩn menu con khi không hover */
+    position: absolute; /* Đặt menu con bên dưới */
+    background-color: #fff; /* Màu nền trắng cho menu con */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Đổ bóng cho menu con */
+    padding: 20px; /* Khoảng cách bên trong menu con */
+    z-index: 1;
+    border-radius: 5px; /* Bo tròn góc cho menu con */
+}
+
+.dropdown-content .column {
+    float: left; /* Cột trong menu con được đặt cạnh nhau */
+    width: 200px; /* Chiều rộng cố định cho mỗi cột */
+    padding: 10px; /* Khoảng cách bên trong mỗi cột */
+    margin-right: 15px; /* Tạo khoảng cách giữa các cột */
+}
+
+.dropdown-content .column h3 {
+    font-size: 18px; /* Kích thước font cho tiêu đề */
+    margin-bottom: 10px; /* Khoảng cách dưới cho tiêu đề */
+    color: black; /* Màu xanh biển đậm cho tiêu đề */
+}
+
+.dropdown-content .column a {
+    text-decoration: none; /* Bỏ gạch chân cho liên kết */
+    color: #023e8a; /* Màu xanh đậm cho các liên kết */
+    padding: 8px 0; /* Tạo khoảng cách giữa các liên kết trong menu con */
+    display: block; /* Hiển thị liên kết dưới dạng khối */
+}
+
+.dropdown-content .column a:hover {
+    color: rgb(159, 205, 50); /* Màu xanh lá sáng khi hover */
+}
+
+/* Hiển thị menu con khi hover vào mục chính */
+.dropdown:hover .dropdown-content {
+    display: flex; /* Hiển thị các cột dưới dạng flexbox */
+    flex-direction: row; /* Căn các cột theo hàng ngang */
+}
+
+/* Clear floats - Đảm bảo bố cục không bị lỗi khi sử dụng float */
+.dropdown-content::after {
+    content: "";
+    clear: both;
+    display: table; /* Hỗ trợ việc clear float */
 }

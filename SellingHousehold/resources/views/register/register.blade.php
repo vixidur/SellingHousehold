@@ -24,15 +24,18 @@
             @csrf
             <div class="input-group">
                 <label for="fullname">Họ và tên</label>
-                <input type="text" id="fullname" placeholder="Vui lòng nhập họ và tên" name="full_name" value="{{ old('full_name') }}" required>
+                <input type="text" id="fullname" placeholder="Vui lòng nhập họ và tên" name="full_name"
+                    value="{{ old('full_name') }}" required>
             </div>
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Vui lòng nhập địa chỉ email" name="email" value="{{ old('email') }}" required>
+                <input type="email" id="email" placeholder="Vui lòng nhập địa chỉ email" name="email"
+                    value="{{ old('email') }}" required>
             </div>
             <div class="input-group">
                 <label for="username">Tài khoản</label>
-                <input type="text" id="username" placeholder="Vui lòng nhập tài khoản" name="username" value="{{ old('username') }}" required>
+                <input type="text" id="username" placeholder="Vui lòng nhập tài khoản" name="username"
+                    value="{{ old('username') }}" required>
             </div>
             <div class="input-group password-group">
                 <label for="password">Mật khẩu</label>
@@ -51,8 +54,8 @@
 
     <!-- Tạo biến JavaScript từ session -->
     <script>
-        // Nếu không có session 'success', trả về null
-        const successMessage = {!! json_encode(session('success') ?? '') !!};  // Sử dụng json_encode() để chuyển PHP sang JS
+        // Nếu không có session 'verify_email', trả về null
+        const verifyEmailMessage = {!! json_encode(session('verify_email') ?? '') !!}; // Sử dụng json_encode() để chuyển PHP sang JS
     </script>
 
     <script>
@@ -67,13 +70,13 @@
             this.classList.toggle('fa-eye-slash');
         });
 
-        // sweet alert 2 for success message
+        // sweet alert 2 for email verification message
         document.addEventListener('DOMContentLoaded', function() {
-            if (successMessage) {  // Kiểm tra nếu có thông báo thành công từ server
+            if (verifyEmailMessage) { // Kiểm tra nếu có thông báo xác minh email từ server
                 Swal.fire({
-                    title: 'Thành công!',
-                    text: successMessage,
-                    icon: 'success',
+                    title: 'Xác minh email của bạn!',
+                    text: `Chúng tôi đã gửi email ${verifyEmailMessage} đến bạn. Vui lòng kiểm tra email để xác nhận đăng ký.`,
+                    icon: 'info',
                     confirmButtonText: 'Đồng ý'
                 });
             }

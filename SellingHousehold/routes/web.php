@@ -33,6 +33,9 @@ Route::prefix('admin')->group(function() {
     // Xử lý my profile 
     Route::get('layouts/myprofile', [AuthController::class, 'myprofile'])->name('myprofile');
     
+    //Xử lý categories
+    Route::get('category', [AuthController::class, 'category'])->name('category');
+    
     // Đăng xuất admin
     Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
     

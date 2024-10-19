@@ -16,6 +16,11 @@
             <p>Không có sản phẩm nào. Quay lại <a href="{{ url('/') }}" class="store-link">cửa hàng</a> để tiếp tục
                 mua sắm.
             </p>
+
+        </div>
+        <div class="payment">
+            <p><a href="{{ url('/payment') }}">Tiến hành thanh toán</a>
+            </p>
         </div>
     </div>
     <div class="product-section">

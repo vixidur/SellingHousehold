@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'accounts',
-        'passwords' => 'accounts',
+        'guard' => 'web', // Set the default guard to 'web'
+        'passwords' => 'users',
     ],
 
     /*
@@ -38,17 +38,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
+            'provider' => 'users', // Use 'users' provider
+        ],
+
+        'admin' => [
+            'driver' => 'session',
             'provider' => 'users',
         ],
 
-        'admin' => [ // Thêm guard admin
-            'driver' => 'session',
-            'provider' => 'accounts', // Chỉ định provider cho guard admin
-        ],
-        
         'accounts' => [
             'driver' => 'session',
-            'provider' => 'accounts',
+            'provider' => 'users',
         ],
     ],
 
@@ -72,21 +72,16 @@ return [
     */
     
     'providers' => [
-
-        // dung cho user
-        'register' => [
+        'users' => [ // Define the 'users' provider
             'driver' => 'eloquent',
-            'model' => App\Models\RegisterModel::class,
+            'model' => App\Models\RegisterModel::class, // Use RegisterModel for the 'users' table
         ],
 
-
-        // dung cho admin
         'accounts' => [
             'driver' => 'eloquent',
             'model' => App\Models\Account::class,
         ],
     ],
-
 
 
     /*

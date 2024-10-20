@@ -24,6 +24,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* DASHBOARD LAYOUT */
@@ -31,8 +32,8 @@
     display: flex;
     justify-content: space-around;
 }
+
 .maindashboard {
-    /* background-color: #007bff; */
     margin-top: 140px;
     margin-left: 290px;
     padding: 20px;
@@ -40,26 +41,44 @@
     position: relative;
     height: 100vh;
 }
+
 /* HEADER ADMIN */
 .profiles {
     position: relative;
     right: 24%;
 }
-.profiles i{
+
+.profiles .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.profiles i {
     color: #000;
 }
-.headeradmin {
-    background-color: #fff;
+
+.main-admin-header {
     display: flex;
-    justify-content: space-around; /* Căn giữa giữa các phần tử */
+    justify-content: flex-end;
+    width: 100%;
+    position: relative;
+}
+
+.headeradmin {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px 20px;
     height: 50px;
-    position: fixed;
-    top: 0;
-    left: 250px; 
-    width: calc(100% - 250px); 
+    width: calc(100% - 330px);
     z-index: 90;
+    position: fixed;
+    right: 0;
+    top: 0;
 }
 
 .manager-admin {
@@ -116,13 +135,16 @@
 }
 
 .manager-admin .dropdown li a:hover {
-    color: #007bff; /* Đổi màu khi hover */
+    color: #007bff;
+    /* Đổi màu khi hover */
 }
 
 .manager-admin li:hover .dropdown {
     opacity: 1;
-    visibility: visible; /* Hiển thị dropdown */
+    visibility: visible;
+    /* Hiển thị dropdown */
 }
+
 .search-container {
     display: flex;
     align-items: center;
@@ -138,7 +160,8 @@
 }
 
 .search-button {
-    background-color: #007bff; /* Màu nền của nút tìm kiếm */
+    background-color: #007bff;
+    /* Màu nền của nút tìm kiếm */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -151,36 +174,43 @@
 
 .search-input:hover,
 .search-button:hover {
-    border-color: #007bff; /* Đổi màu border của input khi hover */
+    border-color: #007bff;
+    /* Đổi màu border của input khi hover */
 }
 
 .search-button:hover {
-    background-color: #0056b3; /* Đổi màu nền của nút khi hover */
+    background-color: #0056b3;
+    /* Đổi màu nền của nút khi hover */
 }
 
 .search-input::placeholder {
-    color: #aaa; /* Màu chữ trong placeholder */
+    color: #aaa;
+    /* Màu chữ trong placeholder */
 }
 
 /* NAVIGATION STYLES */
 .logo img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 40px; /* Tạo khoảng cách giữa logo và menu */
+    margin-bottom: 40px;
+    /* Tạo khoảng cách giữa logo và menu */
 }
 
 .navbar {
-    background-color: #536493; /* Màu nền của navbar */
+    background-color: #024caa;
+    /* Màu nền của navbar */
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     width: 250px;
-    position: fixed; /* Giữ navbar cố định */
+    position: fixed;
+    /* Giữ navbar cố định */
     top: 0;
     left: 0;
-    z-index: 100; /* Đảm bảo navbar nằm phía trên */
+    z-index: 100;
+    /* Đảm bảo navbar nằm phía trên */
 }
 
 .nav-list ul {
@@ -203,8 +233,10 @@
 }
 
 .nav-list ul li a:hover {
-    background-color: #43547a; /* Đổi màu nền khi hover */
-    color: #ffcc00; /* Đổi màu chữ khi hover */
+    background-color: #43547a;
+    /* Đổi màu nền khi hover */
+    color: #ffcc00;
+    /* Đổi màu chữ khi hover */
     border-radius: 5px;
 }
 
@@ -218,7 +250,7 @@
     font-size: 13px;
     color: #666;
     border-top: 1px solid #e0e0e0;
-    width: calc(100% - 250px);
+    width: calc(100% - 290px);
 }
 
 /* RESPONSIVE ADJUSTMENTS */
@@ -227,84 +259,113 @@
         flex: 3;
     }
 }
- /* MY PROFILE */
- .myprofile{
-    width: 100%;
-    margin-top: 50px;
-    margin-left: 300px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+/* MY PROFILE */
+.myprofile {
+    margin-bottom: 0px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f6fa; 
- }
- .myprofile-form {
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    max-width: 70%;
-    width: 100%;
+    float: right;
+    margin-top: 69px;
+    padding: 20px;
+    width: calc(100% - 330px);
+    height: calc(100% - 109px);
+    background-color: #e3e6f0;
 }
 
-/* Avatar section */
-.img {
-    text-align: center;
+.myprofile-form {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-section {
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .avatar {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin-right: 20px;
 }
 
-.avatar-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.avatar-input {
+    flex-grow: 1;
 }
 
-.avatar-buttons button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.avatar-input label {
+    font-weight: bold;
 }
 
-.avatar-buttons button:hover {
-    background-color: #0056b3;
-}
-
-/* Information section */
-.information .row {
-    display: flex;
-    gap: 20px;
+.information-section {
     margin-bottom: 20px;
 }
 
-.information .col {
+.information-section h3,
+.changePassword h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.col {
     flex: 1;
+    margin-right: 10px;
 }
 
-.information label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 8px;
-    color: #555;
+.col:last-child {
+    margin-right: 0;
 }
 
-.information input {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 5px;
+}
+
+input[readonly] {
+    background-color: #e9ecef;
+}
+
+.password-field {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.form-buttons {
+    text-align: right;
+}
+
+.btn-save {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-save:hover {
+    background-color: #0056b3;
 }
 
 /* Change Password section */
@@ -332,22 +393,29 @@
     border-radius: 8px;
     font-size: 14px;
 }
+
 .password-field {
-    position: relative; /* Để sử dụng position absolute cho biểu tượng */
+    position: relative;
+    /* Để sử dụng position absolute cho biểu tượng */
 }
 
 .password-field input {
-    width: 100%; /* Đảm bảo input chiếm toàn bộ chiều rộng */
-    padding-right: 30px; /* Tạo không gian bên phải cho biểu tượng */
+    width: 100%;
+    /* Đảm bảo input chiếm toàn bộ chiều rộng */
+    padding-right: 30px;
+    /* Tạo không gian bên phải cho biểu tượng */
 }
 
 .toggle-password {
     position: absolute;
-    right: 10px; /* Căn phải cho biểu tượng ổ khóa */
+    right: 10px;
     top: 50%;
-    transform: translateY(-50%); /* Giữa biểu tượng với input */
+    transform: translateY(-50%);
     cursor: pointer;
-    font-size: 18px; /* Kích thước biểu tượng */
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #007bff;
 }
 
 
@@ -372,15 +440,18 @@
 }
 
 /* CATEGORY */
-.maincategory{
-    width: 100%;
-    height: 100vh;
+.maincategory {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f5f6fa;
+    margin-top: 70px;
+    width: 561%;
+    height: calc(100vh - 90px - 17px);
+    background-color: #ccc;
 }
-table{
+
+table {
+    background-color: white;
     border-collapse: collapse;
     width: 70%;
     height: 60%;
@@ -388,28 +459,29 @@ table{
     margin-bottom: 5%;
 }
 
-thead th{
-    background-color: #4c544d;
+thead th {
+    background-color: #0d92f4;
     color: white;
     padding: 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
 }
 
-tbody td{
+tbody td {
     padding: 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
 }
 
-tbody td .edit-btn{
+tbody td .edit-btn {
     color: #007bff;
     text-decoration: none;
     background-color: transparent;
     border: none;
     margin-left: 20px;
 }
-tbody td .edit-btn:hover{
+
+tbody td .edit-btn:hover {
     color: #ee3030;
     text-decoration: none;
     background-color: transparent;
@@ -418,18 +490,25 @@ tbody td .edit-btn:hover{
     cursor: pointer;
 }
 
-tbody td .delete-btn{
+tbody td .delete-btn {
     color: #dc3545;
     text-decoration: none;
     background-color: transparent;
     border: none;
     margin-left: 20px;
 }
-tbody td .delete-btn:hover{
+
+tbody td .delete-btn:hover {
     color: #3c3c3c;
     text-decoration: none;
     background-color: transparent;
     border: none;
     margin-left: 20px;
     cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .maincategory {
+        width: 371%;
+    }
 }

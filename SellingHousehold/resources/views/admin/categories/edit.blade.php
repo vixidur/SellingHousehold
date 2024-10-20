@@ -16,7 +16,7 @@
                 <textarea name="description" id="description" class="form-control">{{ $category->description }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Cập nhật</button>
-            <a href="{{route('category')}}" class="cancel-btn">Hủy</a>
+            <a href="{{route('categories.index')}}" class="cancel-btn">Hủy</a>
         </form>
     </div>
 @endsection

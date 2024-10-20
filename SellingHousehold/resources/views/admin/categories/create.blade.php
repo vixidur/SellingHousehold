@@ -17,7 +17,7 @@
                 <textarea name="description" id="description" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-success">Thêm</button>
-            <a href="{{ route('category')}} " class="cancel-category">Hủy</a>
+            <a href="{{ route('categories.index')}} " class="cancel-category">Hủy</a>
         </form>
     </div>
 @endsection

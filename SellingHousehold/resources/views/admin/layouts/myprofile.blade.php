@@ -32,12 +32,12 @@
                         <div class="col">
                             <label for="fullname">Họ và tên</label>
                             <input type="text" name="fullname" id="fullname" value="{{ $user->full_name }}"
-                                placeholder="VD: Trần Văn Chiến" required>
+                                placeholder="Vui lòng nhập họ tên" required>
                         </div>
                         <div class="col">
                             <label for="emailaddress">Email</label>
                             <input type="email" name="emailaddress" id="emailaddress" value="{{ $user->email }}"
-                                placeholder="VD: user@gmail.com" readonly>
+                                placeholder="example@gmail.com" readonly>
                         </div>
                     </div>
                     <div class="row">
@@ -48,7 +48,7 @@
                         <div class="col">
                             <label for="phonenumber">Số điện thoại</label>
                             <input type="text" name="phonenumber" id="phonenumber" value="{{ $user->phone_number }}"
-                                placeholder="VD: +84 67235914" required>
+                                placeholder="Vui lòng nhập số điện thoại" required>
                         </div>
                     </div>
                     <div class="row">

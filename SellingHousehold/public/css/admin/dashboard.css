@@ -27,19 +27,18 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* DASHBOARD LAYOUT */
+/* MASTER LAYOUT */
 .container {
+    height: calc(100% - 70px);
+    background-color: #ccc;
+    /* float: bottom; */
+    float: right;
+    width: calc(100% - 290px);
     display: flex;
-    justify-content: space-around;
-}
-
-.maindashboard {
-    margin-top: 140px;
-    margin-left: 290px;
-    padding: 20px;
-    width: calc(100% - 250px);
-    position: relative;
-    height: 100vh;
+    /* justify-content: space-around; */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
 }
 
 /* HEADER ADMIN */
@@ -258,6 +257,10 @@
     .navbar {
         flex: 3;
     }
+
+    .maincategory {
+        width: 0;
+    }
 }
 
 /* MY PROFILE */
@@ -440,23 +443,63 @@ input[readonly] {
 }
 
 /* CATEGORY */
+
+/* INDEX */
 .maincategory {
+    box-sizing: border-box;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
     margin-top: 70px;
-    width: 561%;
-    height: calc(100vh - 90px - 17px);
+    max-width: 1200px;
+    max-height: 660px;
+    width: 100%;
+    height: 100%;
     background-color: #ccc;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+.add-catagory-products {
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.add-catagory-products a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-catagory-products a:hover {
+    background-color: #218838;
+}
+
+/* Wrapper to contain table and enable scrolling */
+.table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 10px;
+    margin-bottom: 5%;
+}
+
+/* Ensures the table maintains width while scrolling */
 table {
     background-color: white;
     border-collapse: collapse;
-    width: 70%;
-    height: 60%;
-    margin-left: 10%;
-    margin-bottom: 5%;
+    width: 100%;
+    text-align: left;
 }
 
 thead th {
@@ -465,6 +508,9 @@ thead th {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ccc;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 tbody td {
@@ -473,42 +519,108 @@ tbody td {
     border-bottom: 1px solid #ccc;
 }
 
-tbody td .edit-btn {
+tbody td .edit-btn,
+.delete-btn {
     color: #007bff;
-    text-decoration: none;
     background-color: transparent;
     border: none;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 tbody td .edit-btn:hover {
     color: #ee3030;
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
-tbody td .delete-btn {
-    color: #dc3545;
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
-    margin-left: 20px;
 }
 
 tbody td .delete-btn:hover {
     color: #3c3c3c;
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
-    margin-left: 20px;
-    cursor: pointer;
 }
 
-@media (max-width: 576px) {
+/* Responsive design adjustments */
+@media (max-width: 768px) {
     .maincategory {
-        width: 371%;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .add-catagory-products {
+        width: 100%;
+    }
+
+    .table-wrapper {
+        width: 100%;
+    }
+}
+
+/* CREATE */
+.maincategory h2 {
+    text-align: center;
+    /* Tiêu đề căn giữa */
+    color: #333;
+    margin-bottom: 20px;
+    /* Khoảng cách giữa tiêu đề và form */
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+}
+
+.category-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea {
+    height: 100px;
+    /* Đặt chiều cao mặc định cho textarea */
+}
+
+button.btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    .maincategory {
+        width: 90%;
+        /* Điều chỉnh độ rộng khi màn hình nhỏ */
     }
 }

@@ -31,7 +31,6 @@
                 Notiflix.Notify.success("{{ Session::get('success') }}");
             @endif
         </script>
-
     </div>
     <!-- Footer -->
     @include('admin.layouts.footeradmin')

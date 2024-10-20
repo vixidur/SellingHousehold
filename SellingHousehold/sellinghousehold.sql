@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2024 lúc 07:52 PM
+-- Thời gian đã tạo: Th10 20, 2024 lúc 09:52 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -56,7 +56,8 @@ INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at
 (3, 'Cốc', 'Cốc là một vật dụng dùng để chứa đựng đồ uống, thường có hình dạng tròn và miệng rộng. Cốc có thể được làm từ nhiều chất liệu như thủy tinh, sứ, nhựa hoặc inox, và có nhiều kích cỡ khác nhau tùy thuộc vào mục đích sử dụng.\r\n\r\nCốc thường có tay cầm để dễ dàng cầm nắm, nhưng cũng có loại không tay cầm. Một số cốc còn có nắp hoặc ống hút đi kèm, đặc biệt là cho đồ uống lạnh. Thiết kế và trang trí của cốc rất đa dạng, từ đơn giản đến cầu kỳ, thường phản ánh phong cách hoặc sở thích của người sử dụng. Cốc là vật dụng phổ biến trong các bữa ăn, quán cà phê, hay đơn giản là ở nhà.', '2024-10-20 08:14:36', '2024-10-20 08:14:36'),
 (12, 'Máy xay', 'Máy xay là một thiết bị điện gia dụng dùng để chế biến thực phẩm bằng cách xay, nghiền hoặc trộn các nguyên liệu. Máy xay thường có cấu tạo gồm một thân máy, một cối xay và lưỡi dao sắc bén bên trong.\r\n\r\nCối xay thường được làm bằng thủy tinh hoặc nhựa bền, có nắp đậy kín để ngăn nguyên liệu bay ra ngoài khi hoạt động. Thân máy có nút điều chỉnh tốc độ và chế độ xay, cho phép người dùng dễ dàng điều chỉnh theo từng loại thực phẩm.', '2024-10-20 08:55:07', '2024-10-20 09:40:36'),
 (13, 'Máy ép', 'Công dụng chính của máy ép là tạo ra nước trái cây tươi ngon, nguyên chất, mà không có chất bảo quản. Một số máy ép còn đi kèm với các phụ kiện như cối xay, cho phép người dùng chế biến các món như sốt, sinh tố hay thức uống dinh dưỡng. Máy ép là một dụng cụ hữu ích trong việc tạo ra các đồ uống bổ dưỡng và lành mạnh tại nhà.', '2024-10-20 08:55:50', '2024-10-20 08:55:50'),
-(14, 'Dụng cụ nhà bếp', 'Dụng cụ nhà bếp là những thiết bị và công cụ thiết yếu dùng để chế biến, nấu nướng và phục vụ thực phẩm. Chúng thường đa dạng về loại hình, chức năng và chất liệu.', '2024-10-20 08:56:19', '2024-10-20 08:56:19');
+(14, 'Dụng cụ nhà bếp', 'Dụng cụ nhà bếp là những thiết bị và công cụ thiết yếu dùng để chế biến, nấu nướng và phục vụ thực phẩm. Chúng thường đa dạng về loại hình, chức năng và chất liệu.', '2024-10-20 08:56:19', '2024-10-20 08:56:19'),
+(42, 'Cốc', 'Cốc là một vật dụng quen thuộc trong cuộc sống hàng ngày, thường được sử dụng để đựng nước uống như trà, cà phê, nước ngọt hay bia. Cốc thường có hình dạng trụ đứng, với miệng rộng hơn đáy, giúp dễ dàng uống và vệ sinh.', '2024-10-20 12:47:46', '2024-10-20 12:47:56');
 
 -- --------------------------------------------------------
 
@@ -206,6 +207,17 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `category_id`, `image_url`, `created_at`, `updated_at`) VALUES
+(1, 'test', 'sdadasdasda', 2500.00, 12, 13, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFfwzdqINS96EaZnhOVvlkeNQHFJ-KSJsHSg&s', '2024-10-20 12:27:28', '2024-10-20 12:37:16'),
+(3, 'www.541duongkenh.site', 'www.541duongkenh.site', 1500.00, 16, 2, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/448/192/products/653-nag2206-avatar-1.jpg?v=1654154863897', '2024-10-20 12:39:43', '2024-10-20 12:39:43'),
+(4, 'Tran Van Chien', 'Tran Van Chien', 254003.00, 12, 2, 'https://cdn.dienmaygiakhanh.com/Products/Images/2402/210368/noi-inox-304-20cm-fivestar-n20-304ov-1-1-org.jpg', '2024-10-20 12:40:14', '2024-10-20 12:40:14'),
+(5, 'Bình giữ nhiệt loại mới', 'Bình giữ nhiệt loại mới', 1235646.00, 1000, 3, 'https://quatangviva.com/wp-content/uploads/2021/03/binh-giu-nhiet-life-son-nham-q099-5-2.jpg', '2024-10-20 12:41:07', '2024-10-20 12:41:07'),
+(6, 'Cốc giữ nhiệt size L', 'Cốc có thể được làm từ nhiều chất liệu khác nhau, bao gồm thủy tinh, gốm sứ, nhựa và inox. Mỗi loại chất liệu có những đặc điểm riêng, như độ bền, tính năng giữ nhiệt hay khả năng cách điện. Cốc cũng có nhiều kích thước và kiểu dáng đa dạng, từ những chiếc cốc nhỏ xinh đến cốc lớn dùng cho thức uống lạnh.', 12000.00, 300, 42, 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw5e32df33/images/Accessory/CLASSICBOTTLE750ML/19.png', '2024-10-20 12:49:33', '2024-10-20 12:49:33');
+
 -- --------------------------------------------------------
 
 --
@@ -265,7 +277,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `username`, `password`, `phone_number`, `address`, `role`, `email_verified_at`, `created_at`, `updated_at`, `agreed_to_terms`, `picture_url`) VALUES
 (1, 'Tran Van Chien', 'chien27122402@gmail.com', 'chien27122402', '$2y$10$QKD4Waj2YxP5eyLjcCCqgutfIY5RCF7DlQnJgBp0shNLLlDcuGn4m', '0862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', NULL, '2024-10-19 11:08:39', '2024-10-20 08:04:37', 1, 'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg'),
-(2, 'Tran Van Chien', 'tranvanchien24022003@gmail.com', 'admin123', '$2y$10$tJjGS9YrqG8LrmNL5VWXmeK556Jx54D3fPw4MLegGjHfxjXgjdVbO', '+84862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', '2024-10-20 02:08:12', '2024-10-20 02:07:47', '2024-10-20 02:11:07', 1, 'https://cdn3.ivivu.com/2014/12/chum-anh-tuyet-dep-ve-khung-canh-than-tien-cua-du-lich-nauy-iVIVU.com-1.jpg');
+(2, 'TRẦN VĂN CHIẾN', 'tranvanchien24022003@gmail.com', 'admin123', '$2y$10$SNz6l4E4lhRkm/R/fpK6iejvEmvEEOnJSS4pacXXT94PiNuUhqAni', '+84862587229', 'thôn 3, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', '2024-10-20 02:08:12', '2024-10-20 02:07:47', '2024-10-20 12:51:31', 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU5poNhLUWu2zGHGu471RAeatkD89TSjkJGQ&s');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -377,7 +389,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -419,7 +431,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `reviews`

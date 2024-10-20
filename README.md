@@ -13,30 +13,16 @@
 •	Tìm kiếm và lọc sản phẩm.
 •	Cập nhật sản phẩm.
 •	Xóa sản phẩm.
-## 4. Quản lý menu bài viết
-•	Danh sách menu bài viết.
-•	Tìm kiếm và lọc menu bài viết.
-•	Thêm mới menu bài viết.
-•	Cập nhật menu bài viết.
-•	Xóa menu bài viết.
-## 5. Quản lý bài viết
-•	Danh sách bài viết.
-•	Thêm mới bài viết.
-•	Tìm kiếm và lọc bài viết.
-•	Sửa bài viết.
-•	Xóa bài viết.
-## 6. Quản lý thành viên
-•	Danh sách thành viên.
-•	Khóa thành viên.
+## 4. Quản lý khách hàng
+•	Danh sách khách hàng.
 •	Xóa thành viên.
-•	Tìm kiếm và lọc thành viên.
-## 7. Quản lý đơn hàng
+## 5. Quản lý đơn hàng
 •	Danh sách đơn hàng.
 •	Lọc đơn hàng theo trạng thái và khách hàng.
 •	Xem chi tiết đơn hàng.
 •	Cập nhật đơn hàng.
 •	Xóa đơn hàng.
-## 8. Thống kê
+## 6. Thống kê
 •	Doanh thu theo ngày.
 •	Doanh thu theo tuần.
 •	Doanh thu theo tháng.
@@ -54,20 +40,15 @@
 ## 4. Chi tiết sản phẩm
 •	Xem thông tin chi tiết sản phẩm.
 •	Thực hiện mua hàng.
-## 5. Menu bài viết
-•	Xem danh sách bài viết thuộc menu đang chọn.
-## 6. Bài viết
-•	Xem chi tiết bài viết.
-•	Xem thông tin bài viết liên quan.
-## 7. Đăng ký và Đăng nhập
+## 5. Đăng ký và Đăng nhập
 •	Đăng ký tài khoản.
 •	Đăng nhập vào hệ thống.
-## 8. Giỏ hàng
+## 6. Giỏ hàng
 •	Xem danh sách sản phẩm trong giỏ hàng.
 •	Cập nhật số lượng sản phẩm trong giỏ hàng.
 •	Hủy đơn hàng.
 •	Tiến hành thanh toán đơn hàng.
-## 9. Thanh toán
+## 7. Thanh toán
 •	Tiến hành thanh toán cho đơn hàng.
 ## 10. Quản lý đơn hàng
 •	Thành viên có thể xem đơn hàng của mình.

@@ -1,12 +1,8 @@
-.toast {
-    z-index: 9999;
-}
-
 /* CUSTOM SCROLLBAR */
 
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -522,7 +518,7 @@ tbody td {
     border-bottom: 1px solid #ccc;
 }
 
-.btn.btn-edit{
+.btn.btn-edit {
     color: #3498db;
     padding: 12px;
     border-radius: 8px;
@@ -534,11 +530,12 @@ tbody td {
     margin-right: 10px;
     text-decoration: none;
 }
-.btn.btn-edit:hover{
+
+.btn.btn-edit:hover {
     color: #0a325f;
 }
 
-.btn.btn-danger{
+.btn.btn-danger {
     color: #3498db;
     padding: 12px;
     background-color: transparent;
@@ -551,10 +548,12 @@ tbody td {
     margin-right: 10px;
     text-decoration: none;
 }
-.btn.btn-danger:hover{
+
+.btn.btn-danger:hover {
     color: red;
     background-color: transparent;
 }
+
 /* Responsive design adjustments */
 @media (max-width: 768px) {
     .maincategory {
@@ -658,7 +657,8 @@ button.btn:hover {
         width: 90%;
     }
 }
-.cancel-category{
+
+.cancel-category {
     background-color: #3498db;
     color: white;
     padding: 12px;
@@ -670,17 +670,18 @@ button.btn:hover {
     transition: background-color 0.3s ease;
     text-decoration: none;
 }
-.cancel-category:hover{
+
+.cancel-category:hover {
     background-color: #2980b9;
 }
 
 .cancel-category,
-button.btn{
+button.btn {
     margin-top: 20px;
 }
 
 /* EDIT */
-.edit-category{
+.edit-category {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -689,7 +690,8 @@ button.btn{
     max-width: 800px;
     transition: all 0.3s ease;
 }
-.cancel-btn{
+
+.cancel-btn {
     background-color: #3498db;
     color: white;
     padding: 12px;
@@ -701,6 +703,7 @@ button.btn{
     transition: background-color 0.3s ease;
     text-decoration: none;
 }
-.cancel-btn:hover{
+
+.cancel-btn:hover {
     background-color: #2980b9;
 }

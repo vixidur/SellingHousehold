@@ -7,7 +7,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\PaymentController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 // Route cho trang overview
 Route::get('overview', function () {
     return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần
@@ -35,22 +36,37 @@ Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment'
 Route::prefix('admin')->group(function() {
     // Hiển thị form đăng nhập admin
     Route::get('auth/login', [AuthController::class, 'AdminLogin'])->name('admin.login');
-    
+
     // Xử lý đăng nhập admin
     Route::post('auth/login', [AuthController::class, 'login'])->name('admin.login.post');
+
+    // Hiển thị trang quên mật khẩu
+    Route::get('auth/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+
+    // Xử lý quên mật khẩu
+    Route::post('auth/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+    // Hiển thị trang đặt lại mật khẩu
+    Route::get('auth/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
+    // Xử lý đặt lại mật khẩu
+    Route::post('password/update', [ResetPasswordController::class, 'reset'])->name('password.update');
     
-    // Xử lý my profile 
+    
+    // Xử lý my profile
     Route::get('layouts/myprofile', [AuthController::class, 'myprofile'])->name('myprofile');
-    
-    //Xử lý categories
+    Route::post('layouts/myprofile', [AuthController::class, 'updateProfile'])->name('myprofile.update');
+
+    // Xử lý categories
     Route::get('category', [AuthController::class, 'category'])->name('category');
-    
+
     // Đăng xuất admin
     Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
-    
+
     // Trang dashboard admin (sau khi đăng nhập thành công)
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
 });
+
 
 // Route yêu cầu xác thực email
 Route::get('/email/verify', function () {

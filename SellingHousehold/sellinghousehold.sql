@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2024 lúc 08:26 PM
+-- Thời gian đã tạo: Th10 20, 2024 lúc 11:13 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -96,7 +96,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2024_10_19_172340_create_reviews_table', 5),
 (33, '2024_10_19_172354_create_payments_table', 5),
 (34, '2024_10_19_173107_create_addresses_table', 5),
-(35, '2024_10_19_180801_add_agreed_to_terms_to_users_table', 6);
+(35, '2024_10_19_180801_add_agreed_to_terms_to_users_table', 6),
+(36, '2024_10_20_072202_add_picture_url_to_users_table', 7);
 
 -- --------------------------------------------------------
 
@@ -243,15 +244,17 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `agreed_to_terms` tinyint(1) NOT NULL DEFAULT 0
+  `agreed_to_terms` tinyint(1) NOT NULL DEFAULT 0,
+  `picture_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `full_name`, `email`, `username`, `password`, `phone_number`, `address`, `role`, `email_verified_at`, `created_at`, `updated_at`, `agreed_to_terms`) VALUES
-(1, 'Võ Quốc Việt', 'chien27122402@gmail.com', 'chien27122402', '$2y$10$FCXGJqmo6t6pZSF.2Fxl4OoqMsVnuFcKzPiBt0QvKkMcFeqb5pRE6', NULL, NULL, 'admin', NULL, '2024-10-19 11:08:39', '2024-10-19 11:08:39', 1);
+INSERT INTO `users` (`id`, `full_name`, `email`, `username`, `password`, `phone_number`, `address`, `role`, `email_verified_at`, `created_at`, `updated_at`, `agreed_to_terms`, `picture_url`) VALUES
+(1, 'Tran Van Chien', 'chien27122402@gmail.com', 'chien27122402', '$2y$10$o2djp2wnVI/PeCfj9an8r.Wi/d1.eeG1hgpSz/uSH1SAYi94BR19.', '0862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', NULL, '2024-10-19 11:08:39', '2024-10-20 02:03:16', 1, 'https://upload-os-bbs.hoyolab.com/upload/2022/02/10/117639015/66022c719ef3dffb70d45061f90e7d40_3345537268192931110.jpg?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_70'),
+(2, 'Tran Van Chien', 'tranvanchien24022003@gmail.com', 'admin123', '$2y$10$tJjGS9YrqG8LrmNL5VWXmeK556Jx54D3fPw4MLegGjHfxjXgjdVbO', '+84862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', '2024-10-20 02:08:12', '2024-10-20 02:07:47', '2024-10-20 02:11:07', 1, 'https://cdn3.ivivu.com/2014/12/chum-anh-tuyet-dep-ve-khung-canh-than-tien-cua-du-lich-nauy-iVIVU.com-1.jpg');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -375,7 +378,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
@@ -423,7 +426,7 @@ ALTER TABLE `shopping_carts`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

@@ -21,16 +21,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
         ]);
 
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
         ]);
-
-        return redirect()->route('categories.index')->with('success', 'Danh mục sản phẩm đã được thêm thành công!.');
+        
+        return redirect()->route('categories.index')->with('success', 'Danh mục sản phẩm đã được thêm thành công!');
     }
 
     public function edit($id)
@@ -52,7 +52,7 @@ class CategoryController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Thay đổi danh mục sản phẩm thành công!.');
     }
 
     public function destroy($id)
@@ -60,6 +60,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Đã xoá danh mục sản phẩm có ID là '. $id . ' !');
     }
 }

@@ -1,4 +1,10 @@
+.toast {
+    z-index: 9999;
+}
+
 /* CUSTOM SCROLLBAR */
+
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -503,7 +509,7 @@ table {
 }
 
 thead th {
-    background-color: #0d92f4;
+    background-color: #2d61c2;
     color: white;
     padding: 15px;
     text-align: left;
@@ -555,10 +561,8 @@ tbody td .delete-btn:hover {
 /* CREATE */
 .maincategory h2 {
     text-align: center;
-    /* Tiêu đề căn giữa */
     color: #333;
     margin-bottom: 20px;
-    /* Khoảng cách giữa tiêu đề và form */
     font-family: 'Arial', sans-serif;
     font-size: 24px;
 }

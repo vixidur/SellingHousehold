@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
-
 @extends('admin.master')
 
 @section('content')
@@ -8,9 +7,6 @@
         <div class="add-catagory-products">
             <a href="{{ route('categories.create') }}" class="btn btn-primary">Thêm danh mục</a>
         </div>
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
 
         <div class="table-wrapper">
             <table class="table table-bordered">

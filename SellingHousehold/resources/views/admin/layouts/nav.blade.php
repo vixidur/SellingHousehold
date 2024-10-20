@@ -4,7 +4,7 @@
     </div>
     <div class="nav-list">
         <ul>
-            <li><a href="{{route('category')}}">Danh mục sản phẩm</a></li>
+            <li><a href="{{ route('categories.index') }}">Danh mục sản phẩm</a></li>
             <li><a href="#">Sản phẩm</a></li>
             <li><a href="#">Khách hàng</a></li>
             <li><a href="#">Đơn hàng</a></li>

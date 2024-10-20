@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2024 lúc 11:13 AM
+-- Thời gian đã tạo: Th10 20, 2024 lúc 05:57 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -46,6 +46,18 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Nồi', 'Chiếc nồi thường có hình dạng tròn hoặc bầu, được làm từ nhiều loại vật liệu như inox, nhôm, gốm hoặc đất sét. Nồi thường có hai quai cầm ở hai bên để dễ dàng di chuyển. Bên trong, nồi thường có lớp chống dính để tránh thực phẩm bị dính vào, và có thể có vạch chia để đo lượng nước hoặc nguyên liệu. Nắp nồi thường kín để giữ hơi nóng và hương vị bên trong. Chiếc nồi là một dụng cụ nấu ăn rất quan trọng trong mỗi gia đình, giúp chế biến nhiều món ăn từ hấp, luộc đến hầm.', NULL, NULL),
+(2, 'Chảo', 'Chảo là một dụng cụ nấu ăn thường có hình dạng phẳng và đáy rộng, giúp tỏa nhiệt đều. Chảo có thể được làm từ nhiều vật liệu như inox, nhôm, gang hoặc chống dính. Quai cầm thường được thiết kế dài để dễ cầm nắm và tránh bị nóng khi nấu.\n\nChảo có nhiều loại, như chảo rán, chảo xào, hoặc chảo sâu lòng, mỗi loại phù hợp với các phương pháp nấu khác nhau. Bề mặt chảo thường trơn để dễ đảo và lật thực phẩm, trong khi đáy chảo được thiết kế để tối ưu hóa khả năng giữ nhiệt. Chảo là một trong những dụng cụ nấu ăn quan trọng, giúp chế biến các món như xào, rán, hoặc làm bánh.', NULL, NULL),
+(3, 'Cốc', 'Cốc là một vật dụng dùng để chứa đựng đồ uống, thường có hình dạng tròn và miệng rộng. Cốc có thể được làm từ nhiều chất liệu như thủy tinh, sứ, nhựa hoặc inox, và có nhiều kích cỡ khác nhau tùy thuộc vào mục đích sử dụng.\r\n\r\nCốc thường có tay cầm để dễ dàng cầm nắm, nhưng cũng có loại không tay cầm. Một số cốc còn có nắp hoặc ống hút đi kèm, đặc biệt là cho đồ uống lạnh. Thiết kế và trang trí của cốc rất đa dạng, từ đơn giản đến cầu kỳ, thường phản ánh phong cách hoặc sở thích của người sử dụng. Cốc là vật dụng phổ biến trong các bữa ăn, quán cà phê, hay đơn giản là ở nhà.', '2024-10-20 08:14:36', '2024-10-20 08:14:36'),
+(12, 'Máy xay', 'Máy xay là một thiết bị điện gia dụng dùng để chế biến thực phẩm bằng cách xay, nghiền hoặc trộn các nguyên liệu. Máy xay thường có cấu tạo gồm một thân máy, một cối xay và lưỡi dao sắc bén bên trong.\r\n\r\nCối xay thường được làm bằng thủy tinh hoặc nhựa bền, có nắp đậy kín để ngăn nguyên liệu bay ra ngoài khi hoạt động. Thân máy có nút điều chỉnh tốc độ và chế độ xay, cho phép người dùng dễ dàng điều chỉnh theo từng loại thực phẩm.', '2024-10-20 08:55:07', '2024-10-20 08:55:07'),
+(13, 'Máy ép', 'Công dụng chính của máy ép là tạo ra nước trái cây tươi ngon, nguyên chất, mà không có chất bảo quản. Một số máy ép còn đi kèm với các phụ kiện như cối xay, cho phép người dùng chế biến các món như sốt, sinh tố hay thức uống dinh dưỡng. Máy ép là một dụng cụ hữu ích trong việc tạo ra các đồ uống bổ dưỡng và lành mạnh tại nhà.', '2024-10-20 08:55:50', '2024-10-20 08:55:50'),
+(14, 'Dụng cụ nhà bếp', 'Dụng cụ nhà bếp là những thiết bị và công cụ thiết yếu dùng để chế biến, nấu nướng và phục vụ thực phẩm. Chúng thường đa dạng về loại hình, chức năng và chất liệu.', '2024-10-20 08:56:19', '2024-10-20 08:56:19');
 
 -- --------------------------------------------------------
 
@@ -253,7 +265,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `username`, `password`, `phone_number`, `address`, `role`, `email_verified_at`, `created_at`, `updated_at`, `agreed_to_terms`, `picture_url`) VALUES
-(1, 'Tran Van Chien', 'chien27122402@gmail.com', 'chien27122402', '$2y$10$o2djp2wnVI/PeCfj9an8r.Wi/d1.eeG1hgpSz/uSH1SAYi94BR19.', '0862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', NULL, '2024-10-19 11:08:39', '2024-10-20 02:03:16', 1, 'https://upload-os-bbs.hoyolab.com/upload/2022/02/10/117639015/66022c719ef3dffb70d45061f90e7d40_3345537268192931110.jpg?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_70'),
+(1, 'Tran Van Chien', 'chien27122402@gmail.com', 'chien27122402', '$2y$10$QKD4Waj2YxP5eyLjcCCqgutfIY5RCF7DlQnJgBp0shNLLlDcuGn4m', '0862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', NULL, '2024-10-19 11:08:39', '2024-10-20 08:04:37', 1, 'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg'),
 (2, 'Tran Van Chien', 'tranvanchien24022003@gmail.com', 'admin123', '$2y$10$tJjGS9YrqG8LrmNL5VWXmeK556Jx54D3fPw4MLegGjHfxjXgjdVbO', '+84862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', '2024-10-20 02:08:12', '2024-10-20 02:07:47', '2024-10-20 02:11:07', 1, 'https://cdn3.ivivu.com/2014/12/chum-anh-tuyet-dep-ve-khung-canh-than-tien-cua-du-lich-nauy-iVIVU.com-1.jpg');
 
 --
@@ -366,7 +378,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`

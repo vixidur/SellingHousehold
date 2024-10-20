@@ -9,6 +9,9 @@
     @include('admin.layouts.nav')
     @include('admin.layouts.headeradmin')
     <div class="maincategory">
+        <div class="add-catagory-products">
+            <a href="#">Thêm danh mục</a>
+        </div>
         <table border="1">
             <thead>
                 <tr>

@@ -32,7 +32,9 @@ class ForgotPasswordController extends Controller
             'email' => 'required|email|exists:users,email', // Ensure email exists in your users table
         ]);
 
-        // Send the password reset link
+
+        // Send the password reset link 
+
         $response = Password::sendResetLink($request->only('email'));
 
         // Handle the response

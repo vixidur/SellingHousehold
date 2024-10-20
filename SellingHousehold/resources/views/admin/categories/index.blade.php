@@ -10,7 +10,7 @@
         </div>
 
         <div class="table-wrapper">
-            <table border="1" class="table table-bordered">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>

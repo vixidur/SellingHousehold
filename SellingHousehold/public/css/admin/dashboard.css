@@ -492,11 +492,9 @@ input[readonly] {
 
 /* Wrapper to contain table and enable scrolling */
 .table-wrapper {
-    
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 10px;
-    margin-bottom: 5%;
 }
 
 /* Ensures the table maintains width while scrolling */
@@ -514,12 +512,12 @@ thead th {
     text-align: left;
     border-bottom: 1px solid #ccc;
     position: sticky;
-    top: 0;
+    top: -1;
     z-index: 1;
 }
 
 tbody td {
-    padding: 15px;
+    padding: 30px;
     text-align: left;
     border-bottom: 1px solid #ccc;
 }

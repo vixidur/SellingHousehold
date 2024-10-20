@@ -3,7 +3,7 @@
 @extends('admin.master')
 
 @section('content')
-    <div class="maincategory">
+    <div class="createcategory">
         <h2>THÊM DANH MỤC SẢN PHẨM</h2>
 
         <form action="{{ route('categories.store') }}" method="POST">
@@ -17,6 +17,7 @@
                 <textarea name="description" id="description" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-success">Thêm</button>
+            <a href="{{ route('category')}} " class="cancel-category">Hủy</a>
         </form>
     </div>
 @endsection

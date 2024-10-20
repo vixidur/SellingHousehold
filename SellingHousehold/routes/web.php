@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\PaymentController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CategoryController;
+
 // Route cho trang overview
 Route::get('overview', function () {
     return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần
@@ -58,8 +60,12 @@ Route::prefix('admin')->group(function() {
     Route::post('layouts/myprofile', [AuthController::class, 'updateProfile'])->name('myprofile.update');
 
     // Xử lý categories
-    Route::get('category', [AuthController::class, 'category'])->name('category');
-
+    Route::get('category', [CategoryController::class, 'index'])->name('category');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('categories/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::post('categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('categories/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
     // Đăng xuất admin
     Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
 

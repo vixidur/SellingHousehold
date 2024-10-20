@@ -70,7 +70,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
             </div>
             <div class="form-group text-center">
-                <a href="#">Quên mật khẩu?</a>
+                <a href="{{ route('password.request') }}">Quên mật khẩu?</a> <!-- Updated link -->
             </div>
         </form>
     </div>
@@ -104,7 +104,7 @@
                                 confirmButtonText: 'OK'
                             }).then(() => {
                                 window.location.href = response
-                                    .redirectUrl; // Chuyển hướng đến trang admin
+                                .redirectUrl; // Chuyển hướng đến trang admin
                             });
                         } else if (response.status === 'not_admin') {
                             // Người dùng không phải là admin

@@ -34,13 +34,13 @@
                             <td><img src="{{ $product->image_url }}" alt="{{ $product->name }}"
                                     style="max-width: 150px; max-height: 150px;"></td>
                             <td>
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-edit"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-edit"><i
+                                        class="fas fa-edit"></i></a>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST"
                                     style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Bạn có chắc muốn xoá sản phẩm này?')"><i class="fas fa-trash"></i></button>
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

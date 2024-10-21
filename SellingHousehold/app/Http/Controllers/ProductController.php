@@ -97,4 +97,24 @@ class ProductController extends Controller
     {
         return view('products.noi-chao');
     }
+    public function showChao()
+    {
+        return view('products.chao');
+    }
+    public function showCoc()
+    {
+        return view('products.coc');
+    }
+    public function showBinh()
+    {
+        return view('products.binh');
+    }
+    public function showHop()
+    {
+        return view('products.hop');
+    }
+    public function showPhich()
+    {
+        return view('products.phich');
+    }
 }

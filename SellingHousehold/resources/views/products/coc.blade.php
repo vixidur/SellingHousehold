@@ -2,15 +2,15 @@
 @include('layouts.header')
 <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
     <div class="product-section">
-        <h2>CÁC SẢN PHẨM: NỒI - CHẢO !</h2>
+        <h2>CÁC SẢN PHẨM: CỐC GIỮ NHIỆT !</h2>
         <div class="product-container">
             <div class="product-card">
                 <div class="discount">Giảm 50%</div>
-                <img src="{{ asset('images/Products/product4.png') }}" alt="Product 1">
-                <h3>Bộ nồi inox nguyên khối Elmich Trimax</h3>
+                <img src="https://s.net.vn/lHFT" alt="Product 1">
+                <h3>Cốc giữ nhiệt inox 304 Elmich</h3>
                 <p class="price">
-                <span class="new-price">2.375.000đ</span>
-                <span class="old-price">3.390.000đ</span>
+                <span class="new-price">175.000đ</span>
+                <span class="old-price">390.000đ</span>
                 </p>
                 <button class="add-to-cart">
                     <i class="fa fa-cart-plus"></i>
@@ -19,11 +19,11 @@
 
             <div class="product-card">
                 <div class="discount">Giảm 40%</div>
-                <img src="{{ asset('images/Products/product3.png') }}" alt="Product 3">
-                <h3>Nồi men sứ Elmich Hera II EL-5203GY size 18-24cm</h3>
+                <img src="https://s.net.vn/dHeM" alt="Product 3">
+                <h3>Cốc giữ nhiệt inox 304 Elmich EL8309 dung tích 900ml</h3>
                 <p class="price">
-                <span class="new-price">679.000đ</span>
-                <span class="old-price">1.000.000đ</span>
+                <span class="new-price">99.000đ</span>
+                <span class="old-price">150.000đ</span>
                 </p>
                 <button class="add-to-cart">
                     <i class="fa fa-cart-plus"></i>
@@ -32,11 +32,11 @@
 
             <div class="product-card">
                 <div class="discount">Giảm 41%</div>
-                <img src="{{ asset('images/Products/product2.png') }}" alt="Product 2">
-                <h3>Bộ nồi inox nguyên khối Elmich Trimax classic</h3>
+                <img src="https://s.net.vn/nTkB" alt="Product 2">
+                <h3>Cốc giữ nhiệt inox</h3>
                 <p class="price">
-                <span class="new-price">1.856.000đ</span>
-                <span class="old-price">3.090.000đ</span>
+                <span class="new-price">256.000đ</span>
+                <span class="old-price">490.000đ</span>
                 </p>
                 <button class="add-to-cart">
                     <i class="fa fa-cart-plus"></i>
@@ -45,11 +45,11 @@
 
             <div class="product-card">
                 <div class="discount">Giảm 46%</div>
-                <img src="{{ asset('images/Products/product3.png') }}" alt="Product 3">
-                <h3>Nồi men sứ Elmich Hera II EL-5203GY size 18-24cm</h3>
+                <img src="https://s.net.vn/CGmD" alt="Product 3">
+                <h3>Cốc giữ nhiệt inox 304 Elmich</h3>
                 <p class="price">
-                <span class="new-price">679.000đ</span>
-                <span class="old-price">1.000.000đ</span>
+                <span class="new-price">179.000đ</span>
+                <span class="old-price">300.000đ</span>
                 </p>
                 <button class="add-to-cart">
                     <i class="fa fa-cart-plus"></i>

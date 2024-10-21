@@ -18,7 +18,6 @@ class CartController extends Controller
     public function addToCart(Request $request, $productId)
     {
         $product = Product::findOrFail($productId);
-
         $cart = Session::get('cart', []);
 
         if (isset($cart[$productId])) {
@@ -34,24 +33,41 @@ class CartController extends Controller
 
         Session::put('cart', $cart);
 
+        // Thay đổi dòng dưới đây để trả về với thông báo thành công
         return redirect()->back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng!');
     }
 
     public function updateCart(Request $request)
     {
         $cart = Session::get('cart', []);
-        foreach ($request->quantities as $productId => $quantity) {
-            if ($quantity == 0) {
-                unset($cart[$productId]);
-            } else {
-                $cart[$productId]['quantity'] = $quantity;
+
+        foreach ($request->input('quantities') as $productId => $quantity) {
+            if ($quantity <= 0) {
+                unset($cart[$productId]); // Remove product from cart if quantity is 0 or less
+            } elseif (isset($cart[$productId])) {
+                $cart[$productId]['quantity'] = $quantity; // Update quantity
             }
         }
 
         Session::put('cart', $cart);
-        return redirect()->back()->with('success', 'Giỏ hàng đã được cập nhật!');
+        return redirect()->route('cart.show')->with('success', 'Giỏ hàng đã được cập nhật!');
     }
-    public function checkout(){
+
+    public function removeFromCart($productId)
+    {
+        $cart = session()->get('cart', []);
+
+        // Xoá sản phẩm khỏi giỏ hàng
+        if (isset($cart[$productId])) {
+            unset($cart[$productId]);
+            session()->put('cart', $cart);
+        }
+
+        return redirect()->route('cart.show')->with('success', 'Sản phẩm đã được xoá khỏi giỏ hàng.');
+    }
+
+    public function checkout()
+    {
         return view('payment.payment');
     }
 }

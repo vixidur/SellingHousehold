@@ -58,8 +58,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+    
+        // Xóa tất cả các sản phẩm liên quan đến danh mục này
+        $category->products()->delete();
+    
+        // Sau đó mới xóa danh mục
         $category->delete();
-
-        return redirect()->route('categories.index')->with('success', 'Đã xoá danh mục sản phẩm có ID là '. $id . ' !');
-    }
+    
+        return redirect()->route('categories.index')->with('success', 'Đã xoá danh mục sản phẩm có ID là ' . $id . ' !');
+    }    
 }

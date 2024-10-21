@@ -14,10 +14,8 @@
         @include('layouts.header')
     @endif
 
-
     @include('subheader.subheader')
     @include('maincontent.main')
-
 
     @if (Route::currentRouteName() !== 'login')
         @include('layouts.footer')

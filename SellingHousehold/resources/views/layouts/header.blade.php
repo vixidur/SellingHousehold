@@ -83,7 +83,7 @@
                         <div class="dropdown-content">
                             <div class="column">
                                 <h3>Nồi</h3>
-                                <a href="#">Nồi inox, bộ nồi inox</a>
+                                <a href="{{ route('products.noichao')}}">Nồi inox, bộ nồi inox</a>
                                 <a href="#">Nồi chống dính</a>
                                 <a href="#">Nồi hấp, nồi lẩu</a>
                                 <a href="#">Nồi áp suất bếp từ</a>

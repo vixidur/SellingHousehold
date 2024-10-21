@@ -85,4 +85,9 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Đã xoá sản phẩm có ID là ' . $id . ' !');
     }
+
+    public function showNoiChao()
+    {
+        return view('products.noi-chao');
+    }
 }

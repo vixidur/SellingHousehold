@@ -34,8 +34,8 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('cart', [CartController::class, 'cartForm'])->name('cart');
 // Route thanh toán
 Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
-// Route products 
-Route::get('products/noi-chao', [ProductController::class, 'showNoiChao'])->name('products.noichao');
+// Route products submenu
+Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');
 // Route admin 
 Route::prefix('admin')->group(function() {
     // Hiển thị form đăng nhập admin

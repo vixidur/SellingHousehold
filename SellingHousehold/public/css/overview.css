@@ -1,0 +1,140 @@
+/* PHẦN DỊCH VỤ 4 THẺ DIV FREESHIP, GIẢM GIÁ KHI NHẬp VOUCHER */
+.services {
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1361px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+}
+
+.services .header-item {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 0 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services .header-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.services .header-item img {
+    max-width: 50px;
+    margin-bottom: 10px;
+}
+
+.services .header-item b {
+    color: #007bff;
+    font-size: 16px;
+}
+
+.services .header-item {
+    color: #333;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .services {
+        flex-direction: column;
+    }
+
+    .services .header-item {
+        margin-bottom: 20px;
+    }
+}
+
+/* PRODUCTS LIST */
+.product-list {
+    margin-top: 60%;
+    background-image: url('../images/banner/banner-deal.png');
+    box-sizing: border-box;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-list h2 {
+    color: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: #000;
+}
+
+.add-to-cart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    color: #0056b3;
+}
+
+/* giá gốc */
+.original-price {
+    text-decoration: line-through;
+    /* Add a strikethrough effect for the original price */
+    color: gray;
+    /* Change the color to gray */
+}
+
+/* giá giảm */
+.discounted-price {
+    font-weight: bold;
+    /* Make the discounted price bold */
+    color: red;
+    /* Change the color to red */
+}

@@ -36,7 +36,6 @@ Route::get('cart', [CartController::class, 'cartForm'])->name('cart');
 Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
 // Route products submenu
 Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');
-
 // Route admin 
 Route::prefix('admin')->group(function() {
     // Hiển thị form đăng nhập admin

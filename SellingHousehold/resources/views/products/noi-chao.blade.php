@@ -1,3 +1,4 @@
+
 @include('layouts.header')
 <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 <div class="container-cart">
@@ -88,3 +89,4 @@
     </div>
 </div>
 @include('layouts.footer')
+

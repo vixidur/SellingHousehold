@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2024 lúc 09:52 PM
+-- Thời gian đã tạo: Th10 21, 2024 lúc 05:24 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -212,9 +212,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `category_id`, `image_url`, `created_at`, `updated_at`) VALUES
-(1, 'test', 'sdadasdasda', 2500.00, 12, 13, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFfwzdqINS96EaZnhOVvlkeNQHFJ-KSJsHSg&s', '2024-10-20 12:27:28', '2024-10-20 12:37:16'),
-(3, 'www.541duongkenh.site', 'www.541duongkenh.site', 1500.00, 16, 2, 'https://bizweb.dktcdn.net/thumb/1024x1024/100/448/192/products/653-nag2206-avatar-1.jpg?v=1654154863897', '2024-10-20 12:39:43', '2024-10-20 12:39:43'),
-(4, 'Tran Van Chien', 'Tran Van Chien', 254003.00, 12, 2, 'https://cdn.dienmaygiakhanh.com/Products/Images/2402/210368/noi-inox-304-20cm-fivestar-n20-304ov-1-1-org.jpg', '2024-10-20 12:40:14', '2024-10-20 12:40:14'),
 (5, 'Bình giữ nhiệt loại mới', 'Bình giữ nhiệt loại mới', 1235646.00, 1000, 3, 'https://quatangviva.com/wp-content/uploads/2021/03/binh-giu-nhiet-life-son-nham-q099-5-2.jpg', '2024-10-20 12:41:07', '2024-10-20 12:41:07'),
 (6, 'Cốc giữ nhiệt size L', 'Cốc có thể được làm từ nhiều chất liệu khác nhau, bao gồm thủy tinh, gốm sứ, nhựa và inox. Mỗi loại chất liệu có những đặc điểm riêng, như độ bền, tính năng giữ nhiệt hay khả năng cách điện. Cốc cũng có nhiều kích thước và kiểu dáng đa dạng, từ những chiếc cốc nhỏ xinh đến cốc lớn dùng cho thức uống lạnh.', 12000.00, 300, 42, 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw5e32df33/images/Accessory/CLASSICBOTTLE750ML/19.png', '2024-10-20 12:49:33', '2024-10-20 12:49:33');
 
@@ -389,7 +386,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -431,7 +428,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `reviews`

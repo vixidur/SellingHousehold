@@ -3,9 +3,9 @@
 @extends('admin.master')
 
 @section('content')
-    <div class="container">
-        <h2>Chỉnh sửa sản phẩm</h2>
+    <div class="main-edit-product">
         <form action="{{ route('products.update', $product->id) }}" method="POST">
+            <h2>Chỉnh sửa sản phẩm</h2>
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -65,6 +65,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+            <a href="{{ route('products.index') }}" class="cancel-editproduct">Hủy</a>
         </form>
     </div>
 @endsection

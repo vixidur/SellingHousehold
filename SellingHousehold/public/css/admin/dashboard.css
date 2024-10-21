@@ -253,6 +253,7 @@
     color: #666;
     border-top: 1px solid #e0e0e0;
     width: calc(100% - 290px);
+    /* margin-top: 10px; */
 }
 
 /* RESPONSIVE ADJUSTMENTS */
@@ -268,22 +269,32 @@
 
 /* MY PROFILE */
 .myprofile {
+    /* overflow: hidden; */
+    box-sizing: border-box;
+    max-width: calc(100% - 290px);
     margin-bottom: 0px;
     display: flex;
     justify-content: center;
     float: right;
     margin-top: 69px;
     padding: 20px;
-    width: calc(100% - 330px);
-    height: calc(100% - 109px);
+    width: 100%;
+    height: 100%;
     background-color: #e3e6f0;
 }
 
 .myprofile-form {
+    height: 65%;
     background: #f9f9f9;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1366px) {
+    .myprofile-form {
+        height: 80%;
+    }
 }
 
 .avatar-section {
@@ -454,8 +465,8 @@ input[readonly] {
     align-items: flex-start;
     flex-direction: column;
     margin-top: 70px;
-    max-width: 1200px;
-    max-height: 660px;
+    max-width: 900px;
+    max-height: 500px;
     width: 100%;
     height: 100%;
     background-color: #ccc;
@@ -570,7 +581,7 @@ tbody td {
     }
 }
 
-/* CREATE */
+/* CREATE CATEGORY*/
 .createcategory {
     background-color: #fff;
     padding: 30px;
@@ -612,6 +623,8 @@ label {
 }
 
 input[type="text"],
+.form-control,
+input[type="number"],
 textarea {
     width: 100%;
     padding: 12px;
@@ -624,6 +637,8 @@ textarea {
 }
 
 input[type="text"]:focus,
+input[type="number"]:focus,
+.form-control:focus,
 textarea:focus {
     border-color: #66afe9;
     outline: none;
@@ -680,7 +695,7 @@ button.btn {
     margin-top: 20px;
 }
 
-/* EDIT */
+/* EDIT CATEGORY */
 .edit-category {
     background-color: #fff;
     padding: 30px;
@@ -705,5 +720,208 @@ button.btn {
 }
 
 .cancel-btn:hover {
+    background-color: #2980b9;
+}
+
+/* PRODUCT */
+.main-product {
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 90px;
+    max-width: 1300px;
+    max-height: 700px;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.product-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 10px;
+}
+
+.add-product {
+    padding-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+
+}
+
+.add-product h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.add-product a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-product a:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 1366px) {
+    .product-scroll {
+        width: 50%;
+        overflow-x: auto;
+        /* Thêm thanh cuộn ngang */
+    }
+
+    table {
+        width: 100%;
+        min-width: 1366px;
+        /* Đảm bảo bảng không co quá nhỏ, ít nhất là bằng độ rộng của màn hình */
+        table-layout: auto;
+        /* Cho phép các cột điều chỉnh tự do */
+        font-size: 12px;
+        /* Giảm kích thước chữ */
+    }
+
+    td,
+    th {
+        padding: 4px;
+        word-wrap: break-word;
+        /* Gói chữ nếu quá dài */
+    }
+
+    img {
+        max-width: 100px;
+        /* Giảm kích thước hình ảnh để tiết kiệm không gian */
+        max-height: 100px;
+    }
+}
+
+/* CREATE PRODUCT */
+.main-container-addproduct {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1300px;
+    max-height: 700px;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+}
+
+.main-container-addproduct form {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+    width: 600px;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.main-container-addproduct h2 {
+    text-align: center;
+}
+
+.form-group-row {
+    display: flex;
+    justify-content: space-between;
+    /* Giãn đều các nhóm */
+    gap: 20px;
+    /* Khoảng cách giữa các cột */
+}
+
+/* Đặt chiều rộng mỗi cột */
+.form-group-create-product {
+    flex: 1;
+    /* Mỗi cột sẽ chiếm 1 phần đều nhau */
+}
+
+/* Đảm bảo các input, textarea hiển thị tốt */
+.form-control-create-product {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.cancel-addproduct {
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.cancel-addproduct:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive: Khi màn hình nhỏ hơn, chuyển về dạng cột */
+@media (max-width: 1366px) {
+    .form-group-row {
+        flex-direction: column;
+        /* Chuyển từ hàng sang cột trên màn hình nhỏ */
+    }
+}
+
+/* EDIT PRODUCT */
+.main-edit-product {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1300px;
+    max-height: 700px;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+}
+
+.main-edit-product h2 {
+    text-align: center;
+}
+
+.main-edit-product form {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+    width: 600px;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.cancel-editproduct {
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.cancel-editproduct:hover {
     background-color: #2980b9;
 }

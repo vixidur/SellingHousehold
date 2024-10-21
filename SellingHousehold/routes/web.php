@@ -31,17 +31,23 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('
 Route::post('/register', [RegisterController::class, 'register']);
 
 // Route giỏ hàng
-Route::get('cart', [CartController::class, 'cartForm'])->name('cart');
+Route::get('/cart', [CartController::class, 'cartForm'])->name('cart.show');
+Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+// Checkout
+Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 // Route thanh toán
 Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
 // Route products submenu
 Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');
+
 Route::get('products/chao', [ProductController::class,'showChao'])->name('products.chao');
 Route::get('products/coc', [ProductController::class,'showCoc'])->name('products.coc');
 Route::get('products/binh', [ProductController::class,'showBinh'])->name('products.binh');
 Route::get('products/hop', [ProductController::class,'showHop'])->name('products.hop');
 Route::get('products/phich', [ProductController::class,'showPhich'])->name('products.phich');
 // Route admin 
+
 Route::prefix('admin')->group(function() {
     // Hiển thị form đăng nhập admin
     Route::get('auth/login', [AuthController::class, 'AdminLogin'])->name('admin.login');
@@ -60,8 +66,7 @@ Route::prefix('admin')->group(function() {
 
     // Xử lý đặt lại mật khẩu
     Route::post('password/update', [ResetPasswordController::class, 'reset'])->name('password.update');
-    
-    
+
     // Xử lý my profile
     Route::get('layouts/myprofile', [AuthController::class, 'myprofile'])->name('myprofile');
     Route::post('layouts/myprofile', [AuthController::class, 'updateProfile'])->name('myprofile.update');
@@ -74,24 +79,20 @@ Route::prefix('admin')->group(function() {
     Route::post('categories/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('categories/delete/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-
-    // Xử lý products 
-
+    // Xử lý products
     Route::get('products', [ProductController::class, 'index'])->name('products.index');
     Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('products/store', [ProductController::class, 'store'])->name('products.store');
     Route::get('products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('products/update/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('products/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-    
+
     // Đăng xuất admin
     Route::post('logout', [AuthController::class, 'logout'])->name('admin.logout');
 
     // Trang dashboard admin (sau khi đăng nhập thành công)
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
 });
-
-
 // Route yêu cầu xác thực email
 Route::get('/email/verify', function () {
     return view('auth.verify');  // Tạo trang auth.verify để người dùng xác thực email

@@ -69,7 +69,7 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                     <div class="cart-label">
-                        <a href="{{ route('cart') }}">Giỏ Hàng</a>
+                        <a href="{{ route('cart.show') }}">Giỏ Hàng</a>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,6 @@
                                 <a href="{{ route('products.noi-chao')}}">Nồi chống dính</a>
                                 <a href="{{ route('products.noi-chao')}}">Nồi hấp, nồi lẩu</a>
                                 <a href="{{ route('products.noi-chao')}}">Nồi áp suất bếp từ</a>
-
                             </div>
                             <div class="column">
                                 <h3>Chảo</h3>

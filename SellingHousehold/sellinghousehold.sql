@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2024 lúc 05:24 PM
+-- Thời gian đã tạo: Th10 21, 2024 lúc 07:03 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -57,7 +57,8 @@ INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at
 (12, 'Máy xay', 'Máy xay là một thiết bị điện gia dụng dùng để chế biến thực phẩm bằng cách xay, nghiền hoặc trộn các nguyên liệu. Máy xay thường có cấu tạo gồm một thân máy, một cối xay và lưỡi dao sắc bén bên trong.\r\n\r\nCối xay thường được làm bằng thủy tinh hoặc nhựa bền, có nắp đậy kín để ngăn nguyên liệu bay ra ngoài khi hoạt động. Thân máy có nút điều chỉnh tốc độ và chế độ xay, cho phép người dùng dễ dàng điều chỉnh theo từng loại thực phẩm.', '2024-10-20 08:55:07', '2024-10-20 09:40:36'),
 (13, 'Máy ép', 'Công dụng chính của máy ép là tạo ra nước trái cây tươi ngon, nguyên chất, mà không có chất bảo quản. Một số máy ép còn đi kèm với các phụ kiện như cối xay, cho phép người dùng chế biến các món như sốt, sinh tố hay thức uống dinh dưỡng. Máy ép là một dụng cụ hữu ích trong việc tạo ra các đồ uống bổ dưỡng và lành mạnh tại nhà.', '2024-10-20 08:55:50', '2024-10-20 08:55:50'),
 (14, 'Dụng cụ nhà bếp', 'Dụng cụ nhà bếp là những thiết bị và công cụ thiết yếu dùng để chế biến, nấu nướng và phục vụ thực phẩm. Chúng thường đa dạng về loại hình, chức năng và chất liệu.', '2024-10-20 08:56:19', '2024-10-20 08:56:19'),
-(42, 'Cốc', 'Cốc là một vật dụng quen thuộc trong cuộc sống hàng ngày, thường được sử dụng để đựng nước uống như trà, cà phê, nước ngọt hay bia. Cốc thường có hình dạng trụ đứng, với miệng rộng hơn đáy, giúp dễ dàng uống và vệ sinh.', '2024-10-20 12:47:46', '2024-10-20 12:47:56');
+(42, 'Cốc', 'Cốc là một vật dụng quen thuộc trong cuộc sống hàng ngày, thường được sử dụng để đựng nước uống như trà, cà phê, nước ngọt hay bia. Cốc thường có hình dạng trụ đứng, với miệng rộng hơn đáy, giúp dễ dàng uống và vệ sinh.', '2024-10-20 12:47:46', '2024-10-20 12:47:56'),
+(44, 'Bình giữ nhiệt', 'Nó chỉ là Bình giữ nhiệt :)))', '2024-10-21 10:00:47', '2024-10-21 10:00:47');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (33, '2024_10_19_172354_create_payments_table', 5),
 (34, '2024_10_19_173107_create_addresses_table', 5),
 (35, '2024_10_19_180801_add_agreed_to_terms_to_users_table', 6),
-(36, '2024_10_20_072202_add_picture_url_to_users_table', 7);
+(36, '2024_10_20_072202_add_picture_url_to_users_table', 7),
+(37, '2024_10_21_065445_add_cascade_to_products', 8),
+(38, '2024_10_21_160751_add_discount_to_products_table', 8);
 
 -- --------------------------------------------------------
 
@@ -204,16 +207,18 @@ CREATE TABLE `products` (
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `image_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `discount` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `category_id`, `image_url`, `created_at`, `updated_at`) VALUES
-(5, 'Bình giữ nhiệt loại mới', 'Bình giữ nhiệt loại mới', 1235646.00, 1000, 3, 'https://quatangviva.com/wp-content/uploads/2021/03/binh-giu-nhiet-life-son-nham-q099-5-2.jpg', '2024-10-20 12:41:07', '2024-10-20 12:41:07'),
-(6, 'Cốc giữ nhiệt size L', 'Cốc có thể được làm từ nhiều chất liệu khác nhau, bao gồm thủy tinh, gốm sứ, nhựa và inox. Mỗi loại chất liệu có những đặc điểm riêng, như độ bền, tính năng giữ nhiệt hay khả năng cách điện. Cốc cũng có nhiều kích thước và kiểu dáng đa dạng, từ những chiếc cốc nhỏ xinh đến cốc lớn dùng cho thức uống lạnh.', 12000.00, 300, 42, 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw5e32df33/images/Accessory/CLASSICBOTTLE750ML/19.png', '2024-10-20 12:49:33', '2024-10-20 12:49:33');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `category_id`, `image_url`, `created_at`, `updated_at`, `discount`) VALUES
+(5, 'Bình giữ nhiệt loại mới', 'Bình giữ nhiệt loại mới', 1235646.00, 1000, 44, 'https://quatangviva.com/wp-content/uploads/2021/03/binh-giu-nhiet-life-son-nham-q099-5-2.jpg', '2024-10-20 12:41:07', '2024-10-21 10:00:54', 0),
+(6, 'Cốc giữ nhiệt size L', 'Cốc có thể được làm từ nhiều chất liệu khác nhau, bao gồm thủy tinh, gốm sứ, nhựa và inox. Mỗi loại chất liệu có những đặc điểm riêng, như độ bền, tính năng giữ nhiệt hay khả năng cách điện. Cốc cũng có nhiều kích thước và kiểu dáng đa dạng, từ những chiếc cốc nhỏ xinh đến cốc lớn dùng cho thức uống lạnh.', 12000.00, 300, 42, 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw5e32df33/images/Accessory/CLASSICBOTTLE750ML/19.png', '2024-10-20 12:49:33', '2024-10-20 12:49:33', 0),
+(8, 'Chảo từ 5 lớp ALTENBACH GERMANY', 'Chảo rán đáy từ 5 lớp Altenbach Germany:\r\n\r\n+ Size 22cm: 890.000 VNĐ/cái\r\n\r\n+ Size 26cm: 1.150.000 VNĐ/cái\r\n\r\n+ Size 28cm: 1.250.000 VNĐ/cái', 1200.00, 12, 2, 'https://hpkoala.com/wp-content/uploads/2024/01/ULTRACOMB-ALL-5-PLY-28F-1-scaled-e1704534832331.jpg', '2024-10-21 10:02:21', '2024-10-21 10:02:21', 0);
 
 -- --------------------------------------------------------
 
@@ -274,7 +279,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `username`, `password`, `phone_number`, `address`, `role`, `email_verified_at`, `created_at`, `updated_at`, `agreed_to_terms`, `picture_url`) VALUES
 (1, 'Tran Van Chien', 'chien27122402@gmail.com', 'chien27122402', '$2y$10$QKD4Waj2YxP5eyLjcCCqgutfIY5RCF7DlQnJgBp0shNLLlDcuGn4m', '0862587229', 'xóm Giữa, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', NULL, '2024-10-19 11:08:39', '2024-10-20 08:04:37', 1, 'https://cdn.kona-blue.com/upload/kona-blue_com/post/images/2024/08/13/356/avatar-vo-tri-meo-3.jpg'),
-(2, 'TRẦN VĂN CHIẾN', 'tranvanchien24022003@gmail.com', 'admin123', '$2y$10$SNz6l4E4lhRkm/R/fpK6iejvEmvEEOnJSS4pacXXT94PiNuUhqAni', '+84862587229', 'thôn 3, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', '2024-10-20 02:08:12', '2024-10-20 02:07:47', '2024-10-20 12:51:31', 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU5poNhLUWu2zGHGu471RAeatkD89TSjkJGQ&s');
+(2, 'TRẦN VĂN CHIẾN', 'tranvanchien24022003@gmail.com', 'admin123', '$2y$10$SNz6l4E4lhRkm/R/fpK6iejvEmvEEOnJSS4pacXXT94PiNuUhqAni', '+84862587229', 'thôn 3, xã Quảng Thanh, huyện Thuỷ Nguyên, tp Hải Phòng', 'admin', '2024-10-20 02:08:12', '2024-10-20 02:07:47', '2024-10-20 12:51:31', 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU5poNhLUWu2zGHGu471RAeatkD89TSjkJGQ&s'),
+(3, 'Võ Quốc Việt', 'tovuhoang123@gmail.com', 'hoangvu123', '$2y$10$AkOQIh95KyKnQ0kKhAocyeKq20UfJSTlOBRc90EigqsUmpUTqS.Mm', NULL, NULL, 'user', NULL, '2024-10-21 08:47:45', '2024-10-21 08:47:45', 1, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -386,7 +392,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -398,7 +404,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
@@ -428,7 +434,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `reviews`
@@ -446,7 +452,7 @@ ALTER TABLE `shopping_carts`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -475,7 +481,7 @@ ALTER TABLE `payments`
 -- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+  ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `reviews`

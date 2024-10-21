@@ -266,17 +266,19 @@
         width: 0;
     }
 }
-
 /* MY PROFILE */
 .myprofile {
+    /* overflow: hidden; */
+    box-sizing: border-box;
+    max-width: calc(100% - 290px);
     margin-bottom: 0px;
     display: flex;
     justify-content: center;
     float: right;
     margin-top: 69px;
     padding: 20px;
-    width: calc(100% - 330px);
-    height: calc(100% - 109px);
+    width: 100%;
+    /* height: calc(100% - 109px); */
     background-color: #e3e6f0;
 }
 

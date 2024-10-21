@@ -1,176 +1,180 @@
+/* Container cho giỏ hàng */
 .container-cart {
-    box-sizing: border-box;
     max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding-top: 2%;
-    padding-bottom: 2%;
-
-}
-
-.promo-container {
-    text-align: center;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+/* Container cho khuyến mãi */
+.promo-container {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.promo-text {
-    color: red;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.promo-description {
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-.highlight {
-    color: red;
-    font-weight: bold;
-}
-
+/* Nút mua thêm */
 .buy-more-btn {
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: white;
+    color: #007bff;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.buy-more-btn:hover {
-    background-color: darkred;
-}
-
-.cart-container {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-}
-
-.cart-container h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.empty-cart {
-    background-color: #fff7d1;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.empty-cart p {
-    margin: 0;
-    color: #333;
-}
-
-.store-link {
-    color: red;
+.buy-more-btn a {
     font-weight: bold;
+    color: back;
     text-decoration: none;
 }
 
-.store-link:hover {
+.buy-more-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Giỏ hàng */
+.cart-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Bảng sản phẩm trong giỏ hàng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    /* Màu nền cho tiêu đề bảng */
+}
+
+/* Nút xoá */
+.delete-btn {
+    background-color: #dc3545;
+    /* Màu nền đỏ */
+    color: white;
+    /* Màu chữ trắng */
+    border: none;
+    /* Không có viền */
+    padding: 5px 10px;
+    /* Đệm cho nút */
+    border-radius: 5px;
+    /* Bo góc cho nút */
+    cursor: pointer;
+    /* Con trỏ chuột dạng tay */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển màu nền */
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+    /* Đổi màu nền khi hover */
+}
+
+/* Khuyến mãi văn bản */
+.promo-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.promo-description {
+    font-size: 16px;
+    /* Kích thước chữ vừa */
+}
+
+.highlight {
+    font-weight: bold;
     text-decoration: underline;
 }
 
-.product-section {
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding-top: 30px;
+.payment {
+    margin-top: 20px;
+    text-align: right;
 }
 
-.product-section h2 {
-    text-align: left;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
+/* Nút thanh toán */
+.payment a {
+    background-color: #b1050e;
+    color: white;
+    padding: 10px 20px;
+    /* border-radius: 5px; */
+    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
-.product-container {
+.payment a:hover {
+    background-color: #218838;
+}
+
+.product-info {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
-.product-card {
-    width: 18%;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.product-info img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
+}
+
+
+.quantity-input input {
+    width: 50px;
     text-align: center;
-    margin-bottom: 20px;
-    position: relative;
+    margin: 0 5px;
 }
 
-.discount {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: red;
-    color: white;
-    padding: 5px;
-    border-radius: 3px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
-.product-card h3 {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 10px;
-    height: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.price {
-    font-size: 16px;
-    color: #e74c3c;
-    font-weight: bold;
-}
-
-.old-price {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 14px;
-    margin-left: 10px;
-}
-
-.add-to-cart {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
+.quantity-btn {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 2px solid transparent;
+    /* Tạo viền mặc định là trong suốt */
+    padding: 5px 10px;
     cursor: pointer;
-    margin-top: 10px;
-    width: 40px;
-    height: 40px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.add-to-cart i {
-    font-size: 18px;
+/* Nút - với viền trên trái và dưới trái màu #e8e8e8 */
+.quantity-btn.increase {
+    border-top-right-radius: 2px solid #e8e8e8;
+    border-bottom-right-radius: 2px solid #e8e8e8;
+    border-top-left-radius: 2px solid transparent;
+    border-bottom-left-radius: 2px solid transparent;
 }
 
-.add-to-cart:hover {
-    background-color: #c0392b;
+.quantity-btn .increase {
+    border-top-left-radius: 2px solid #e8e8e8;
+    border-bottom-right-radius: 2px solid #e8e8e8;
+}
+
+input[type="number"] {
+    border: 1px solid #e8e8e8;
+    padding: 10px;
+}
+
+input[type="number"]:focus {
+    outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

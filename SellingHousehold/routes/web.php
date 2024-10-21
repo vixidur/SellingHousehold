@@ -34,12 +34,16 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/cart', [CartController::class, 'cartForm'])->name('cart.show');
 Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 // Checkout
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 // Route thanh toán
 Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
 // Route products submenu
 Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');
+// Route to display products
+Route::get('/overview', [ProductController::class, 'showProducts'])->name('products.show');
+
 // Route admin
 Route::prefix('admin')->group(function() {
     // Hiển thị form đăng nhập admin

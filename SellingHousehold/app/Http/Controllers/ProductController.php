@@ -7,6 +7,13 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    public function showProducts()
+    {
+        $products = Product::all(); // Get all products from the database
+
+        // Pass the $products variable to the view
+        return view('overview.overview', compact('products'));
+    }
     public function index()
     {
         $products = Product::all();

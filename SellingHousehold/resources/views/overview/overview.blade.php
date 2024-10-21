@@ -14,13 +14,13 @@
 
 <body>
     @if (Route::currentRouteName() !== 'login')
-        @include('overview.layouts.overviewHeader')
+        @include('layouts.header')
     @endif
     @include('maincontent.main')
 
 
     @if (Route::currentRouteName() !== 'login')
-        @include('overview.layouts.overviewFooter')
+        @include('layouts.footer')
     @endif
 
     <script src="{{ asset('js/main.js') }}"></script>

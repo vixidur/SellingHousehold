@@ -1,6 +1,4 @@
-
 @include('layouts.header')
-{{-- @include('subheader.subheader') --}}
 <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 <div class="container-cart">
     <div class="promo-container">

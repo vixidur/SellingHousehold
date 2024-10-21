@@ -69,7 +69,7 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                     <div class="cart-label">
-                        <a href="{{ route('cart') }}">Giỏ Hàng</a>
+                        <a href="{{ route('cart.show') }}">Giỏ Hàng</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         <div class="dropdown-content">
                             <div class="column">
                                 <h3>Nồi</h3>
-                                <a href="{{ route('products.noi-chao')}}">Nồi inox, bộ nồi inox</a>
+                                <a href="{{ route('products.noi-chao') }}">Nồi inox, bộ nồi inox</a>
                                 <a href="#">Nồi chống dính</a>
                                 <a href="#">Nồi hấp, nồi lẩu</a>
                                 <a href="#">Nồi áp suất bếp từ</a>

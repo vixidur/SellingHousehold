@@ -51,4 +51,7 @@ class CartController extends Controller
         Session::put('cart', $cart);
         return redirect()->back()->with('success', 'Giỏ hàng đã được cập nhật!');
     }
+    public function checkout(){
+        return view('payment.payment');
+    }
 }

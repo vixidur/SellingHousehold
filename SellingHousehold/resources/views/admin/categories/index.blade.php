@@ -31,8 +31,7 @@
                                     style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i></button>
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

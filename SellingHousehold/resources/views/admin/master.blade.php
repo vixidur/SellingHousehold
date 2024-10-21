@@ -27,8 +27,13 @@
     <div class="container">
         @yield('content')
         <script>
+            // success message
             @if (Session::has('success'))
                 Notiflix.Notify.success("{{ Session::get('success') }}");
+            @endif
+            // error message 
+            @if (Session::has('success'))
+                Notiflix.Notify.error("{{ Session::get('error') }}");
             @endif
         </script>
     </div>

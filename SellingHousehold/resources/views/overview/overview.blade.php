@@ -12,7 +12,6 @@
 
 </head>
 
-
 <body>
     @if (Route::currentRouteName() !== 'login')
         @include('overview.layouts.overviewHeader')

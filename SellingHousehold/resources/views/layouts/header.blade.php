@@ -16,7 +16,7 @@
         <div class="container">
             <div class="header-top">
                 <div class="logo">
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('/overview') }}">
                         <img src="{{ asset('images/logo.png') }}" alt="UNETI HOUSEHOLD LOGO" width="180px"
                             height="70px">
                     </a>

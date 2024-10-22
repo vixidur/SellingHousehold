@@ -28,32 +28,58 @@
     <div class="header-item"><img src="{{ asset('images/icon/img_poli_4.png') }}" alt=""> NHẬP MÃ YEUUNETI -
         Giảm 10% cho đơn hàng từ 800.000đ</div>
 </div>
+{{-- HIỂN THỊ CÁC SẢN PHẨM LIÊN QUAN --}}
+<div class="related-products">
+    <h2>DEAL DÀNH CHO BẠN</h2>
+    <div class="product-grid">
+        @if ($relatedProducts->count() > 0)
+            @foreach ($relatedProducts as $product)
+                <div class="product-card">
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image">
+                    <h3>{{ $product->name }}</h3>
+                    <p>{{ \Illuminate\Support\Str::limit($product->description, 50, '...') }}</p>
+                    <p>Giá: <span class="price">{{ number_format($product->price, 0, ',', '.') }} VND</span></p>
+                    <a href="{{ route('products.show', $product->id) }}" class="details-btn">Xem chi tiết</a>
+                </div>
+            @endforeach
+        @else
+            <p>Không có sản phẩm liên quan để hiển thị.</p>
+        @endif
+    </div>
+</div>
+{{-- HIỂn THỊ RA TẤT CẢ SẢN PHẨM --}}
 <div class="product-list">
     <h2>Danh sách Sản Phẩm</h2>
     <div class="product-grid">
         @if ($products->count() > 0)
             @foreach ($products as $product)
                 <div class="product-card">
+                    <div class="discount-rate-badge">
+                        <p>Giảm {{ $product->discount }}%</p>
+                    </div>
                     <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image">
                     <h3>{{ $product->name }}</h3>
                     <!-- Shorten the description to 50 characters -->
                     <p>{{ \Illuminate\Support\Str::limit($product->description, 50, '...') }}</p>
 
-                    <!-- Display the original price -->
-                    <p>Giá gốc: <span class="original-price">{{ number_format($product->price, 0, ',', '.') }}
-                            VND</span></p>
-
                     @if ($product->discount > 0)
-                        <p>Giảm giá: {{ $product->discount }}%</p>
-                        <p>Giá sau giảm: <span
-                                class="discounted-price">{{ number_format($product->price * (1 - $product->discount / 100), 0, ',', '.') }}
+                        <!-- Hiển thị giá gốc với gạch ngang -->
+                        <p><span class="original-price"
+                                style="text-decoration: line-through;">{{ number_format($product->price, 0, ',', '.') }}
+                                VND</span></p>
+                        <!-- Hiển thị giá sau giảm -->
+                        <p><span class="discounted-price">{{ number_format($product->price * (1 - $product->discount / 100), 0, ',', '.') }}
+                                VND</span></p>
+                    @else
+                        <!-- Hiển thị giá gốc mà không có gạch -->
+                        <p><span class="original-price">{{ number_format($product->price, 0, ',', '.') }}
                                 VND</span></p>
                     @endif
 
                     <form action="{{ route('cart.add', $product->id) }}" method="POST">
                         @csrf
                         <button type="submit" class="add-to-cart-btn">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fa-solid fa-cart-plus"></i> Mua ngay
                         </button>
                     </form>
                 </div>
@@ -63,43 +89,10 @@
         @endif
     </div>
 </div>
+
 <br>
-<div class="product-list">
-    <h2>Giá tốt mỗi ngày</h2>
-    <div class="product-grid">
-        @if ($products->count() > 0)
-            @foreach ($products as $product)
-                <div class="product-card">
-                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image">
-                    <h3>{{ $product->name }}</h3>
-                    <!-- Shorten the description to 50 characters -->
-                    <p>{{ \Illuminate\Support\Str::limit($product->description, 50, '...') }}</p>
 
-                    <!-- Display the original price -->
-                    <p>Giá gốc: <span class="original-price">{{ number_format($product->price, 0, ',', '.') }}
-                            VND</span></p>
 
-                    @if ($product->discount > 0)
-                        <p>Giảm giá: {{ $product->discount }}%</p>
-                        <p>Giá sau giảm: <span
-                                class="discounted-price">{{ number_format($product->price * (1 - $product->discount / 100), 0, ',', '.') }}
-                                VND</span></p>
-                    @endif
-
-                    <form action="{{ route('cart.add', $product->id) }}" method="POST" class="add-to-cart-form"
-                        data-product-id="{{ $product->id }}">
-                        @csrf
-                        <button type="button" class="add-to-cart-btn">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </form>
-                </div>
-            @endforeach
-        @else
-            <p>Không có sản phẩm nào để hiển thị.</p>
-        @endif
-    </div>
-</div>
 <script>
     // success message
     @if (Session::has('success'))

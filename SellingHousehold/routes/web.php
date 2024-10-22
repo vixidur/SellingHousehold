@@ -41,6 +41,7 @@ Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkou
 Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
 // Route products submenu
 Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');
+
 // Route to display products
 Route::get('/overview', [ProductController::class, 'showProducts'])->name('products.show');
 

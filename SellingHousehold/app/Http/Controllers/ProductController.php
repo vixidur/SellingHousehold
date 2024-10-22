@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use App\Models\Category;
 class ProductController extends Controller
 {
     public function showProducts()
     {
         $products = Product::all(); // Get all products from the database
+        // Giả sử bạn muốn lấy các sản phẩm liên quan dựa trên danh mục của sản phẩm đầu tiên
+        $relatedProducts = Product::where('category_id', 44)->limit(5)->get();
 
         // Pass the $products variable to the view
-        return view('overview.overview', compact('products'));
+        return view('overview.overview', compact('products', 'relatedProducts'));
     }
     public function index()
     {
@@ -22,7 +24,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $categories = \App\Models\Category::all();
+        $categories = Category::all();
         return view('admin.products.create', compact('categories'));
     }
 
@@ -35,6 +37,7 @@ class ProductController extends Controller
             'quantity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'image_url' => 'required|url', // Đảm bảo image_url là một URL hợp lệ
+            'discount' => 'nullable|numeric|min:0|max:100',
         ]);
 
         Product::create([
@@ -44,6 +47,7 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'category_id' => $request->category_id,
             'image_url' => $request->image_url, // Lưu URL của ảnh
+            'discount' => $request->discount,
         ]);
 
         return redirect()->route('products.index')->with('success', 'Sản phẩm đã được thêm thành công!');
@@ -53,8 +57,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         // Fetch the product and categories
-        $product = \App\Models\Product::findOrFail($id);
-        $categories = \App\Models\Category::all();
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
 
         // Pass the product and categories to the edit view
         return view('admin.products.edit', compact('product', 'categories'));
@@ -63,13 +67,15 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Log::info('Discount value being updated: ' . $request->discount);
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
-            'image_url' => 'nullable|string|max:255'
+            'image_url' => 'nullable|string|max:255',
+            'discount' => 'nullable|numeric|min:0|max:100' // Kiểm tra giá trị giảm
         ]);
 
         $product = Product::findOrFail($id);
@@ -80,10 +86,12 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'category_id' => $request->category_id,
             'image_url' => $request->image_url,
+            'discount' => $request->discount, // Cập nhật giá giảm
         ]);
 
         return redirect()->route('products.index')->with('success', 'Thay đổi thông tin sản phẩm thành công!');
     }
+
 
     public function destroy($id)
     {
@@ -97,4 +105,6 @@ class ProductController extends Controller
     {
         return view('products.noi-chao');
     }
+
+
 }

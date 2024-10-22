@@ -83,18 +83,17 @@
                         <div class="dropdown-content">
                             <div class="column">
                                 <h3>Nồi</h3>
-                                <a href="{{ route('products.noi-chao') }}">Nồi inox, bộ nồi inox</a>
-                                <a href="#">Nồi chống dính</a>
-                                <a href="#">Nồi hấp, nồi lẩu</a>
-                                <a href="#">Nồi áp suất bếp từ</a>
-
+                                <a href="{{ route('products.noi-chao')}}">Nồi inox, bộ nồi inox</a>
+                                <a href="{{ route('products.noi-chao')}}">Nồi chống dính</a>
+                                <a href="{{ route('products.noi-chao')}}">Nồi hấp, nồi lẩu</a>
+                                <a href="{{ route('products.noi-chao')}}">Nồi áp suất bếp từ</a>
                             </div>
                             <div class="column">
                                 <h3>Chảo</h3>
-                                <a href="#">Chảo inox</a>
-                                <a href="#">Chảo nhôm</a>
-                                <a href="#">Chảo chống dính</a>
-                                <a href="#">Chảo siêu nhẹ</a>
+                                <a href="{{ route('products.chao')}}">Chảo inox</a>
+                                <a href="{{ route('products.chao')}}">Chảo nhôm</a>
+                                <a href="{{ route('products.chao')}}">Chảo chống dính</a>
+                                <a href="{{ route('products.chao')}}">Chảo siêu nhẹ</a>
                             </div>
 
                         </div>
@@ -104,23 +103,23 @@
                         <div class="dropdown-content">
                             <div class="column">
                                 <h3>Cốc giữ nhiệt</h3>
-                                <a href="#">Cốc giữ nhiệt Cốc giữ nhiệt inox 304 Elmich EL8312 </a>
-                                <a href="#">Cốc giữ nhiệt inox</a>
+                                <a href="{{ route('products.coc')}}">Cốc giữ nhiệt Cốc giữ nhiệt inox 304 Elmich EL8312 </a>
+                                <a href="{{ route('products.coc')}}">Cốc giữ nhiệt inox</a>
                             </div>
                             <div class="column">
                                 <h3>Bình đựng thức ăn giữ nhiệt</h3>
-                                <a href="#">Bình đựng thức ăn giữ nhiệt inox 304</a>
-                                <a href="#">Bình đựng thức ăn giữ nhiệt inox 304 Elmich</a>
+                                <a href="{{ route('products.binh')}}">Bình đựng thức ăn giữ nhiệt inox 304</a>
+                                <a href="{{ route('products.binh')}}">Bình đựng thức ăn giữ nhiệt inox 304 Elmich</a>
                             </div>
                             <div class="column">
                                 <h3>Hộp cơm giữ nhiệt</h3>
-                                <a href="#">Hộp cơm 2 tầng inox 304</a>
-                                <a href="#">Hộp cơm 2 tầng inox 304 Elimich</a>
+                                <a href="{{ route('products.hop')}}">Hộp cơm 2 tầng inox 304</a>
+                                <a href="{{ route('products.hop')}}">Hộp cơm 2 tầng inox 304 Elimich</a>
                             </div>
                             <div class="column">
                                 <h3>Bình,phích giữ nhiệt</h3>
-                                <a href="#">Phích giữ nhiệt gia đình inox 304</a>
-                                <a href="#">Phích giữ nhiệt gia đình inox 304 Elmich</a>
+                                <a href="{{ route('products.phich')}}">Phích giữ nhiệt gia đình inox 304</a>
+                                <a href="{{ route('products.phich')}}">Phích giữ nhiệt gia đình inox 304 Elmich</a>
                             </div>
                         </div>
                     </li>

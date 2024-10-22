@@ -35,11 +35,16 @@
         @if ($relatedProducts->count() > 0)
             @foreach ($relatedProducts as $product)
                 <div class="product-card">
+                    <div class="discount-rate-badge">
+                        <p>Giảm {{ $product->discount }}%</p>
+                    </div>
                     <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image">
                     <h3>{{ $product->name }}</h3>
                     <p>{{ \Illuminate\Support\Str::limit($product->description, 50, '...') }}</p>
-                    <p>Giá: <span class="price">{{ number_format($product->price, 0, ',', '.') }} VND</span></p>
-                    <a href="{{ route('products.show', $product->id) }}" class="details-btn">Xem chi tiết</a>
+                    <p class="original-price"><span class="price">{{ number_format($product->price, 0, ',', '.') }}
+                            VND</span></p>
+                    <p><span class="discounted-price">{{ number_format($product->price * (1 - $product->discount / 100), 0, ',', '.') }}
+                            VND</span></p>
                 </div>
             @endforeach
         @else

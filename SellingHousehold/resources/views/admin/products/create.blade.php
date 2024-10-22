@@ -34,7 +34,7 @@
             <div class="form3">
                 <label for="description">Mô tả</label>
                 <textarea name="description" class="form-control"></textarea>
-            </div>
+            </div
             <div class="form4">
                 <button type="submit" class="btn btn-primary">Lưu sản phẩm</button>
                 <a href="{{route('products.index')}}">Cancel</a>

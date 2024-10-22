@@ -724,25 +724,43 @@ button.btn {
 }
 
 /* PRODUCT */
+/* Container chính của form */
 .main-product {
-    box-sizing: border-box;
-    margin: 0 auto;
+    background-color: #f0f0f0; /* Nền xám nhạt */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 40px auto;
+    max-height: 600px;
+    
+}
+.main-product h2 {
+    text-align: center;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.create-products{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 90px;
-    max-width: 1300px;
-    max-height: 700px;
-    width: 100%;
-    height: 100%;
-    background-color: #ccc;
-    padding: 20px;
-    overflow-x: hidden;
+    margin-top: 10px;
 }
-
+.form1{
+    padding: 20px;
+}
+.form2{
+    padding: 20px;
+}
+.form3 {
+    margin-top: -30px;
+    padding: 20px;
+}
+.form4{
+    margin-top: -40px;
+    padding: 20px;
+}
 .product-scroll {
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     margin-top: 10px;
 }
@@ -882,32 +900,25 @@ button.btn {
 }
 
 /* EDIT PRODUCT */
-.main-edit-product {
-    box-sizing: border-box;
+.edit-container{
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    max-width: 1300px;
-    max-height: 700px;
-    width: 100%;
-    height: 100%;
-    background-color: #ccc;
 }
-
-.main-edit-product h2 {
-    text-align: center;
+.top{
+    display: flex;
 }
-
-.main-edit-product form {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background-color: #fff;
-    width: 600px;
-    padding: 10px;
-    margin-top: 30px;
+.box{
+    flex: 1;
+    padding: 20px;
 }
-
+.bottom{
+    margin-top: -34px;
+    padding: 20px;
+}
+.btn-update-remove{
+    margin-top: -34px;
+    padding: 20px;
+}
 .cancel-editproduct {
     background-color: #3498db;
     color: white;

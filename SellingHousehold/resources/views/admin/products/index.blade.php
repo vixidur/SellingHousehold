@@ -19,6 +19,7 @@
                         <th>Số lượng</th>
                         <th>Danh mục</th>
                         <th>URL Ảnh</th>
+                        <th>Giảm giá</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -33,6 +34,7 @@
                             <td>{{ $product->category->name ?? 'N/A' }}</td>
                             <td><img src="{{ $product->image_url }}" alt="{{ $product->name }}"
                                     style="max-width: 150px; max-height: 150px;"></td>
+                            <td>{{ $product->discount }}</td>
                             <td>
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-edit"><i
                                         class="fas fa-edit"></i></a>

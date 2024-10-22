@@ -57,7 +57,7 @@
 /* PRODUCTS LIST */
 .product-list {
     margin-top: 60%;
-    background-image: url('../images/banner/banner-deal.png');
+    background-color: #ffffff;
     box-sizing: border-box;
     max-width: 1300px;
     width: 100%;
@@ -66,7 +66,7 @@
 }
 
 .product-list h2 {
-    color: white;
+    color: black;
 }
 
 .product-grid {
@@ -87,6 +87,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Cần có để định vị tuyệt đối cho badge */
 }
 
 .product-card:hover {
@@ -111,30 +114,70 @@
 }
 
 .add-to-cart-btn {
-    background: none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: red;
     border: none;
     cursor: pointer;
-    font-size: 24px;
-    color: #007bff;
+    font-size: 14px;
+    color: #ffffff;
     transition: color 0.3s ease;
 }
 
 .add-to-cart-btn:hover {
-    color: #0056b3;
+    color: #FEFAE0;
 }
 
 /* giá gốc */
 .original-price {
     text-decoration: line-through;
-    /* Add a strikethrough effect for the original price */
     color: gray;
-    /* Change the color to gray */
 }
 
 /* giá giảm */
 .discounted-price {
     font-weight: bold;
-    /* Make the discounted price bold */
     color: red;
-    /* Change the color to red */
+}
+
+.discount-rate-badge {
+    position: absolute;
+    /* Giữ nó ở vị trí tuyệt đối */
+    top: 15px;
+    /* Đưa lên trên một chút */
+    left: -10px;
+    /* Đưa vào bên trái */
+    z-index: 10;
+    /* Đảm bảo nó nằm trên các phần tử khác */
+    transform: translateY(-50%);
+    /* Căn giữa theo chiều dọc */
+}
+
+.discount-rate-badge p {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 700 !important;
+    background-color: #bb161d;
+    padding: 4px 6px !important;
+    font-size: 12px;
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 13px !important;
+    border-bottom-right-radius: 13px !important;
+    box-shadow: 0px 0px 5px 1px #fff;
+    color: #fff;
+}
+
+/* SẢN PHẨM LIÊN QUAN */
+
+.related-products {
+    margin-top: 60%;
+    background-image: url('../images/banner/banner-deal.png');
+    box-sizing: border-box;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.related-products h2 {
+    color: white;
 }

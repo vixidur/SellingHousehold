@@ -15,7 +15,8 @@ class Product extends Model
         'price',
         'quantity',
         'category_id',
-        'image_url'
+        'image_url', 
+        'discount'
     ];
 
     // Relation with Category model (assuming you have Category model)

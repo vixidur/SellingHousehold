@@ -37,8 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="discount">Giảm giá (%)</label>
-                <input type="number" name="discount" class="form-control" min="0"
-                    max="100>
+                <input type="number" name="discount" class="form-control" min="0" max="100">
             </div>
             <button type="submit" class="btn btn-primary">Lưu sản
                 phẩm</button>

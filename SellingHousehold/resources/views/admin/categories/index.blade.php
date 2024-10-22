@@ -9,26 +9,26 @@
             <a href="{{ route('categories.create') }}" class="btn btn-primary">Thêm danh mục</a>
         </div>
 
-        <div class="table-wrapper">
-            <table class="table table-bordered">
+        <div class="table-wrapper-category">
+            <table class="table table-bordered-category">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Tên danh mục</th>
-                        <th>Mô tả</th>
-                        <th>Hành động</th>
+                        <th class="th-category">ID</th>
+                        <th class="th-category">Tên danh mục</th>
+                        <th class="th-category">Mô tả</th>
+                        <th class="th-category">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($categories as $category)
                         <tr>
-                            <td>{{ $category->id }}</td>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->description }}</td>
-                            <td>
+                            <td class="td-category">{{ $category->id }}</td>
+                            <td class="td-category">{{ $category->name }}</td>
+                            <td class="td-category">{{ $category->description }}</td>
+                            <td class="td-category">
                                 <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-edit"><i class="fas fa-edit"></i></a>
                                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
-                                    style="display:inline-block;">
+                                    >
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>

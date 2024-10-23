@@ -5,14 +5,14 @@
     <form action="{{ route('checkout.process') }}" method="POST">
         @csrf
         <!-- Customer Information Section -->
-        <div class="test2">
-            <div class="test3">
+        <div class="container-totals-pays">
+            <div class="info-customer">
                 <div class="logo-unetihousehold">
-                    <img src="{{ asset('images/logo-ver-color.png') }}" alt="">
+                    <center><img src="{{ asset('images/logo-ver-color.png') }}" alt=""></center>
                 </div>
                 <div class="checkout-container-shop">
                     <div class="form-info-check-products">
-                        <h4>Thông tin nhận hàng</h4>
+                        <h2>Thông tin nhận hàng</h2>
 
                         <div class="form-group">
                             <label for="email">Email:</label><br>
@@ -63,28 +63,27 @@
                     <!-- Payment Method Section -->
                     <div class="form-method-proceed-cart">
                         <div class="info-vanchuyen">
-                            <h3>Vận chuyển</h3>
-                            <h3>Vui lòng nhập thông tin giao hàng</h3>
+                            <h2>Vận chuyển</h2>
+                            <p>Vui lòng nhập thông tin giao hàng</p>
                         </div>
+                        <h2>Thanh toán</h2>
                         <div class="form-sub-group">
-                            <h4>Thành toán</h4>
-
-                            <div class="form-group">
+                            <div class="form-group-pays">
                                 <input type="radio" name="payment_method" value="vnpay" id="vnpay">
                                 <label for="vnpay">Thanh toán bằng VNPAY</label>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group-pays">
                                 <input type="radio" name="payment_method" value="onepay_visa" id="onepay_visa">
                                 <label for="onepay_visa">OnePay - Thanh toán bằng thẻ quốc tế (Visa/MasterCard)</label>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group-pays">
                                 <input type="radio" name="payment_method" value="onepay_atm" id="onepay_atm">
                                 <label for="onepay_atm">OnePay - Thanh toán online qua thẻ nội địa (ATM)</label>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group-pays">
                                 <input type="radio" name="payment_method" value="cod" id="cod">
                                 <label for="cod">Thanh toán khi giao hàng (COD)</label>
                             </div>
@@ -92,28 +91,31 @@
                     </div>
                 </div>
             </div>
+
             <div class="order-summary">
-                <h3>Đơn hàng ({{ array_sum(array_column($cart, 'quantity')) }} sản phẩm)</h3>
-                <ul>
-                    @foreach ($cart as $productId => $product)
-                        @php
-                            // Tính giá sau giảm giá
-                            $priceAfterDiscount = $product['price'] * (1 - ($product['discount'] ?? 0) / 100);
-                        @endphp
-                        <li>
-                            <img src="{{ $product['image_url'] }}" alt="">
-                            {{ $product['name'] }}
-                            <span class="item-total" data-price="{{ $priceAfterDiscount }}"
-                                data-quantity="{{ $product['quantity'] }}">
-                                {{ number_format($priceAfterDiscount * $product['quantity'], 0, ',', '.') }}đ
-                            </span>
-                        </li>
-                    @endforeach
-                </ul>
+                <div class="order-checkout">
+                    <h3>Đơn hàng ({{ array_sum(array_column($cart, 'quantity')) }} sản phẩm)</h3>
+                    <ul>
+                        @foreach ($cart as $productId => $product)
+                            @php
+                                // Tính giá sau giảm giá
+                                $priceAfterDiscount = $product['price'] * (1 - ($product['discount'] ?? 0) / 100);
+                            @endphp
+                            <li>
+                                <img src="{{ $product['image_url'] }}" alt="">
+                                {{ $product['name'] }}
+                                <span class="item-total" data-price="{{ $priceAfterDiscount }}"
+                                    data-quantity="{{ $product['quantity'] }}">
+                                    {{ number_format($priceAfterDiscount * $product['quantity'], 0, ',', '.') }}đ
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <hr>
                 <div class="total-checkout">
-                    <p><strong>Tổng cộng:</strong> <span id="total-price">{{ number_format($totalPrice, 0) }}đ</span>
-                    </p>
-                    <div class="form-group">
+                    <p><strong>Tổng cộng: {{ number_format($totalPrice, 0) }}đ</strong></p>
+                    <div class="form-group-submit">
                         <button type="submit" class="btn-submit">Đặt hàng</button>
                     </div>
                 </div>

@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         // Kiểm tra xem người dùng đã đăng nhập hay chưa
         if (!$user) {
-        return redirect()->route('admin.login')->with('error', 'Xin vui lòng đăng nhập để truy cập trang này.');
+            return redirect()->route('admin.login')->with('error', 'Xin vui lòng đăng nhập để truy cập trang này.');
         }
 
         return view('admin.layouts.myprofile', compact('user'));

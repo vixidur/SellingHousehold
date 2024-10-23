@@ -726,39 +726,47 @@ button.btn {
 /* PRODUCT */
 /* Container chính của form */
 .main-product {
-    background-color: #f0f0f0; /* Nền xám nhạt */
+    background-color: #f0f0f0;
+    /* Nền xám nhạt */
     padding: 20px;
     border-radius: 10px;
     max-width: 600px;
     margin: 40px auto;
     max-height: 600px;
-    
+
 }
+
 .main-product h2 {
     text-align: center;
     color: #333;
     font-size: 20px;
     margin-bottom: 20px;
 }
-.create-products{
+
+.create-products {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-.form1{
+
+.form1 {
     padding: 20px;
 }
-.form2{
+
+.form2 {
     padding: 20px;
 }
+
 .form3 {
     margin-top: -30px;
     padding: 20px;
 }
-.form4{
+
+.form4 {
     margin-top: -40px;
     padding: 20px;
 }
+
 .product-scroll {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -900,25 +908,30 @@ button.btn {
 }
 
 /* EDIT PRODUCT */
-.edit-container{
+.edit-container {
     display: flex;
     flex-direction: column;
 }
-.top{
+
+.top {
     display: flex;
 }
-.box{
+
+.box {
     flex: 1;
     padding: 20px;
 }
-.bottom{
+
+.bottom {
     margin-top: -34px;
     padding: 20px;
 }
-.btn-update-remove{
+
+.btn-update-remove {
     margin-top: -34px;
     padding: 20px;
 }
+
 .cancel-editproduct {
     background-color: #3498db;
     color: white;

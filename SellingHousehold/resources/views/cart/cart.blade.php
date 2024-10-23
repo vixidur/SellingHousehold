@@ -9,7 +9,9 @@
         <p class="promo-description">
             Bạn chỉ còn thiếu 800.000 VND để được <span class="highlight">nhận voucher giảm thêm 10%</span>
         </p>
-        <button class="buy-more-btn"><a href="{{ url('/overview') }}">MUA THÊM</a></button>
+        <div class="buy-more-btn-cart">
+            <a href="{{ url('/overview') }}" class="buy-more-btn">MUA THÊM</a>
+        </div>
     </div>
 
     <div class="cart-container">
@@ -35,6 +37,9 @@
                     </thead>
                     <tbody>
                         @foreach ($cart as $productId => $item)
+                            @php
+                                $priceAfterDiscount = $item['price'] * (1 - ($item['discount'] ?? 0) / 100);
+                            @endphp
                             <tr>
                                 <td>
                                     <div class="product-info">
@@ -42,7 +47,7 @@
                                         <span>{{ $item['name'] }}</span>
                                     </div>
                                 </td>
-                                <td>{{ number_format($item['price']) }}đ</td>
+                                <td>{{ number_format($priceAfterDiscount, 0, ',', '.') }}đ</td>
                                 <td>
                                     <form action="{{ route('cart.update') }}" method="POST" class="quantity-form">
                                         @csrf
@@ -50,14 +55,15 @@
                                             <button type="button" class="quantity-btn decrease">-</button>
                                             <input type="number" name="quantities[{{ $productId }}]"
                                                 value="{{ $item['quantity'] }}" min="0" max="100"
-                                                data-unit-price="{{ $item['price'] }}">
+                                                data-unit-price="{{ $priceAfterDiscount }}"
+                                                class="quantity-input-field">
                                             <button type="button" class="quantity-btn increase">+</button>
                                         </div>
                                     </form>
                                 </td>
                                 <td class="total-price-cell"
-                                    data-total="{{ number_format($item['price'] * $item['quantity']) }}">
-                                    {{ number_format($item['price'] * $item['quantity']) }}đ
+                                    data-price="{{ number_format($priceAfterDiscount * $item['quantity'], 0, ',', '.') }}">
+                                    {{ number_format($priceAfterDiscount * $item['quantity'], 0, ',', '.') }}đ
                                 </td>
                                 <td>
                                     <form action="{{ route('cart.remove', $productId) }}" method="POST">
@@ -72,7 +78,16 @@
                 </table>
             </div>
             <div class="payment">
-                <p><a href="{{ route('cart.checkout') }}">Tiến hành thanh toán</a></p>
+                <form action="{{ route('cart.checkout') }}" method="GET" class="quantity-form">
+                    <p>Tổng tiền: <span id="total-cart-price">{{ number_format($totalPrice ?? 0, 0) }}đ</span></p>
+                    @csrf
+
+                    @foreach ($cart as $productId => $item)
+                        <input type="hidden" name="quantities[{{ $productId }}]" value="{{ $item['quantity'] }}">
+                    @endforeach
+
+                    <button type="submit" class="checkout-button custom-btn">Tiến hành thanh toán</button>
+                </form>
             </div>
         @endif
     </div>
@@ -88,44 +103,59 @@
         Notiflix.Notify.error("{{ Session::get('error') }}");
     @endif
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const quantityForms = document.querySelectorAll('.quantity-form');
+    document.querySelectorAll('.quantity-form').forEach(form => {
+        const quantityInput = form.querySelector('.quantity-input-field');
+        const unitPrice = parseFloat(quantityInput.dataset.unitPrice);
+        const totalPriceCell = form.closest('tr').querySelector('.total-price-cell');
 
-        quantityForms.forEach(form => {
-            const input = form.querySelector('input[type="number"]');
-            const totalPriceCell = form.closest('tr').querySelector(
-            '.total-price-cell'); // Sửa lại lớp ở đây
+        // Hàm cập nhật tổng tiền cho sản phẩm
+        function updateTotalPrice() {
+            const quantity = parseInt(quantityInput.value) || 0; // Đảm bảo giá trị số
+            const totalPrice = unitPrice * quantity; // Tính tổng
+            totalPriceCell.textContent = `${totalPrice.toLocaleString()}đ`; // Cập nhật tổng tiền cho sản phẩm
+            totalPriceCell.setAttribute('data-price',
+            totalPrice); // Lưu giá vào thuộc tính để dễ tính toán tổng giỏ hàng
+            updateCartTotal(); // Cập nhật tổng giỏ hàng
+        }
 
-            function updateTotalPrice() {
-                const unitPrice = parseFloat(input.dataset.unitPrice);
-                const quantity = parseInt(input.value) || 0; // Đảm bảo giá trị số
-                const totalPrice = unitPrice * quantity;
-
-                totalPriceCell.textContent = `${totalPrice.toLocaleString()}đ`; // Cập nhật tổng tiền
-            }
-
-            // Sự kiện khi giảm số lượng
-            form.querySelector('.decrease').addEventListener('click', function() {
-                if (parseInt(input.value) > 0) {
-                    input.value = parseInt(input.value) - 1;
-                    updateTotalPrice(); // Cập nhật tổng tiền
-                }
+        // Cập nhật tổng giỏ hàng
+        function updateCartTotal() {
+            let cartTotal = 0;
+            document.querySelectorAll('.total-price-cell').forEach(cell => {
+                const price = parseFloat(cell.getAttribute('data-price').replace(/\./g, '').replace('đ',
+                    '')) || 0; // Lấy giá trị từ thuộc tính
+                cartTotal += price; // Cộng dồn vào tổng giỏ hàng
             });
+            document.getElementById('total-cart-price').textContent =
+            `${cartTotal.toLocaleString()}đ`; // Cập nhật tổng giỏ hàng
+        }
 
-            // Sự kiện khi tăng số lượng
-            form.querySelector('.increase').addEventListener('click', function() {
-                input.value = parseInt(input.value) + 1;
-                updateTotalPrice(); // Cập nhật tổng tiền
-            });
-
-            // Ngăn chặn hành động mặc định của form
-            form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Ngăn chặn trang refresh
-                // Logic gửi yêu cầu cập nhật tới server nếu cần
-            });
-
-            updateTotalPrice(); // Cập nhật tổng tiền ban đầu
+        // Sự kiện nhấp vào nút tăng
+        form.querySelector('.increase').addEventListener('click', () => {
+            quantityInput.value = parseInt(quantityInput.value) + 1; // Tăng số lượng
+            updateTotalPrice(); // Cập nhật tổng
         });
+
+        // Sự kiện nhấp vào nút giảm
+        form.querySelector('.decrease').addEventListener('click', () => {
+            if (quantityInput.value > 0) {
+                quantityInput.value = parseInt(quantityInput.value) - 1; // Giảm số lượng
+                updateTotalPrice(); // Cập nhật tổng
+            }
+        });
+
+        // Cập nhật tổng khi nhập trực tiếp vào ô input
+        quantityInput.addEventListener('input', () => {
+            if (!isNaN(quantityInput.value) && quantityInput.value >= 0) {
+                updateTotalPrice(); // Cập nhật tổng
+            } else {
+                quantityInput.value = 0; // Đặt lại giá trị nếu không hợp lệ
+                updateTotalPrice(); // Cập nhật tổng
+            }
+        });
+
+        // Gọi hàm cập nhật ngay khi load trang
+        updateTotalPrice();
     });
 </script>
 @include('layouts.footer')

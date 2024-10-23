@@ -11,7 +11,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\OrderController;
 // Route cho trang overview
 Route::get('overview', function () {
     return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần
@@ -37,10 +37,15 @@ Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.u
 Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 // Checkout
-Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/checkout', [CartController::class, 'checkoutForm'])->name('cart.checkout');
+Route::post('/checkout', [CartController::class, 'processCheckout'])->name('checkout.process');
+Route::get('/order-success', function () {
+    return view('order.success');
+})->name('order.success');
+Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
 
 // Route thanh toán
-Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
+// Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
 
 // Route products submenu
 Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');

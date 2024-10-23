@@ -8,38 +8,38 @@
             <h2>Danh sách sản phẩm</h2>
             <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Thêm sản phẩm mới</a>
         </div>
-        <div class="product-scroll">
-            <table class="table table-bordered">
-                <thead>
+        <div class="table-wrapper-product">
+            <table class="table table-bordered-product">
+                <thead class="thead-product">
                     <tr>
-                        <th>ID</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Mô tả</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Danh mục</th>
-                        <th>URL Ảnh</th>
-                        <th>Giảm giá</th>
-                        <th>Hành động</th>
+                        <th class="th-product">ID</th>
+                        <th class="th-product">Tên sản phẩm</th>
+                        <th class="th-product">Mô tả</th>
+                        <th class="th-product">Giá</th>
+                        <th class="th-product">Số lượng</th>
+                        <th class="th-product">Danh mục</th>
+                        <th class="th-product">URL Ảnh</th>
+                        <th class="th-product">Giảm giá</th>
+                        <th class="th-product">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->description }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->quantity }}</td>
-                            <td>{{ $product->category->name ?? 'N/A' }}</td>
-                            <td><img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                            <td class="td-product">{{ $product->id }}</td>
+                            <td class="td-product">{{ $product->name }}</td>
+                            <td class="td-product">{{ $product->description }}</td>
+                            <td class="td-product">{{ $product->price }}</td>
+                            <td class="td-product">{{ $product->quantity }}</td>
+                            <td class="td-product">{{ $product->category->name ?? 'N/A' }}</td>
+                            <td class="td-product"><img src="{{ $product->image_url }}" alt="{{ $product->name }}"
                                     style="max-width: 150px; max-height: 150px;"></td>
-                            <td>{{ $product->discount }}</td>
-                            <td>
+                            <td class="td-product">{{ $product->discount }}</td>
+                            <td class="td-product">
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-edit"><i
                                         class="fas fa-edit"></i></a>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="POST"
-                                    style="display:inline-block;">
+                                    >
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>

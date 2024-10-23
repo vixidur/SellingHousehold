@@ -41,7 +41,7 @@
             </div>
             <div class="btn-update-remove">
                 <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
-                <a href="{{route('products.index')}}" class="cancel-editproduct">Cancel</a>
+                <a href="{{route('products.index')}}" class="cancel-editproduct">Hủy</a>
             </div>
         </form>
     </div>

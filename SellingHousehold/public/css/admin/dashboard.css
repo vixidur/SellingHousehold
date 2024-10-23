@@ -687,6 +687,7 @@ button.btn {
     margin: 40px auto;
     max-height: 600px;
 }
+
 .main-product h2 {
     text-align: center;
     color: #333;
@@ -697,6 +698,30 @@ button.btn {
 .create-products{
     display: flex;
     justify-content: center;
+    margin-top: 10px;
+}
+
+.form1 {
+    padding: 20px;
+}
+
+.form2 {
+    padding: 20px;
+}
+
+.form3 {
+    margin-top: -30px;
+    padding: 20px;
+}
+
+.form4 {
+    margin-top: -40px;
+    padding: 20px;
+}
+
+.product-scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
     margin-top: 10px;
 }
 
@@ -811,25 +836,30 @@ button.btn {
 
 
 /* EDIT PRODUCT */
-.edit-container{
+.edit-container {
     display: flex;
     flex-direction: column;
 }
-.top{
+
+.top {
     display: flex;
 }
-.box{
+
+.box {
     flex: 1;
     padding: 20px;
 }
-.bottom{
+
+.bottom {
     margin-top: -34px;
     padding: 20px;
 }
-.btn-update-remove{
+
+.btn-update-remove {
     margin-top: -34px;
     padding: 20px;
 }
+
 .cancel-editproduct {
     background-color: #3498db;
     color: white;

@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <div class="system-shop">
-                    <a href="{{ url('info-shop') }}">Hệ thống cửa hàng</a>
+                    <a href="{{ route('info-shop.index') }}">Hệ thống cửa hàng</a>
                 </div>
                 <div class="search-products">
                     <div class="search-wrapper">

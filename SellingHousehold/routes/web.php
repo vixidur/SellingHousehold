@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\InfoController;
 
 // Route cho trang overview
 Route::get('overview', function () {
@@ -35,7 +36,8 @@ Route::get('/cart', [CartController::class, 'cartForm'])->name('cart.show');
 Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-
+// Route InforShop
+Route::get('/info-shop', [InfoController::class, 'index'])->name('info-shop.index');
 // Checkout
 Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 

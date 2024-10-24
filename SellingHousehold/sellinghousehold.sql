@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 22, 2024 lúc 03:08 PM
+-- Thời gian đã tạo: Th10 23, 2024 lúc 08:40 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -224,7 +224,10 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `categ
 (13, 'Bình Giữ Nhiệt Classic | VinFast', 'Bình Giữ Nhiệt Classic | VinFast', 120000.00, 30, 44, 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw5e32df33/images/Accessory/CLASSICBOTTLE750ML/19.png', '2024-10-22 04:46:22', '2024-10-22 04:46:22', 15),
 (14, 'Bình Giữ Nhiệt Inox Bền, Giữ Nhiệt Tốt 24 Giờ, Giá Rẻ', 'Bình Giữ Nhiệt Inox Bền, Giữ Nhiệt Tốt 24 Giờ, Giá Rẻ', 100000.00, 20, 44, 'https://quatangmunus.com/wp-content/uploads/2022/06/binh-giu-nhiet-inox-500ml-khac-logo-khac-ten-3.jpg', '2024-10-22 04:47:02', '2024-10-22 04:47:02', 41),
 (15, 'Bình ly giữ nhiệt giá ngon, bền tốt, an toàn, giao siêu tốc 2h - 10/2024', 'Bình ly giữ nhiệt giá ngon, bền tốt, an toàn, giao siêu tốc 2h - 10/2024', 160000.00, 20, 44, 'https://cdn.tgdd.vn/Products/Images/5205/262561/binh-giu-nhiet-inox-500ml-delites-z5a-xanh-la-1.-600x600.jpg', '2024-10-22 04:47:58', '2024-10-22 04:47:58', 18),
-(16, 'Cốc Hokori 350ml - Việt Nhật Plastic', 'Cốc Hokori 350ml của Việt Nhật nổi bật với họa tiết in hình chú hươu ở bề mặt, mang đến vẻ đẹp trẻ trung và độc đáo. Cốc được trang bị quai cầm chống trượt, miệng cốc nhẵn mịn tạo cảm giác thoải mái khi uống nước. Sản phẩm thích hợp để làm cốc uống nước, đựng sữa hàng ngày trong gia đình hay văn phòng làm việc. Ngoài ra, bạn có thể sử dụng cốc đựng nước khi đánh răng, cắm bàn chải, kem đánh răng giúp nhà tắm luôn gọn gàng và ngăn nắp.', 70000.00, 10, 3, 'https://vietnhatplastic.com/Data/Sites/1/Product/133/coc-hokori-3-350mnl.png', '2024-10-22 04:51:20', '2024-10-22 05:10:48', 10);
+(16, 'Cốc Hokori 350ml - Việt Nhật Plastic', 'Cốc Hokori 350ml của Việt Nhật nổi bật với họa tiết in hình chú hươu ở bề mặt, mang đến vẻ đẹp trẻ trung và độc đáo. Cốc được trang bị quai cầm chống trượt, miệng cốc nhẵn mịn tạo cảm giác thoải mái khi uống nước. Sản phẩm thích hợp để làm cốc uống nước, đựng sữa hàng ngày trong gia đình hay văn phòng làm việc. Ngoài ra, bạn có thể sử dụng cốc đựng nước khi đánh răng, cắm bàn chải, kem đánh răng giúp nhà tắm luôn gọn gàng và ngăn nắp.', 70000.00, 10, 3, 'https://vietnhatplastic.com/Data/Sites/1/Product/133/coc-hokori-3-350mnl.png', '2024-10-22 04:51:20', '2024-10-22 05:10:48', 10),
+(17, 'Nồi cơm điện tử Toshiba 1.8 lít RC-18DR1NV', 'Nồi cơm điện tử Toshiba 1.8 lít RC-18DR1NV', 400000.00, 12, 14, 'https://cdn.tgdd.vn/2021/06/content/BeFunky-collage(2)-800x500-1.jpg', '2024-10-22 08:03:00', '2024-10-22 08:03:00', 0),
+(18, 'Bếp ga âm Kangaroo KG536B', 'Bếp ga âm Kangaroo KG536B', 545000.00, 12, 14, 'https://cdn.tgdd.vn/Products/Images/1983/236321/Slider/am-kangaroo-kg536b-190721-0122330-1020x570.jpg', '2024-10-22 08:04:11', '2024-10-22 08:04:11', 12),
+(20, 'Máy ép trái cây Philips HR1811', 'Máy ép trái cây sẽ giúp bạn thực hiện những món nước ép dễ dàng ngay tại nhà. Máy ép trái cây với kiểu dáng đa dạng, nhỏ gọn và giá cả không quá đắt sẽ giúp bạn dễ dàng lựa chọn một chiếc máy cho gia đình mình đó!', 499000.00, 12, 14, 'https://cdn.tgdd.vn/2021/11/CookRecipe/CookTipsNote/8-dung-cu-can-chuan-bi-khi-bat-dau-hoc-lam-banh-tipsnote-800x450-15.jpg', '2024-10-22 08:08:49', '2024-10-22 08:08:49', 12);
 
 -- --------------------------------------------------------
 
@@ -440,7 +443,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `reviews`

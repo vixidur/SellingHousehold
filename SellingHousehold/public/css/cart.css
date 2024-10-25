@@ -1,4 +1,4 @@
-/* Container cho giỏ hàng */
+/* Container for the cart */
 .container-cart {
     max-width: 1200px;
     margin: 20px auto;
@@ -7,7 +7,7 @@
     border-radius: 10px;
 }
 
-/* Container cho khuyến mãi */
+/* Promo section */
 .promo-container {
     background-color: #007bff;
     color: white;
@@ -16,9 +16,12 @@
     margin-bottom: 20px;
 }
 
-/* Nút mua thêm */
+/* Button for buying more */
+.buy-more-btn-cart {
+    margin-top: 15px;
+}
+
 .buy-more-btn {
-    margin-top: 10px;
     background-color: white;
     color: #007bff;
     border: none;
@@ -26,20 +29,15 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.buy-more-btn a {
-    font-weight: bold;
-    color: back;
     text-decoration: none;
 }
 
 .buy-more-btn:hover {
-    background-color: #0056b3;
-    color: white;
+    background-color: rgb(240, 78, 78);
+    color: #ffffff;
 }
 
-/* Giỏ hàng */
+/* Cart container */
 .cart-container {
     padding: 20px;
     background-color: #fff;
@@ -47,10 +45,12 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Bảng sản phẩm trong giỏ hàng */
+/* Table styles */
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+    /* Prevents table resizing */
 }
 
 th,
@@ -58,74 +58,44 @@ td {
     padding: 15px;
     text-align: center;
     border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    /* Ensure no overflow */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    text-overflow: ellipsis;
+    /* Add ellipsis if the text is too long */
+}
+
+/* For product column */
+td:first-child {
+    max-width: 300px;
+    /* Set a fixed width for product column */
 }
 
 th {
     background-color: #f2f2f2;
-    /* Màu nền cho tiêu đề bảng */
 }
 
-/* Nút xoá */
+/* Delete button */
 .delete-btn {
     background-color: #dc3545;
-    /* Màu nền đỏ */
     color: white;
-    /* Màu chữ trắng */
     border: none;
-    /* Không có viền */
     padding: 5px 10px;
-    /* Đệm cho nút */
     border-radius: 5px;
-    /* Bo góc cho nút */
     cursor: pointer;
-    /* Con trỏ chuột dạng tay */
     transition: background-color 0.3s;
-    /* Hiệu ứng chuyển màu nền */
 }
 
 .delete-btn:hover {
     background-color: #c82333;
-    /* Đổi màu nền khi hover */
 }
 
-/* Khuyến mãi văn bản */
-.promo-text {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.promo-description {
-    font-size: 16px;
-    /* Kích thước chữ vừa */
-}
-
-.highlight {
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.payment {
-    margin-top: 20px;
-    text-align: right;
-}
-
-/* Nút thanh toán */
-.payment a {
-    background-color: #b1050e;
-    color: white;
-    padding: 10px 20px;
-    /* border-radius: 5px; */
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.payment a:hover {
-    background-color: #218838;
-}
-
+/* Product information */
 .product-info {
     display: flex;
     align-items: center;
+    justify-content: start;
 }
 
 .product-info img {
@@ -134,7 +104,7 @@ th {
     margin-right: 10px;
 }
 
-
+/* Quantity input */
 .quantity-input input {
     width: 50px;
     text-align: center;
@@ -145,23 +115,51 @@ th {
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     border: 2px solid transparent;
-    /* Tạo viền mặc định là trong suốt */
     padding: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Nút - với viền trên trái và dưới trái màu #e8e8e8 */
-.quantity-btn.increase {
-    border-top-right-radius: 2px solid #e8e8e8;
-    border-bottom-right-radius: 2px solid #e8e8e8;
-    border-top-left-radius: 2px solid transparent;
-    border-bottom-left-radius: 2px solid transparent;
+/* Total payment section */
+.payment {
+    margin-top: 20px;
+    text-align: right;
 }
 
-.quantity-btn .increase {
-    border-top-left-radius: 2px solid #e8e8e8;
-    border-bottom-right-radius: 2px solid #e8e8e8;
+.payment a {
+    background-color: #b1050e;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.payment a:hover {
+    background-color: #218838;
+}
+
+.custom-btn {
+    margin-top: 10px;
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.custom-btn:hover {
+    background-color: #d81a1a;
+}
+
+.custom-btn:active {
+    background-color: #ff3b3b;
+    transform: scale(0.98);
 }
 
 input[type="number"] {

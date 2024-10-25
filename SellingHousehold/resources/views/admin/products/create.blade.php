@@ -37,7 +37,7 @@
             </div>
             <div class="form4">
                 <button type="submit" class="btn btn-primary">Lưu sản phẩm</button>
-                <a href="{{route('products.index')}}">Cancel</a>
+                <a href="{{route('products.index')}}" class="cancel-btn">Hủy</a>
             </div>
         </form>
     </div>

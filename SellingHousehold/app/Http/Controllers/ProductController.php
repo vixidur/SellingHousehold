@@ -11,7 +11,7 @@ class ProductController extends Controller
     {
         $products = Product::all(); // Get all products from the database
         // Giả sử bạn muốn lấy các sản phẩm liên quan dựa trên danh mục của sản phẩm đầu tiên
-        $relatedProducts = Product::where('category_id', 44)->limit(5)->get();
+        $relatedProducts = Product::where('category_id', 14)->limit(5)->get();
 
         // Pass the $products variable to the view
         return view('overview.overview', compact('products', 'relatedProducts'));
@@ -162,3 +162,4 @@ class ProductController extends Controller
         return view('products.banchai');
     }
 }
+

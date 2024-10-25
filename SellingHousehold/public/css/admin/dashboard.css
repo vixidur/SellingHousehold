@@ -17,11 +17,6 @@
     background: #2d61c2;
 }
 
-.scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #2d61c2 #f1f1f1;
-}
-
 /* RESET MARGIN AND PADDING */
 * {
     margin: 0;
@@ -33,11 +28,9 @@
 .container {
     height: 100vh;
     background-color: #ccc;
-    /* float: bottom; */
     float: right;
     width: calc(100% - 290px);
     display: flex;
-    /* justify-content: space-around; */
     justify-content: center;
     align-items: center;
     z-index: 999;
@@ -137,13 +130,11 @@
 
 .manager-admin .dropdown li a:hover {
     color: #007bff;
-    /* Đổi màu khi hover */
 }
 
 .manager-admin li:hover .dropdown {
     opacity: 1;
     visibility: visible;
-    /* Hiển thị dropdown */
 }
 
 .search-container {
@@ -162,7 +153,6 @@
 
 .search-button {
     background-color: #007bff;
-    /* Màu nền của nút tìm kiếm */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -176,17 +166,14 @@
 .search-input:hover,
 .search-button:hover {
     border-color: #007bff;
-    /* Đổi màu border của input khi hover */
 }
 
 .search-button:hover {
     background-color: #0056b3;
-    /* Đổi màu nền của nút khi hover */
 }
 
 .search-input::placeholder {
     color: #aaa;
-    /* Màu chữ trong placeholder */
 }
 
 /* NAVIGATION STYLES */
@@ -194,12 +181,10 @@
     max-width: 100%;
     height: auto;
     margin-bottom: 40px;
-    /* Tạo khoảng cách giữa logo và menu */
 }
 
 .navbar {
     background-color: #024caa;
-    /* Màu nền của navbar */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -207,11 +192,9 @@
     height: 100vh;
     width: 250px;
     position: fixed;
-    /* Giữ navbar cố định */
     top: 0;
     left: 0;
     z-index: 100;
-    /* Đảm bảo navbar nằm phía trên */
 }
 
 .nav-list ul {
@@ -236,9 +219,7 @@
 
 .nav-list ul li a:hover {
     background-color: #43547a;
-    /* Đổi màu nền khi hover */
     color: #ffcc00;
-    /* Đổi màu chữ khi hover */
     border-radius: 5px;
 }
 
@@ -253,23 +234,10 @@
     color: #666;
     border-top: 1px solid #e0e0e0;
     width: calc(100% - 290px);
-    /* margin-top: 10px; */
-}
-
-/* RESPONSIVE ADJUSTMENTS */
-@media (max-width: 1366px) {
-    .navbar {
-        flex: 3;
-    }
-
-    .maincategory {
-        width: 0;
-    }
 }
 
 /* MY PROFILE */
 .myprofile {
-    /* overflow: hidden; */
     box-sizing: border-box;
     max-width: calc(100% - 290px);
     margin-bottom: 0px;
@@ -284,17 +252,11 @@
 }
 
 .myprofile-form {
-    height: 65%;
+    height: 90%;
     background: #f9f9f9;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 1366px) {
-    .myprofile-form {
-        height: 80%;
-    }
 }
 
 .avatar-section {
@@ -413,14 +375,11 @@ input[readonly] {
 
 .password-field {
     position: relative;
-    /* Để sử dụng position absolute cho biểu tượng */
 }
 
 .password-field input {
     width: 100%;
-    /* Đảm bảo input chiếm toàn bộ chiều rộng */
     padding-right: 30px;
-    /* Tạo không gian bên phải cho biểu tượng */
 }
 
 .toggle-password {
@@ -498,7 +457,7 @@ input[readonly] {
 }
 
 /* Wrapper to contain table and enable scrolling */
-.table-wrapper {
+.table-wrapper-category {
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 10px;
@@ -565,21 +524,7 @@ tbody td {
     background-color: transparent;
 }
 
-/* Responsive design adjustments */
-@media (max-width: 768px) {
-    .maincategory {
-        width: 100%;
-        padding: 10px;
-    }
 
-    .add-catagory-products {
-        width: 100%;
-    }
-
-    .table-wrapper {
-        width: 100%;
-    }
-}
 
 /* CREATE CATEGORY*/
 .createcategory {
@@ -667,12 +612,6 @@ button.btn:hover {
     background-color: #2980b9;
 }
 
-@media (max-width: 768px) {
-    .maincategory {
-        width: 90%;
-    }
-}
-
 .cancel-category {
     background-color: #3498db;
     color: white;
@@ -724,41 +663,62 @@ button.btn {
 }
 
 /* PRODUCT */
-/* Container chính của form */
+.table-wrapper-product::-webkit-scrollbar {
+    height: 9px;
+}
+
+.table-wrapper-product::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.table-wrapper-product::-webkit-scrollbar-thumb {
+    background: #2d61c2;
+}
+
+.table-wrapper-product::-webkit-scrollbar-thumb:hover {
+    background: #2d61c2;
+}
 .main-product {
-    background-color: #f0f0f0; /* Nền xám nhạt */
+    background-color: #f0f0f0; 
     padding: 20px;
     border-radius: 10px;
-    max-width: 600px;
+    max-width: calc(100%-250px);
+    width: 90%;
     margin: 40px auto;
     max-height: 600px;
-    
 }
+
 .main-product h2 {
     text-align: center;
     color: #333;
     font-size: 20px;
     margin-bottom: 20px;
 }
+
 .create-products{
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-.form1{
+
+.form1 {
     padding: 20px;
 }
-.form2{
+
+.form2 {
     padding: 20px;
 }
+
 .form3 {
     margin-top: -30px;
     padding: 20px;
 }
-.form4{
+
+.form4 {
     margin-top: -40px;
     padding: 20px;
 }
+
 .product-scroll {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -769,7 +729,6 @@ button.btn {
     padding-top: 10px;
     margin-bottom: 10px;
     width: 100%;
-
 }
 
 .add-product h2 {
@@ -790,38 +749,11 @@ button.btn {
 .add-product a:hover {
     background-color: #218838;
 }
-
-@media (max-width: 1366px) {
-    .product-scroll {
-        width: 50%;
-        overflow-x: auto;
-        /* Thêm thanh cuộn ngang */
-    }
-
-    table {
-        width: 100%;
-        min-width: 1366px;
-        /* Đảm bảo bảng không co quá nhỏ, ít nhất là bằng độ rộng của màn hình */
-        table-layout: auto;
-        /* Cho phép các cột điều chỉnh tự do */
-        font-size: 12px;
-        /* Giảm kích thước chữ */
-    }
-
-    td,
-    th {
-        padding: 4px;
-        word-wrap: break-word;
-        /* Gói chữ nếu quá dài */
-    }
-
-    img {
-        max-width: 100px;
-        /* Giảm kích thước hình ảnh để tiết kiệm không gian */
-        max-height: 100px;
-    }
+.table-wrapper-product{
+    overflow-x: auto;
+    width: 100%;
+    height: 400px;
 }
-
 /* CREATE PRODUCT */
 .main-container-addproduct {
     box-sizing: border-box;
@@ -849,18 +781,29 @@ button.btn {
     text-align: center;
 }
 
+.form1{
+    padding: 20px;
+}
+.form2{
+    padding: 20px;
+}
+.form3 {
+    margin-top: -30px;
+    padding: 20px;
+}
+.form4{
+    margin-top: -40px;
+    padding: 20px;
+}
 .form-group-row {
     display: flex;
     justify-content: space-between;
-    /* Giãn đều các nhóm */
     gap: 20px;
-    /* Khoảng cách giữa các cột */
 }
 
 /* Đặt chiều rộng mỗi cột */
 .form-group-create-product {
     flex: 1;
-    /* Mỗi cột sẽ chiếm 1 phần đều nhau */
 }
 
 /* Đảm bảo các input, textarea hiển thị tốt */
@@ -891,34 +834,32 @@ button.btn {
     background-color: #2980b9;
 }
 
-/* Responsive: Khi màn hình nhỏ hơn, chuyển về dạng cột */
-@media (max-width: 1366px) {
-    .form-group-row {
-        flex-direction: column;
-        /* Chuyển từ hàng sang cột trên màn hình nhỏ */
-    }
-}
 
 /* EDIT PRODUCT */
-.edit-container{
+.edit-container {
     display: flex;
     flex-direction: column;
 }
-.top{
+
+.top {
     display: flex;
 }
-.box{
+
+.box {
     flex: 1;
     padding: 20px;
 }
-.bottom{
+
+.bottom {
     margin-top: -34px;
     padding: 20px;
 }
-.btn-update-remove{
+
+.btn-update-remove {
     margin-top: -34px;
     padding: 20px;
 }
+
 .cancel-editproduct {
     background-color: #3498db;
     color: white;
@@ -935,4 +876,49 @@ button.btn {
 
 .cancel-editproduct:hover {
     background-color: #2980b9;
+}
+
+@media (max-width: 1366px) {
+    .myprofile-form {
+        height: 80%;
+    }
+}
+
+/* FIX screen 1366px of Category */
+@media (max-width: 1366px) {
+    table .table-bordered-category{
+        width: 100%;
+        max-width: 1366px;
+        table-layout: auto;
+        font-size: 12px;
+    }
+
+    .td-category,
+    .th-category {
+        padding: 15px;
+        word-wrap: break-word; 
+    }
+}
+
+/* FIX screen 1366px of Product */
+@media (max-width: 1366px){
+    table .table-bordered-product{
+        width: 100%;
+        max-width: 1366px;
+        table-layout: auto; 
+        font-size: 12px;
+        
+    }
+    .table-wrapper-product {
+        width: 100%;
+        overflow-x: auto; 
+        height: 50%;
+    }
+
+    .td-product,
+    .th-product {
+        padding: 15px;
+        word-wrap: break-word; 
+    }
+    
 }

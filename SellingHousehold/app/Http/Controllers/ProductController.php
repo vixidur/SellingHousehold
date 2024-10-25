@@ -125,4 +125,40 @@ class ProductController extends Controller
     {
         return view('products.phich');
     }
+    public function showDao()
+    {
+        return view('products.dao');
+    }
+    public function showThot()
+    {
+        return view('products.thot');
+    }
+    public function showMayep()
+    {
+        return view('products.mayep');
+    }
+    public function showAmsieutoc()
+    {
+        return view('products.amsieutoc');
+    }
+    public function showMayxay()
+    {
+        return view('products.mayxay');
+    }
+    public function showBepdien()
+    {
+        return view('products.bepdien');
+    }
+    public function showDungcu()
+    {
+        return view('products.dungcu');
+    }
+    public function showMaysaytoc()
+    {
+        return view('products.maysaytoc');
+    }
+    public function showBanchai()
+    {
+        return view('products.banchai');
+    }
 }

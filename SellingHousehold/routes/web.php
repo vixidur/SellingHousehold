@@ -60,7 +60,15 @@ Route::get('products/coc', [ProductController::class,'showCoc'])->name('products
 Route::get('products/binh', [ProductController::class,'showBinh'])->name('products.binh');
 Route::get('products/hop', [ProductController::class,'showHop'])->name('products.hop');
 Route::get('products/phich', [ProductController::class,'showPhich'])->name('products.phich');
-
+Route::get('products/dao', [ProductController::class,'showDao'])->name('products.dao');
+Route::get('products/dungcu', [ProductController::class,'showDungcu'])->name('products.dungcu');
+Route::get('products/mayep', [ProductController::class,'showMayep'])->name('products.mayep');
+Route::get('products/thot', [ProductController::class,'showThot'])->name('products.thot');
+Route::get('products/mayxay', [ProductController::class,'showMayxay'])->name('products.mayxay');
+Route::get('products/bepdien', [ProductController::class,'showBepdien'])->name('products.bepdien');
+Route::get('products/amsieutoc', [ProductController::class,'showAmsieutoc'])->name('products.amsieutoc');
+Route::get('products/maysaytoc', [ProductController::class,'showMaysaytoc'])->name('products.maysaytoc');
+Route::get('products/banchai', [ProductController::class,'showBanchai'])->name('products.banchai');
 // Route admin 
 Route::prefix('admin')->group(function() {
     // Hiển thị form đăng nhập admin

@@ -129,20 +129,20 @@
                         <div class="dropdown-content">
                             <div class="column">
                                 <h3>Bộ dao</h3>
-                                <a href="#">Dao gọt hoa quả Elmich Diamond </a>
-                                <a href="#">Dao thái Elmich Ultra Sharp</a>
-                                <a href="#">Dao đa năng Elmich Ultra Sharp</a>
+                                <a href="{{ route('products.dao')}}">Dao gọt hoa quả Elmich Diamond </a>
+                                <a href="{{ route('products.dao')}}">Dao thái Elmich Ultra Sharp</a>
+                                <a href="{{ route('products.dao')}}">Dao đa năng Elmich Ultra Sharp</a>
                             </div>
                             <div class="column">
                                 <h3>Bộ thớt</h3>
-                                <a href="#">Thớt an toàn- đa năng</a>
-                                <a href="#">Bộ thớt nhựa đa năng Smartcook</a>
-                                <a href="#">Bộ thớt nhựa đa năng Elmich</a>
+                                <a href="{{ route('products.thot')}}">Thớt an toàn- đa năng</a>
+                                <a href="{{ route('products.thot')}}">Bộ thớt nhựa đa năng Smartcook</a>
+                                <a href="{{ route('products.thot')}}">Bộ thớt nhựa đa năng Elmich</a>
                             </div>
                             <div class="column">
                                 <h3>Dụng cụ nhà bếp</h3>
-                                <a href="#">Hộp nhựa thực phẩm Elmich </a>
-                                <a href="#">Hộp đựng thực phẩm inox</a>
+                                <a href="{{ route('products.dungcu')}}">Hộp nhựa thực phẩm Elmich </a>
+                                <a href="{{ route('products.dungcu')}}">Hộp đựng thực phẩm inox</a>
                             </div>
                         </div>
                     </li>
@@ -151,17 +151,17 @@
                         <div class="dropdown-content">
                             <div class="column">
                                 <h3>Máy xay sinh tố</h3>
-                                <a href="#">Máy xay sinh tố</a>
-                                <a href="#">Máy xay sinh tố cầm tay</a>
-                                <a href="#">Máy xay sinh tố Elmich BLE</a>
-                                <a href="#">Máy xay sinh tố Elmich </a>
+                                <a href="{{ route('products.mayxay')}}">Máy xay sinh tố</a>
+                                <a href="{{ route('products.mayxay')}}">Máy xay sinh tố cầm tay</a>
+                                <a href="{{ route('products.mayxay')}}">Máy xay sinh tố Elmich BLE</a>
+                                <a href="{{ route('products.mayxay')}}">Máy xay sinh tố Elmich </a>
                             </div>
                             <div class="column">
                                 <h3>Máy ép chậm</h3>
-                                <a href="#">Máy ép chậm trái cây mini Smartcook</a>
-                                <a href="#">Máy ép chậm JEE-8723</a>
-                                <a href="#">BMáy ép chậm Elmich JEE-8759</a>
-                                <a href="#">Máy ép chậm Elmich JEE</a>
+                                <a href="{{ route('products.mayep')}}">Máy ép chậm trái cây mini Smartcook</a>
+                                <a href="{{ route('products.mayep')}}">Máy ép chậm JEE-8723</a>
+                                <a href="{{ route('products.mayep')}}">BMáy ép chậm Elmich JEE-8759</a>
+                                <a href="{{ route('products.mayep')}}">Máy ép chậm Elmich JEE</a>
                             </div>
                         </div>
                     </li>
@@ -170,13 +170,13 @@
                         <div class="dropdown-content">
                             <div class="column">
                                 <h3>Ấm siêu tốc</h3>
-                                <a href="#">Cốc giữ nhiệt Cốc giữ nhiệt inox 304 Elmich EL8312 </a>
-                                <a href="#">Cốc giữ nhiệt inox</a>
+                                <a href="{{ route('products.amsieutoc')}}">Ấm đun nước siêu tốc KEE-8458</a>
+                                <a href="{{ route('products.amsieutoc')}}">Ấm đun siêu tốc Smartcook 1.5L KES-3857</a>
                             </div>
                             <div class="column">
                                 <h3>Bếp điện</h3>
-                                <a href="#"></a>
-                                <a href="#">Bình đựng thức ăn giữ nhiệt inox 304 Elmich</a>
+                                <a href="{{ route('products.bepdien')}}">Bếp từ đơn</a>
+                                <a href="{{ route('products.bepdien')}}">Bếp từ đôi</a>
                             </div>
 
                         </div>
@@ -184,7 +184,16 @@
                     <li class="dropdown">
                         <a href="#">Chăm sóc thiết bị<i class="fa-solid fa-caret-down"></i> </a>
                         <div class="dropdown-content">
-
+                        <div class="column">
+                                <h3>Máy sấy tóc</h3>
+                                <a href="{{ route('products.maysaytoc')}}">Máy sấy tóc Elmich HDE-1823</a>
+                                <a href="{{ route('products.maysaytoc')}}">Máy sấy tóc Elmich </a>
+                            </div>
+                            <div class="column">
+                                <h3>Bàn chải điện</h3>
+                                <a href="{{ route('products.banchai')}}">Bàn chải đánh răng điện Elmich Procare TBE-8453</a>
+                                <a href="{{ route('products.banchai')}}">Bàn chải đánh răng điện Elmich53</a>
+                            </div>
                         </div>
                     </li>
                 </ul>

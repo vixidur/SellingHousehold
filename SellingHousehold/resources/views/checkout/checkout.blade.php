@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
 <title>UNETIHOUSEHOLD.COM | THANH TOÁN ĐƠN HÀNG</title>
 <link rel="shortcut icon" href="{{ asset('images/logo-home.png') }}" type="image/x-icon">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-3.2.6.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-aio-3.2.6.min.js"></script>
 <div class="checkout-container">
     <form action="{{ route('checkout.process') }}" method="POST">
         @csrf
@@ -17,25 +19,25 @@
                         <div class="form-group">
                             <label for="email">Email:</label><br>
                             <input type="email" name="email" id="email" class="form-control"
-                                value="{{ $user['email'] ?? '' }}" required>
+                                value="{{ old('email', $user->email) }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="name">Họ và tên:</label><br>
                             <input type="text" name="name" id="name" class="form-control"
-                                value="{{ $user['name'] ?? '' }}" required>
+                                value="{{ old('name', $user->full_name) }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="phone">Số điện thoại:</label><br>
                             <input type="text" name="phone" id="phone" class="form-control"
-                                value="{{ $user['phone'] ?? '' }}" required>
+                                value="{{ old('phone', $user->phone_number) }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="address">Địa chỉ:</label><br>
                             <input type="text" name="address" id="address" class="form-control"
-                                value="{{ $user['address'] ?? '' }}" required>
+                                value="{{ old('address', $user->address) }}" required>
                         </div>
 
                         <div class="form-group">
@@ -69,22 +71,22 @@
                         <h2>Thanh toán</h2>
                         <div class="form-sub-group">
                             <div class="form-group-pays">
-                                <input type="radio" name="payment_method" value="vnpay" id="vnpay">
+                                <input type="radio" name="payment_method" value="vnpay" id="vnpay" required>
                                 <label for="vnpay">Thanh toán bằng VNPAY</label>
                             </div>
 
                             <div class="form-group-pays">
-                                <input type="radio" name="payment_method" value="onepay_visa" id="onepay_visa">
+                                <input type="radio" name="payment_method" value="onepay_visa" id="onepay_visa" required>
                                 <label for="onepay_visa">OnePay - Thanh toán bằng thẻ quốc tế (Visa/MasterCard)</label>
                             </div>
 
                             <div class="form-group-pays">
-                                <input type="radio" name="payment_method" value="onepay_atm" id="onepay_atm">
+                                <input type="radio" name="payment_method" value="onepay_atm" id="onepay_atm" required>
                                 <label for="onepay_atm">OnePay - Thanh toán online qua thẻ nội địa (ATM)</label>
                             </div>
 
                             <div class="form-group-pays">
-                                <input type="radio" name="payment_method" value="cod" id="cod">
+                                <input type="radio" name="payment_method" value="cod" id="cod" required>
                                 <label for="cod">Thanh toán khi giao hàng (COD)</label>
                             </div>
                         </div>
@@ -94,21 +96,21 @@
 
             <div class="order-summary">
                 <div class="order-checkout">
-                    <h3>Đơn hàng ({{ array_sum(array_column($cart, 'quantity')) }} sản phẩm)</h3>
+                    <h3>Đơn hàng ({{ $totalQuantity }} sản phẩm)</h3>
                     <ul>
-                        @foreach ($cart as $productId => $product)
-                            @php
-                                // Tính giá sau giảm giá
-                                $priceAfterDiscount = $product['price'] * (1 - ($product['discount'] ?? 0) / 100);
-                            @endphp
-                            <li>
-                                <img src="{{ $product['image_url'] }}" alt="">
-                                {{ $product['name'] }}
-                                <span class="item-total" data-price="{{ $priceAfterDiscount }}"
-                                    data-quantity="{{ $product['quantity'] }}">
-                                    {{ number_format($priceAfterDiscount * $product['quantity'], 0, ',', '.') }}đ
-                                </span>
-                            </li>
+                        @foreach ($cartItems as $item)
+                        @php
+                        // Tính giá sau giảm giá
+                        $priceAfterDiscount = $item['price'] * (1 - ($item['discount'] ?? 0) / 100);
+                        @endphp
+                        <li>
+                            <img src="{{ $item->image_url }}" alt="">
+                            {{ $item->name }}
+                            <span class="item-total" data-price="{{ $priceAfterDiscount }}"
+                                data-quantity="{{ $item->quantity }}">
+                                {{ number_format($priceAfterDiscount * $item->quantity, 0, ',', '.') }}đ
+                            </span>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -121,13 +123,20 @@
                 </div>
             </div>
         </div>
-
-        <!-- Order Summary Section -->
     </form>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
+    // success message
+    @if(Session::has('success'))
+        Notiflix.Notify.success("{{ Session::get('success') }}");
+    @endif
+    // error message 
+    @if(Session::has('error'))
+        Notiflix.Notify.error("{{ Session::get('error') }}");
+    @endif
+
     var citis = document.getElementById("city");
     var districts = document.getElementById("district");
     var wards = document.getElementById("ward");

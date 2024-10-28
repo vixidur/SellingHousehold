@@ -13,7 +13,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\CheckoutController;
 // Route cho trang overview
 Route::get('overview', function () {
     return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần
@@ -40,15 +40,18 @@ Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCar
 // Route InforShop
 Route::get('/info-shop', [InfoController::class, 'index'])->name('info-shop.index');
 // Checkout
-Route::get('/checkout', [CartController::class, 'checkoutForm'])->name('cart.checkout');
-Route::post('/checkout', [CartController::class, 'processCheckout'])->name('checkout.process');
-Route::get('/order-success', function () {
-    return view('order.success');
-})->name('order.success');
-Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
+Route::get('/checkout', [CheckoutController::class, 'checkoutForm'])->name('checkout.form');
+Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
 
-// Route thanh toán
-// Route::get('payment', [PaymentController::class, 'paymentForm'])->name('payment');
+//Checkout VNPAY
+Route::post('/vnpayment', [CheckoutController::class, 'createPayment'])->name('payment');
+
+// Route quên mật khẩu
+// Route::get('/order-success', function () {
+//     return view('order.success');
+// })->name('order.success');
+
+Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
 
 // Route products submenu
 Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');

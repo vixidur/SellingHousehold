@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 28, 2024 at 02:32 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 28, 2024 lúc 09:10 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sellinghousehold`
+-- Cơ sở dữ liệu: `sellinghousehold`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addresses`
+-- Cấu trúc bảng cho bảng `addresses`
 --
 
 CREATE TABLE `addresses` (
@@ -36,7 +36,7 @@ CREATE TABLE `addresses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Cấu trúc bảng cho bảng `categories`
 --
 
 CREATE TABLE `categories` (
@@ -48,7 +48,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
@@ -62,7 +62,7 @@ INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Cấu trúc bảng cho bảng `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -78,7 +78,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Cấu trúc bảng cho bảng `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -88,7 +88,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Đang đổ dữ liệu cho bảng `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -116,42 +116,62 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `total_amount` decimal(10,2) NOT NULL,
-  `status` enum('pending','shipped','delivered','cancelled') NOT NULL DEFAULT 'pending',
+  `status` enum('pending','shipped','completed','cancelled') NOT NULL DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `total_amount`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 407480.00, 'pending', '2024-10-26 12:52:37', '2024-10-26 12:52:37'),
-(2, 2, 407480.00, 'pending', '2024-10-26 12:54:33', '2024-10-26 12:54:33'),
-(3, 2, 64800.00, 'pending', '2024-10-26 13:36:51', '2024-10-26 13:36:51'),
-(4, 2, 14880.00, 'pending', '2024-10-26 14:19:04', '2024-10-26 14:19:04'),
-(5, 2, 14880.00, 'pending', '2024-10-26 14:23:24', '2024-10-26 14:23:24'),
-(6, 2, 14880.00, 'pending', '2024-10-26 14:28:14', '2024-10-26 14:28:14'),
-(7, 2, 14880.00, 'pending', '2024-10-26 14:28:33', '2024-10-26 14:28:33'),
-(8, 2, 14880.00, 'pending', '2024-10-26 14:28:43', '2024-10-26 14:28:43'),
-(9, 2, 14880.00, 'pending', '2024-10-26 14:29:22', '2024-10-26 14:29:22'),
-(10, 2, 14880.00, 'pending', '2024-10-26 14:37:18', '2024-10-26 14:37:18'),
-(11, 2, 14880.00, 'pending', '2024-10-26 14:40:40', '2024-10-26 14:40:40'),
-(12, 2, 14880.00, 'pending', '2024-10-26 14:44:06', '2024-10-26 14:44:06'),
-(13, 2, 14880.00, 'pending', '2024-10-28 04:20:36', '2024-10-28 04:20:36'),
-(14, 2, 14880.00, 'pending', '2024-10-28 04:21:36', '2024-10-28 04:21:36');
+(40, 1, 102000.00, 'completed', '2024-10-28 09:54:49', '2024-10-28 09:55:20'),
+(41, 1, 102000.00, 'completed', '2024-10-28 10:02:06', '2024-10-28 10:02:34'),
+(42, 1, 102000.00, 'completed', '2024-10-28 10:03:35', '2024-10-28 10:03:58'),
+(43, 1, 102000.00, 'completed', '2024-10-28 10:05:05', '2024-10-28 10:05:31'),
+(44, 1, 102000.00, 'completed', '2024-10-28 10:10:37', '2024-10-28 10:11:06'),
+(45, 1, 102000.00, 'completed', '2024-10-28 10:13:26', '2024-10-28 10:13:57'),
+(46, 1, 102000.00, 'completed', '2024-10-28 10:20:39', '2024-10-28 10:21:28'),
+(47, 1, 102000.00, 'pending', '2024-10-28 10:23:37', '2024-10-28 10:23:37'),
+(48, 1, 102000.00, 'completed', '2024-10-28 10:24:09', '2024-10-28 10:24:29'),
+(49, 1, 204000.00, 'pending', '2024-10-28 11:31:32', '2024-10-28 11:31:32'),
+(50, 1, 204000.00, 'pending', '2024-10-28 11:35:32', '2024-10-28 11:35:32'),
+(51, 1, 64800.00, 'pending', '2024-10-28 11:36:08', '2024-10-28 11:36:08'),
+(52, 1, 1408000.00, 'pending', '2024-10-28 11:41:34', '2024-10-28 11:41:34'),
+(53, 1, 1408000.00, 'pending', '2024-10-28 11:42:48', '2024-10-28 11:42:48'),
+(54, 1, 1408000.00, 'pending', '2024-10-28 11:43:05', '2024-10-28 11:43:05'),
+(55, 1, 1408000.00, 'pending', '2024-10-28 11:46:00', '2024-10-28 11:46:00'),
+(56, 1, 1408000.00, 'pending', '2024-10-28 11:46:06', '2024-10-28 11:46:06'),
+(57, 1, 1408000.00, 'pending', '2024-10-28 11:54:36', '2024-10-28 11:54:36'),
+(58, 1, 1408000.00, 'completed', '2024-10-28 12:01:38', '2024-10-28 12:02:00'),
+(59, 1, 1408000.00, 'pending', '2024-10-28 12:05:07', '2024-10-28 12:05:07'),
+(60, 1, 1408000.00, 'completed', '2024-10-28 12:06:01', '2024-10-28 12:06:44'),
+(61, 1, 1408000.00, 'completed', '2024-10-28 12:41:55', '2024-10-28 12:42:20'),
+(62, 1, 1408000.00, 'pending', '2024-10-28 12:45:57', '2024-10-28 12:45:57'),
+(63, 1, 1408000.00, 'pending', '2024-10-28 12:46:59', '2024-10-28 12:46:59'),
+(64, 1, 1408000.00, 'pending', '2024-10-28 12:50:07', '2024-10-28 12:50:07'),
+(65, 1, 1408000.00, 'completed', '2024-10-28 12:51:41', '2024-10-28 12:52:13'),
+(66, 1, 1408000.00, 'pending', '2024-10-28 12:54:02', '2024-10-28 12:54:02'),
+(67, 1, 1408000.00, 'pending', '2024-10-28 12:54:16', '2024-10-28 12:54:16'),
+(68, 1, 1408000.00, 'pending', '2024-10-28 12:54:32', '2024-10-28 12:54:32'),
+(69, 1, 1408000.00, 'pending', '2024-10-28 12:55:40', '2024-10-28 12:55:40'),
+(70, 1, 1408000.00, 'pending', '2024-10-28 12:56:41', '2024-10-28 12:56:41'),
+(71, 1, 14880.00, 'pending', '2024-10-28 12:57:03', '2024-10-28 12:57:03'),
+(72, 1, 439120.00, 'completed', '2024-10-28 12:59:02', '2024-10-28 12:59:24'),
+(73, 1, 157920.00, 'completed', '2024-10-28 13:06:23', '2024-10-28 13:07:15');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_items`
+-- Cấu trúc bảng cho bảng `order_items`
 --
 
 CREATE TABLE `order_items` (
@@ -165,24 +185,51 @@ CREATE TABLE `order_items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `order_items`
+-- Đang đổ dữ liệu cho bảng `order_items`
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, `created_at`, `updated_at`) VALUES
-(1, 1, 9, 6, 89280.00, '2024-10-26 12:52:37', '2024-10-26 12:52:37'),
-(2, 1, 14, 1, 59000.00, '2024-10-26 12:52:37', '2024-10-26 12:52:37'),
-(3, 1, 8, 4, 259200.00, '2024-10-26 12:52:37', '2024-10-26 12:52:37'),
-(4, 2, 9, 6, 89280.00, '2024-10-26 12:54:33', '2024-10-26 12:54:33'),
-(5, 2, 14, 1, 59000.00, '2024-10-26 12:54:33', '2024-10-26 12:54:33'),
-(6, 2, 8, 4, 259200.00, '2024-10-26 12:54:33', '2024-10-26 12:54:33'),
-(7, 3, 8, 1, 64800.00, '2024-10-26 13:36:51', '2024-10-26 13:36:51'),
-(8, 7, 9, 1, 14880.00, '2024-10-26 14:28:33', '2024-10-26 14:28:33'),
-(9, 8, 9, 1, 14880.00, '2024-10-26 14:28:43', '2024-10-26 14:28:43');
+(11, 40, 13, 1, 102000.00, '2024-10-28 09:54:49', '2024-10-28 09:54:49'),
+(12, 41, 13, 1, 102000.00, '2024-10-28 10:02:06', '2024-10-28 10:02:06'),
+(13, 42, 13, 1, 102000.00, '2024-10-28 10:03:35', '2024-10-28 10:03:35'),
+(14, 43, 13, 1, 102000.00, '2024-10-28 10:05:05', '2024-10-28 10:05:05'),
+(15, 44, 13, 1, 102000.00, '2024-10-28 10:10:37', '2024-10-28 10:10:37'),
+(16, 45, 13, 1, 102000.00, '2024-10-28 10:13:26', '2024-10-28 10:13:26'),
+(17, 46, 13, 1, 102000.00, '2024-10-28 10:20:39', '2024-10-28 10:20:39'),
+(18, 47, 13, 1, 102000.00, '2024-10-28 10:23:37', '2024-10-28 10:23:37'),
+(19, 48, 13, 1, 102000.00, '2024-10-28 10:24:09', '2024-10-28 10:24:09'),
+(20, 49, 13, 2, 102000.00, '2024-10-28 11:31:32', '2024-10-28 11:31:32'),
+(21, 50, 13, 2, 102000.00, '2024-10-28 11:35:32', '2024-10-28 11:35:32'),
+(22, 51, 8, 1, 64800.00, '2024-10-28 11:36:08', '2024-10-28 11:36:08'),
+(23, 52, 5, 1, 1408000.00, '2024-10-28 11:41:34', '2024-10-28 11:41:34'),
+(24, 53, 5, 1, 1408000.00, '2024-10-28 11:42:48', '2024-10-28 11:42:48'),
+(25, 54, 5, 1, 1408000.00, '2024-10-28 11:43:05', '2024-10-28 11:43:05'),
+(26, 55, 5, 1, 1408000.00, '2024-10-28 11:46:00', '2024-10-28 11:46:00'),
+(27, 56, 5, 1, 1408000.00, '2024-10-28 11:46:06', '2024-10-28 11:46:06'),
+(28, 57, 5, 1, 1408000.00, '2024-10-28 11:54:36', '2024-10-28 11:54:36'),
+(29, 58, 5, 1, 1408000.00, '2024-10-28 12:01:38', '2024-10-28 12:01:38'),
+(30, 59, 5, 1, 1408000.00, '2024-10-28 12:05:07', '2024-10-28 12:05:07'),
+(31, 60, 5, 1, 1408000.00, '2024-10-28 12:06:01', '2024-10-28 12:06:01'),
+(32, 61, 5, 1, 1408000.00, '2024-10-28 12:41:55', '2024-10-28 12:41:55'),
+(33, 62, 5, 1, 1408000.00, '2024-10-28 12:45:57', '2024-10-28 12:45:57'),
+(34, 63, 5, 1, 1408000.00, '2024-10-28 12:46:59', '2024-10-28 12:46:59'),
+(35, 64, 5, 1, 1408000.00, '2024-10-28 12:50:07', '2024-10-28 12:50:07'),
+(36, 65, 5, 1, 1408000.00, '2024-10-28 12:51:41', '2024-10-28 12:51:41'),
+(37, 66, 5, 1, 1408000.00, '2024-10-28 12:54:02', '2024-10-28 12:54:02'),
+(38, 67, 5, 1, 1408000.00, '2024-10-28 12:54:16', '2024-10-28 12:54:16'),
+(39, 68, 5, 1, 1408000.00, '2024-10-28 12:54:32', '2024-10-28 12:54:32'),
+(40, 69, 5, 1, 1408000.00, '2024-10-28 12:55:40', '2024-10-28 12:55:40'),
+(41, 70, 5, 1, 1408000.00, '2024-10-28 12:56:41', '2024-10-28 12:56:41'),
+(42, 71, 9, 1, 14880.00, '2024-10-28 12:57:03', '2024-10-28 12:57:03'),
+(43, 72, 20, 1, 439120.00, '2024-10-28 12:59:02', '2024-10-28 12:59:02'),
+(44, 73, 8, 2, 64800.00, '2024-10-28 13:06:23', '2024-10-28 13:06:23'),
+(45, 73, 9, 1, 14880.00, '2024-10-28 13:06:24', '2024-10-28 13:06:24'),
+(46, 73, 10, 1, 13440.00, '2024-10-28 13:06:24', '2024-10-28 13:06:24');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Cấu trúc bảng cho bảng `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -194,7 +241,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payments`
+-- Cấu trúc bảng cho bảng `payments`
 --
 
 CREATE TABLE `payments` (
@@ -208,20 +255,49 @@ CREATE TABLE `payments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `payments`
+-- Đang đổ dữ liệu cho bảng `payments`
 --
 
 INSERT INTO `payments` (`id`, `order_id`, `payment_method`, `payment_status`, `payment_date`, `created_at`, `updated_at`) VALUES
-(1, 1, 'cod', 'pending', '2024-10-26 12:52:37', '2024-10-26 12:52:37', '2024-10-26 12:52:37'),
-(2, 2, 'cod', 'pending', '2024-10-26 12:54:33', '2024-10-26 12:54:33', '2024-10-26 12:54:33'),
-(3, 3, 'vnpay', 'pending', '2024-10-26 13:36:51', '2024-10-26 13:36:51', '2024-10-26 13:36:51'),
-(4, 7, 'cod', 'pending', '2024-10-26 14:28:33', '2024-10-26 14:28:33', '2024-10-26 14:28:33'),
-(5, 8, 'cod', 'pending', '2024-10-26 14:28:43', '2024-10-26 14:28:43', '2024-10-26 14:28:43');
+(7, 40, 'vnpay', 'pending', NULL, '2024-10-28 09:54:49', '2024-10-28 09:54:49'),
+(8, 41, 'vnpay', 'pending', NULL, '2024-10-28 10:02:06', '2024-10-28 10:02:06'),
+(9, 42, 'vnpay', 'pending', NULL, '2024-10-28 10:03:35', '2024-10-28 10:03:35'),
+(10, 43, 'vnpay', 'pending', NULL, '2024-10-28 10:05:05', '2024-10-28 10:05:05'),
+(11, 44, 'vnpay', 'pending', NULL, '2024-10-28 10:10:37', '2024-10-28 10:10:37'),
+(12, 45, 'vnpay', 'pending', NULL, '2024-10-28 10:13:26', '2024-10-28 10:13:26'),
+(13, 46, 'vnpay', 'pending', NULL, '2024-10-28 10:20:39', '2024-10-28 10:20:39'),
+(14, 47, 'vnpay', 'pending', NULL, '2024-10-28 10:23:37', '2024-10-28 10:23:37'),
+(15, 48, 'vnpay', 'pending', NULL, '2024-10-28 10:24:09', '2024-10-28 10:24:09'),
+(16, 49, 'vnpay', 'pending', NULL, '2024-10-28 11:31:32', '2024-10-28 11:31:32'),
+(17, 50, 'cod', 'pending', NULL, '2024-10-28 11:35:32', '2024-10-28 11:35:32'),
+(18, 51, 'cod', 'pending', NULL, '2024-10-28 11:36:08', '2024-10-28 11:36:08'),
+(19, 52, 'cod', 'pending', NULL, '2024-10-28 11:41:34', '2024-10-28 11:41:34'),
+(20, 53, 'cod', 'pending', NULL, '2024-10-28 11:42:48', '2024-10-28 11:42:48'),
+(21, 54, 'cod', 'pending', NULL, '2024-10-28 11:43:05', '2024-10-28 11:43:05'),
+(22, 55, 'cod', 'pending', NULL, '2024-10-28 11:46:00', '2024-10-28 11:46:00'),
+(23, 56, 'vnpay', 'pending', NULL, '2024-10-28 11:46:06', '2024-10-28 11:46:06'),
+(24, 57, 'vnpay', 'pending', NULL, '2024-10-28 11:54:36', '2024-10-28 11:54:36'),
+(25, 58, 'vnpay', 'pending', NULL, '2024-10-28 12:01:38', '2024-10-28 12:01:38'),
+(26, 59, 'cod', 'pending', NULL, '2024-10-28 12:05:07', '2024-10-28 12:05:07'),
+(27, 60, 'vnpay', 'pending', NULL, '2024-10-28 12:06:01', '2024-10-28 12:06:01'),
+(28, 61, 'vnpay', 'pending', NULL, '2024-10-28 12:41:55', '2024-10-28 12:41:55'),
+(29, 62, 'cod', 'pending', NULL, '2024-10-28 12:45:57', '2024-10-28 12:45:57'),
+(30, 63, 'cod', 'pending', NULL, '2024-10-28 12:46:59', '2024-10-28 12:46:59'),
+(31, 64, 'cod', 'pending', NULL, '2024-10-28 12:50:07', '2024-10-28 12:50:07'),
+(32, 65, 'vnpay', 'pending', NULL, '2024-10-28 12:51:41', '2024-10-28 12:51:41'),
+(33, 66, 'cod', 'pending', NULL, '2024-10-28 12:54:02', '2024-10-28 12:54:02'),
+(34, 67, 'cod', 'pending', NULL, '2024-10-28 12:54:16', '2024-10-28 12:54:16'),
+(35, 68, 'vnpay', 'pending', NULL, '2024-10-28 12:54:32', '2024-10-28 12:54:32'),
+(36, 69, 'cod', 'pending', NULL, '2024-10-28 12:55:40', '2024-10-28 12:55:40'),
+(37, 70, 'cod', 'pending', NULL, '2024-10-28 12:56:41', '2024-10-28 12:56:41'),
+(38, 71, 'cod', 'pending', NULL, '2024-10-28 12:57:03', '2024-10-28 12:57:03'),
+(39, 72, 'vnpay', 'pending', NULL, '2024-10-28 12:59:02', '2024-10-28 12:59:02'),
+(40, 73, 'vnpay', 'pending', NULL, '2024-10-28 13:06:24', '2024-10-28 13:06:24');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Cấu trúc bảng cho bảng `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -240,7 +316,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -257,7 +333,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `category_id`, `image_url`, `created_at`, `updated_at`, `discount`) VALUES
@@ -278,7 +354,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `quantity`, `categ
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Cấu trúc bảng cho bảng `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -294,7 +370,7 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shopping_carts`
+-- Cấu trúc bảng cho bảng `shopping_carts`
 --
 
 CREATE TABLE `shopping_carts` (
@@ -307,16 +383,19 @@ CREATE TABLE `shopping_carts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `shopping_carts`
+-- Đang đổ dữ liệu cho bảng `shopping_carts`
 --
 
 INSERT INTO `shopping_carts` (`id`, `user_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(12, 2, 9, 1, '2024-10-26 13:51:28', '2024-10-26 13:51:28');
+(13, 2, 5, 1, '2024-10-28 06:46:10', '2024-10-28 06:46:10'),
+(21, 1, 8, 2, '2024-10-28 13:05:51', '2024-10-28 13:06:01'),
+(22, 1, 9, 1, '2024-10-28 13:05:55', '2024-10-28 13:05:55'),
+(23, 1, 10, 1, '2024-10-28 13:05:59', '2024-10-28 13:05:59');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -336,7 +415,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `username`, `password`, `phone_number`, `address`, `role`, `email_verified_at`, `created_at`, `updated_at`, `agreed_to_terms`, `picture_url`) VALUES
@@ -345,43 +424,43 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `username`, `password`, `phone_
 (3, 'Võ Quốc Việt', 'tovuhoang123@gmail.com', 'hoangvu123', '$2y$10$AkOQIh95KyKnQ0kKhAocyeKq20UfJSTlOBRc90EigqsUmpUTqS.Mm', NULL, NULL, 'user', NULL, '2024-10-21 08:47:45', '2024-10-21 08:47:45', 1, NULL);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `addresses`
+-- Chỉ mục cho bảng `addresses`
 --
 ALTER TABLE `addresses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categories`
+-- Chỉ mục cho bảng `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `failed_jobs`
+-- Chỉ mục cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `migrations`
+-- Chỉ mục cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `orders_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `order_items`
+-- Chỉ mục cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
@@ -389,20 +468,20 @@ ALTER TABLE `order_items`
   ADD KEY `order_items_product_id_foreign` (`product_id`);
 
 --
--- Indexes for table `password_resets`
+-- Chỉ mục cho bảng `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `payments`
+-- Chỉ mục cho bảng `payments`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `payments_order_id_foreign` (`order_id`);
 
 --
--- Indexes for table `personal_access_tokens`
+-- Chỉ mục cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -410,14 +489,14 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `products_category_id_foreign` (`category_id`);
 
 --
--- Indexes for table `reviews`
+-- Chỉ mục cho bảng `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`),
@@ -425,7 +504,7 @@ ALTER TABLE `reviews`
   ADD KEY `reviews_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `shopping_carts`
+-- Chỉ mục cho bảng `shopping_carts`
 --
 ALTER TABLE `shopping_carts`
   ADD PRIMARY KEY (`id`),
@@ -433,7 +512,7 @@ ALTER TABLE `shopping_carts`
   ADD KEY `shopping_carts_product_id_foreign` (`product_id`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -441,119 +520,119 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_username_unique` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `addresses`
+-- AUTO_INCREMENT cho bảng `addresses`
 --
 ALTER TABLE `addresses`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT cho bảng `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT for table `order_items`
+-- AUTO_INCREMENT cho bảng `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT for table `payments`
+-- AUTO_INCREMENT cho bảng `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `reviews`
+-- AUTO_INCREMENT cho bảng `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `shopping_carts`
+-- AUTO_INCREMENT cho bảng `shopping_carts`
 --
 ALTER TABLE `shopping_carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `orders`
+-- Các ràng buộc cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `order_items`
+-- Các ràng buộc cho bảng `order_items`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `order_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `payments`
+-- Các ràng buộc cho bảng `payments`
 --
 ALTER TABLE `payments`
   ADD CONSTRAINT `payments_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
 
 --
--- Constraints for table `products`
+-- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `reviews`
+-- Các ràng buộc cho bảng `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `shopping_carts`
+-- Các ràng buộc cho bảng `shopping_carts`
 --
 ALTER TABLE `shopping_carts`
   ADD CONSTRAINT `shopping_carts_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),

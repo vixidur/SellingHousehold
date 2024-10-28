@@ -83,7 +83,7 @@
 
 <body>
     <div class="container">
-        <h1>Cảm ơn bạn {{ $orderData['name'] }} đã đặt hàng!</h1>
+        <h1>Cảm ơn bạn {{ $orderData['full_name'] }} đã đặt hàng!</h1>
         <p>Thông tin đơn hàng của bạn:</p>
 
         <h3>Địa chỉ giao hàng:</h3>
@@ -106,7 +106,7 @@
             <tbody>
                 @foreach ($orderData['cart'] as $item)
                     <tr>
-                        <td>{{ $item['id'] }}</td> 
+                        <td>{{ $orderData['order_id'] }}</td>
                         <td><img src="{{ $item['image_url'] }}" alt="{{ $item['name'] }}"></td>
                         <td>{{ $item['name'] }}</td>
                         <td>{{ $item['quantity'] }}</td>

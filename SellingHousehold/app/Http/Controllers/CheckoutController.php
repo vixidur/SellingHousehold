@@ -1,37 +1,42 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Payment;
+use App\Models\ShoppingCart;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\ShoppingCart;
-use Illuminate\Support\Facades\Mail;
-use App\Models\Order; 
-use App\Models\OrderItem; 
-use App\Models\Payment;
 use Illuminate\Support\Facades\Log;
-use Exception;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+
 class CheckoutController extends Controller
 {
     public function checkoutForm(Request $request)
     {
         $user = Auth::user();
-        $userId = Auth::user()->id; 
-        // $cart = Session::get('cart', []);
+        $userId = $user->id;
+
+// Retrieve cart items
         $cartItems = ShoppingCart::where('user_id', $userId)
-                                ->join('products', 'shopping_carts.product_id', '=', 'products.id')
-                                ->select('shopping_carts.*', 'products.name', 'products.price', 'products.image_url', 'products.discount')
-                                ->get();
-        if($cartItems->isEmpty()){
-            return redirect()->route('cart.show')->with('error', 'Gio hang cua ban hien dang trong!');
+            ->join('products', 'shopping_carts.product_id', '=', 'products.id')
+            ->select('shopping_carts.*', 'products.name', 'products.price', 'products.image_url', 'products.discount')
+            ->get();
+
+// Check for empty cart
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.show')->with('error', 'Giỏ hàng của bạn hiện đang trống!');
         }
-        // Tính tổng tiền (bao gồm giảm giá)
-        $totalPrice = $cartItems->sum(function($item){
-            $priceAfterDiscount = $item->price * (1 - ($item->discount?? 0) / 100);
-            return $priceAfterDiscount * $item->quantity;
+
+// Calculate total price
+        $totalPrice = $cartItems->sum(function ($item) {
+            return $item->price * (1 - ($item->discount ?? 0) / 100) * $item->quantity;
         });
 
-        $totalQuantity = ShoppingCart::where('user_id', $userId)->count();
+// Get total quantity
+        $totalQuantity = $cartItems->sum('quantity');
 
         return view('checkout.checkout', compact('cartItems', 'totalPrice', 'user', 'totalQuantity'));
     }
@@ -39,124 +44,157 @@ class CheckoutController extends Controller
     public function processCheckout(Request $request)
     {
         try {
+// Ensure the user is authenticated
             $user = Auth::user();
-            $userId = $user->id;
-    
-            // Lấy thông tin giỏ hàng từ database
-            $cartItems = ShoppingCart::where('user_id', $userId)
-                ->join('products', 'shopping_carts.product_id', '=', 'products.id')
-                ->select('shopping_carts.*', 'products.name', 'products.price', 'products.image_url', 'products.discount')
-                ->get();
-    
-            if ($cartItems->isEmpty()) {
-                return redirect()->route('cart.show')->with('error', 'Giỏ hàng của bạn hiện đang trống.');
+            if (!$user) {
+                Log::error('User not authenticated.');
+                return redirect()->route('checkout.form')->with('error', 'Bạn chưa đăng nhập.');
             }
-    
-            // Validate các input từ form checkout
-            $request->validate([
-                'name' => 'required|string',
+
+            $userId = $user->id;
+            Log::info('Bắt đầu processCheckout', ['user_id' => $userId, 'full_name' => $user->full_name]);
+
+// Ensure user full_name is available
+            if (!$user->full_name) {
+                Log::error('User full_name is missing.');
+                return redirect()->route('checkout.form')->with('error', 'Tên đầy đủ của bạn không được tìm thấy.');
+            }
+
+// Validate input data
+            $validator = Validator::make($request->all(), [
                 'email' => 'required|email',
                 'address' => 'required|string',
-                'payment_method' => 'required|in:vnpay,onepay_visa,onepay_atm,cod',
+                'payment_method' => 'required|in:vnpay,cod',
             ]);
-    
-            // Tính tổng số tiền
-            $totalAmount = $cartItems->sum(function ($item) {
-                $priceAfterDiscount = $item->price * (1 - ($item->discount ?? 0) / 100);
-                return $priceAfterDiscount * $item->quantity;
-            });
-    
-            // Nếu chọn VNPAY, chuyển hướng đến trang thanh toán của VNPAY
-            if ($request->input('payment_method') === 'vnpay') {
-                return $this->createPayment($request, $totalAmount);
+
+            if ($validator->fails()) {
+                Log::error('Validation failed', ['errors' => $validator->errors()->toArray()]);
+                return redirect()->route('checkout.form')->withErrors($validator)->withInput();
             }
-    
-            // Nếu không phải VNPAY, tiếp tục tạo đơn hàng
+
+// Retrieve cart items with product details
+            $cartItems = ShoppingCart::where('user_id', $userId)
+                ->join('products', 'shopping_carts.product_id', '=', 'products.id')
+                ->select('shopping_carts.*', 'products.name as product_name', 'products.price', 'products.image_url',
+                    'products.discount')
+                ->get();
+
+            if ($cartItems->isEmpty()) {
+                Log::error('Cart is empty', ['user_id' => $userId]);
+                return redirect()->route('checkout.form')->with('error', 'Giỏ hàng của bạn đang trống.');
+            }
+
+// Calculate total amount
+            $totalAmount = $cartItems->sum(function ($item) {
+                return $item->price * (1 - ($item->discount ?? 0) / 100) * $item->quantity;
+            });
+            Log::info('Calculated total amount', ['user_id' => $userId, 'total_amount' => $totalAmount]);
+
+// Create order
             $order = Order::create([
                 'user_id' => $userId,
                 'total_amount' => $totalAmount,
                 'status' => 'pending',
             ]);
-    
-            // Tạo các bản ghi order_items
+
+// Create order items
             foreach ($cartItems as $item) {
-                $priceAfterDiscount = $item->price * (1 - ($item->discount ?? 0) / 100);
-    
+                Log::info('Thêm sản phẩm vào đơn hàng', [
+                    'order_id' => $order->id,
+                    'product_id' => $item->product_id,
+                    'quantity' => $item->quantity,
+                    'price' => $item->price * (1 - ($item->discount ?? 0) / 100),
+                ]);
+
                 OrderItem::create([
                     'order_id' => $order->id,
                     'product_id' => $item->product_id,
                     'quantity' => $item->quantity,
-                    'price' => $priceAfterDiscount * $item->quantity,
+                    'price' => $item->price * (1 - ($item->discount ?? 0) / 100),
                 ]);
             }
-    
-            // Tạo bản ghi thanh toán
+
+// Create payment record
             Payment::create([
                 'order_id' => $order->id,
+                'amount' => $totalAmount,
                 'payment_method' => $request->input('payment_method'),
-                'payment_status' => 'pending',
-                'payment_date' => now(),
+                'status' => 'pending',
             ]);
-    
-            // Gửi email với thông tin đơn hàng
+
+// Handle payment based on selected method
+            if ($request->input('payment_method') === 'vnpay') {
+                return $this->createPayment($request, $order->id, $totalAmount);
+            }
+
+            Log::info('Đơn hàng đã được tạo', [
+                'order_id' => $order->id,
+                'total_amount' => $totalAmount,
+            ]);
+
+// Prepare order data for email
             $orderData = [
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
+                'full_name' => $user->full_name,
                 'address' => $request->input('address'),
                 'payment_method' => $request->input('payment_method'),
+                'order_id' => $order->id,
+                'total_price' => $totalAmount,
                 'cart' => $cartItems->map(function ($item) {
                     return [
-                        'name' => $item->name,
-                        'price' => $item->price,
-                        'discount' => $item->discount,
+                        'product_id' => $item->product_id,
                         'quantity' => $item->quantity,
+                        'price' => $item->price * (1 - ($item->discount ?? 0) / 100),
+                        'name' => $item->product_name,
                         'image_url' => $item->image_url,
                     ];
                 })->toArray(),
-                'total_price' => $totalAmount,
             ];
-    
-            try {
-                Mail::to($request->input('email'))->send(new \App\Mail\OrderPlaced($orderData));
-            } catch (Exception $e) {
-                Log::error('Email Sending Error: ' . $e->getMessage());
-                // Bạn có thể muốn lưu thông báo lỗi hoặc thêm thông báo cho người dùng
-            }
-    
-            // Xóa giỏ hàng sau khi xử lý đơn hàng thành công
+
+// Log the order data before sending the email
+            Log::info('Order Data:', $orderData);
+
+// Send confirmation email
+            Mail::to($request->input('email'))->send(new \App\Mail\OrderPlaced($orderData));
+
+// Clear shopping cart
             ShoppingCart::where('user_id', $userId)->delete();
-    
+
+            if ($request->input('payment_method') === 'cod') {
+                Log::info('Processing COD payment', ['user_id' => $userId, 'order_id' => $order->id]);
+                return redirect()->route('order.success')->with('success', 'Đơn hàng của bạn đã được xử lý thành công và email đã được gửi!');
+            }
+
+// Redirect to success page
             return redirect()->route('order.success')->with('success', 'Đơn hàng của bạn đã được xử lý thành công và email đã được gửi!');
+
         } catch (Exception $e) {
-            Log::error('Error: ' . $e->getMessage());
+            Log::error('Error in processCheckout', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
             return redirect()->route('checkout.form')->with('error', 'Xảy ra lỗi trong quá trình thanh toán!');
         }
     }
-    
-    
-    public function createPayment(Request $request, $totalAmount)
+
+    public function createPayment(Request $request, $orderId, $totalAmount)
     {
+// Kiểm tra đầu vào
+        Log::info('Creating payment', ['orderId' => $orderId, 'totalAmount' => $totalAmount]);
 
-        $order = Order::create([
-            'user_id' => Auth::user()->id,
-            'total_amount' => $totalAmount,
-            'status' => 'pending',
-        ]);
-
-        $orderId = $order->id;
-
+// Tạo URL thanh toán
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = route('order.success', ['order_id' => $orderId]); // URL sẽ được gọi lại sau khi thanh toán
-        $vnp_TmnCode = "JWZCW2Y5"; // Mã website tại VNPAY 
-        $vnp_HashSecret = "ARPLQUGJI86HW3P20I4QKAS3K1E176XU"; // Chuỗi bí mật
-        $vnp_TxnRef = $orderId; // Tham chiếu giao dịch
-        $vnp_OrderInfo = "Thanh toán đơn hàng #{$vnp_TxnRef}";
-        $vnp_OrderType = "billpayment"; // Kiểu đơn hàng
-        $vnp_Amount = $totalAmount * 100; // Số tiền (đơn vị là VND)
-        $vnp_Locale = "vn"; // Ngôn ngữ
-        $vnp_IpAddr = request()->ip(); // Địa chỉ IP của người dùng
-    
-        // Dữ liệu gửi đến VNPAY
+        $vnp_Returnurl = route('vnpay.callback');
+        $vnp_TmnCode = env('VNP_TMNCODE'); // Mã website tại VNPAY
+        $vnp_HashSecret = env('VNP_HASHSECRET'); // Chuỗi bí mật
+
+// Thông tin đơn hàng
+        $vnp_TxnRef = $orderId; // ID của đơn hàng
+        $vnp_OrderInfo = "Thanh toán hoá đơn";
+        $vnp_Amount = $totalAmount * 100; // Chuyển đổi sang đơn vị đồng
+        $vnp_Locale = "VN";
+        $vnp_IpAddr = request()->ip();
+
+// Tạo dữ liệu đầu vào
         $inputData = [
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
@@ -167,19 +205,22 @@ class CheckoutController extends Controller
             "vnp_IpAddr" => $vnp_IpAddr,
             "vnp_Locale" => $vnp_Locale,
             "vnp_OrderInfo" => $vnp_OrderInfo,
-            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_OrderType" => "billpayment",
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
         ];
-    
-        // Tạo mã bảo mật
+
+// Tạo chuỗi hash
         ksort($inputData);
         $hashdata = http_build_query($inputData);
         $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
-        $vnp_Url .= "?" . $hashdata . '&vnp_SecureHash=' . $vnpSecureHash;
-    
-        // Chuyển hướng đến VNPAY
-        return redirect($vnp_Url);
+        $vnp_Url .= '?' . $hashdata . '&vnp_SecureHash=' . $vnpSecureHash;
+
+        Log::info('Payment URL created: ' . $vnp_Url);
+
+// Chuyển hướng đến URL thanh toán
+        return redirect()->away($vnp_Url);
     }
-    
+
+
 }

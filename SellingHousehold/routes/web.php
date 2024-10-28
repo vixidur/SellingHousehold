@@ -1,27 +1,25 @@
-<?php 
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CartController;
+<?php
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Auth\PaymentController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
+
 // Route cho trang overview
 Route::get('overview', function () {
     return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần
 })->name('overview');
 // Route chính
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ProductController::class, 'showProducts'])->name('products.show');
 
 // Route đăng nhập
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -37,43 +35,44 @@ Route::get('/cart', [CartController::class, 'cartForm'])->name('cart.show');
 Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-// Route InforShop
-Route::get('/info-shop', [InfoController::class, 'index'])->name('info-shop.index');
 // Checkout
-Route::get('/checkout', [CheckoutController::class, 'checkoutForm'])->name('checkout.form');
-Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+Route::middleware('auth')->group(function () {
+// Checkout
+    Route::get('/checkout', [CheckoutController::class, 'checkoutForm'])->name('checkout.form');
+    Route::post('/checkout/process', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+});
+Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
 
 //Checkout VNPAY
 Route::post('/vnpayment', [CheckoutController::class, 'createPayment'])->name('payment');
+Route::get('/vnpay/callback', [PaymentController::class, 'vnpayCallback'])->name('vnpay.callback');
 
-// Route quên mật khẩu
-// Route::get('/order-success', function () {
-//     return view('order.success');
-// })->name('order.success');
 
-Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
-
+// Route InforShop
+Route::get('/info-shop', [InfoController::class, 'index'])->name('info-shop.index');
 // Route products submenu
-Route::get('products/noi-chao', [ProductController::class,'showNoiChao'])->name('products.noi-chao');
+Route::get('products/noi-chao', [ProductController::class, 'showNoiChao'])->name('products.noi-chao');
 
 // Route to display products
 Route::get('/overview', [ProductController::class, 'showProducts'])->name('products.show');
-Route::get('products/chao', [ProductController::class,'showChao'])->name('products.chao');
-Route::get('products/coc', [ProductController::class,'showCoc'])->name('products.coc');
-Route::get('products/binh', [ProductController::class,'showBinh'])->name('products.binh');
-Route::get('products/hop', [ProductController::class,'showHop'])->name('products.hop');
-Route::get('products/phich', [ProductController::class,'showPhich'])->name('products.phich');
-Route::get('products/dao', [ProductController::class,'showDao'])->name('products.dao');
-Route::get('products/dungcu', [ProductController::class,'showDungcu'])->name('products.dungcu');
-Route::get('products/mayep', [ProductController::class,'showMayep'])->name('products.mayep');
-Route::get('products/thot', [ProductController::class,'showThot'])->name('products.thot');
-Route::get('products/mayxay', [ProductController::class,'showMayxay'])->name('products.mayxay');
-Route::get('products/bepdien', [ProductController::class,'showBepdien'])->name('products.bepdien');
-Route::get('products/amsieutoc', [ProductController::class,'showAmsieutoc'])->name('products.amsieutoc');
-Route::get('products/maysaytoc', [ProductController::class,'showMaysaytoc'])->name('products.maysaytoc');
-Route::get('products/banchai', [ProductController::class,'showBanchai'])->name('products.banchai');
-// Route admin 
-Route::prefix('admin')->group(function() {
+Route::prefix('products')->group(function(){
+    Route::get('chao', [ProductController::class, 'showChao'])->name('products.chao');
+    Route::get('coc', [ProductController::class, 'showCoc'])->name('products.coc');
+    Route::get('binh', [ProductController::class, 'showBinh'])->name('products.binh');
+    Route::get('hop', [ProductController::class, 'showHop'])->name('products.hop');
+    Route::get('phich', [ProductController::class, 'showPhich'])->name('products.phich');
+    Route::get('dao', [ProductController::class, 'showDao'])->name('products.dao');
+    Route::get('dungcu', [ProductController::class, 'showDungcu'])->name('products.dungcu');
+    Route::get('mayep', [ProductController::class, 'showMayep'])->name('products.mayep');
+    Route::get('thot', [ProductController::class, 'showThot'])->name('products.thot');
+    Route::get('mayxay', [ProductController::class, 'showMayxay'])->name('products.mayxay');
+    Route::get('bepdien', [ProductController::class, 'showBepdien'])->name('products.bepdien');
+    Route::get('amsieutoc', [ProductController::class, 'showAmsieutoc'])->name('products.amsieutoc');
+    Route::get('maysaytoc', [ProductController::class, 'showMaysaytoc'])->name('products.maysaytoc');
+    Route::get('banchai', [ProductController::class, 'showBanchai'])->name('products.banchai');
+});
+// Route admin
+Route::prefix('admin')->group(function () {
     // Hiển thị form đăng nhập admin
     Route::get('auth/login', [AuthController::class, 'AdminLogin'])->name('admin.login');
 
@@ -120,7 +119,7 @@ Route::prefix('admin')->group(function() {
 });
 // Route yêu cầu xác thực email
 Route::get('/email/verify', function () {
-    return view('auth.verify');  // Tạo trang auth.verify để người dùng xác thực email
+    return view('auth.verify'); // Tạo trang auth.verify để người dùng xác thực email
 })->middleware('auth')->name('verification.notice');
 
 // Route xử lý xác thực email khi người dùng nhấp vào liên kết trong email

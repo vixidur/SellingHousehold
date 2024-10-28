@@ -63,9 +63,7 @@
 
         img {
             max-width: 50px;
-            /* Đặt kích thước tối đa cho ảnh */
             border-radius: 4px;
-            /* Bo góc ảnh */
         }
 
         .total {
@@ -92,12 +90,13 @@
         <p>{{ $orderData['address'] }}</p>
 
         <h3>Phương thức thanh toán:</h3>
-        <p>{{ $orderData['payment_method'] == 'cod' ? 'Thanh toán khi giao hàng (COD)' : 'Thanh toán online' }}</p>
+        <p>{{ $orderData['payment_method'] }}</p>
 
         <h3>Thông tin sản phẩm:</h3>
         <table>
             <thead>
                 <tr>
+                    <th>Mã đơn hàng</th>
                     <th>Ảnh</th>
                     <th>Tên sản phẩm</th>
                     <th>Số lượng</th>
@@ -107,10 +106,11 @@
             <tbody>
                 @foreach ($orderData['cart'] as $item)
                     <tr>
+                        <td>{{ $item['id'] }}</td> 
                         <td><img src="{{ $item['image_url'] }}" alt="{{ $item['name'] }}"></td>
                         <td>{{ $item['name'] }}</td>
                         <td>{{ $item['quantity'] }}</td>
-                        <td>{{ number_format($item['price'], 0) }}đ</td>
+                        <td>{{ number_format($item['price'] * (1 - ($item['discount'] ?? 0) / 100), 0) }}đ</td>
                     </tr>
                 @endforeach
             </tbody>

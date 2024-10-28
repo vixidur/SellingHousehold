@@ -10,6 +10,8 @@
     <link rel="icon" href="{{ asset('images/logo-home.png') }}" type="image/x-icon" />
     <!-- Thêm link SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-3.2.6.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-aio-3.2.6.min.js"></script>
 </head>
 
 <body class="login-page">
@@ -70,6 +72,14 @@
             icon.classList.toggle('fa-eye');
             icon.classList.toggle('fa-eye-slash');
         });
+
+        @if (Session::has('success'))
+            Notiflix.Notify.success("{{ Session::get('success') }}");
+        @endif
+        // error message 
+        @if (Session::has('error'))
+            Notiflix.Notify.error("{{ Session::get('error') }}");
+        @endif
     </script>
 
     @if (session('verify_email'))

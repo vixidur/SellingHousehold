@@ -17,7 +17,7 @@
     <div class="cart-container">
         <h3>GIỎ HÀNG</h3>
         {{-- Kiểm tra xem giỏ hàng có sản phẩm không --}}
-        @if (empty($cart))
+        @if (empty($cart) || !is_array($cart) || count($cart) === 0)
             <div class="empty-cart">
                 <p>Không có sản phẩm nào. Quay lại <a href="{{ url('/overview') }}" class="store-link">cửa hàng</a> để
                     tiếp tục mua sắm.</p>
@@ -78,7 +78,7 @@
                 </table>
             </div>
             <div class="payment">
-                <form action="{{ route('cart.checkout') }}" method="GET" class="quantity-form">
+                <form action="{{ route('checkout.form') }}" method="GET" class="quantity-form">
                     <p>Tổng tiền: <span id="total-cart-price">{{ number_format($totalPrice ?? 0, 0) }}đ</span></p>
                     @csrf
 
@@ -113,8 +113,7 @@
             const quantity = parseInt(quantityInput.value) || 0; // Đảm bảo giá trị số
             const totalPrice = unitPrice * quantity; // Tính tổng
             totalPriceCell.textContent = `${totalPrice.toLocaleString()}đ`; // Cập nhật tổng tiền cho sản phẩm
-            totalPriceCell.setAttribute('data-price',
-            totalPrice); // Lưu giá vào thuộc tính để dễ tính toán tổng giỏ hàng
+            totalPriceCell.setAttribute('data-price', totalPrice); // Lưu giá vào thuộc tính để dễ tính toán tổng giỏ hàng
             updateCartTotal(); // Cập nhật tổng giỏ hàng
         }
 
@@ -122,12 +121,10 @@
         function updateCartTotal() {
             let cartTotal = 0;
             document.querySelectorAll('.total-price-cell').forEach(cell => {
-                const price = parseFloat(cell.getAttribute('data-price').replace(/\./g, '').replace('đ',
-                    '')) || 0; // Lấy giá trị từ thuộc tính
+                const price = parseFloat(cell.getAttribute('data-price').replace(/\./g, '').replace('đ', '')) || 0; // Lấy giá trị từ thuộc tính
                 cartTotal += price; // Cộng dồn vào tổng giỏ hàng
             });
-            document.getElementById('total-cart-price').textContent =
-            `${cartTotal.toLocaleString()}đ`; // Cập nhật tổng giỏ hàng
+            document.getElementById('total-cart-price').textContent = `${cartTotal.toLocaleString()}đ`; // Cập nhật tổng giỏ hàng
         }
 
         // Sự kiện nhấp vào nút tăng

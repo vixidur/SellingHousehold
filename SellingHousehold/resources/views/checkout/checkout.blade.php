@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="name">Họ và tên:</label><br>
                             <input type="text" name="name" id="name" class="form-control"
-                                value="{{ old('name', $user->full_name) }}" required>
+                                value="{{ old('full_name', $user->full_name) }}" required>
                         </div>
 
                         <div class="form-group">
@@ -76,7 +76,8 @@
                             </div>
 
                             <div class="form-group-pays">
-                                <input type="radio" name="payment_method" value="onepay_visa" id="onepay_visa" required>
+                                <input type="radio" name="payment_method" value="onepay_visa" id="onepay_visa"
+                                    required>
                                 <label for="onepay_visa">OnePay - Thanh toán bằng thẻ quốc tế (Visa/MasterCard)</label>
                             </div>
 
@@ -99,18 +100,18 @@
                     <h3>Đơn hàng ({{ $totalQuantity }} sản phẩm)</h3>
                     <ul>
                         @foreach ($cartItems as $item)
-                        @php
-                        // Tính giá sau giảm giá
-                        $priceAfterDiscount = $item['price'] * (1 - ($item['discount'] ?? 0) / 100);
-                        @endphp
-                        <li>
-                            <img src="{{ $item->image_url }}" alt="">
-                            {{ $item->name }}
-                            <span class="item-total" data-price="{{ $priceAfterDiscount }}"
-                                data-quantity="{{ $item->quantity }}">
-                                {{ number_format($priceAfterDiscount * $item->quantity, 0, ',', '.') }}đ
-                            </span>
-                        </li>
+                            @php
+                                // Tính giá sau giảm giá
+                                $priceAfterDiscount = $item['price'] * (1 - ($item['discount'] ?? 0) / 100);
+                            @endphp
+                            <li>
+                                <img src="{{ $item->image_url }}" alt="">
+                                {{ $item->name }}
+                                <span class="item-total" data-price="{{ $priceAfterDiscount }}"
+                                    data-quantity="{{ $item->quantity }}">
+                                    {{ number_format($priceAfterDiscount * $item->quantity, 0, ',', '.') }}đ
+                                </span>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -129,11 +130,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script>
     // success message
-    @if(Session::has('success'))
+    @if (Session::has('success'))
         Notiflix.Notify.success("{{ Session::get('success') }}");
     @endif
     // error message 
-    @if(Session::has('error'))
+    @if (Session::has('error'))
         Notiflix.Notify.error("{{ Session::get('error') }}");
     @endif
 

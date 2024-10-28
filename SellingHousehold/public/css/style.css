@@ -11,7 +11,7 @@ body {
 }
 
 .product-container {
-    max-width: 1200px;
+    max-width: 1350px;
     margin: 0 auto;
     background-color: white;
     padding: 20px;
@@ -78,7 +78,6 @@ body {
 .product-section h2 {
     color: #e53935;
     margin-bottom: 20px;
-    text-transform: uppercase;
 }
 
 .product-list {
@@ -98,9 +97,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 23%;
     margin-bottom: 20px;
-    padding: 10px;
     position: relative;
-    text-align: center;
 }
 
 .product-card img {

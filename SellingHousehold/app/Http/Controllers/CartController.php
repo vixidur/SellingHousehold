@@ -4,139 +4,117 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session; // Correctly import the Session facade
 use App\Models\Product; // Make sure to import your Product model
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ShoppingCart;
+use Illuminate\Support\Facades\Log;
 class CartController extends Controller
 {
     public function cartForm()
     {
-        $cart = Session::get('cart', []);
-        return view('cart.cart', compact('cart'));
+        $userId = Auth::user()->id;
+        if (!$userId) {
+            return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
+        }
+    
+        // Lấy các sản phẩm trong giỏ hàng của người dùng
+        $cartItems = ShoppingCart::where('user_id', $userId)
+            ->join('products', 'shopping_carts.product_id', '=', 'products.id')
+            ->select('shopping_carts.*', 'products.name', 'products.price', 'products.image_url', 'products.discount')
+            ->get();
+    
+        // Kiểm tra xem giỏ hàng có sản phẩm không
+        if ($cartItems->isEmpty()) {
+            return view('cart.cart', [
+                'cart' => [], // Trả về giỏ hàng rỗng
+                'totalPrice' => 0, // Tổng giá là 0 nếu không có sản phẩm
+                'totalQuantity' => 0 // Tổng số lượng là 0 nếu không có sản phẩm
+            ]);
+        }
+    
+        // Chuyển đổi dữ liệu thành mảng
+        $cart = $cartItems->mapWithKeys(function ($item) {
+            return [
+                $item->product_id => [
+                    'name' => $item->name,
+                    'price' => $item->price,
+                    'image_url' => $item->image_url,
+                    'discount' => $item->discount,
+                    'quantity' => $item->quantity,
+                ]
+            ];
+        })->toArray();
+    
+        // Tính tổng giá
+        $totalPrice = $cartItems->sum(function ($item) {
+            $priceAfterDiscount = $item->price * (1 - ($item->discount ?? 0) / 100);
+            return $priceAfterDiscount * $item->quantity;
+        });
+    
+    
+        // Trả về view với dữ liệu giỏ hàng
+        return view('cart.cart', compact('cart', 'totalPrice'));
     }
+    
+        
 
     public function addToCart(Request $request, $productId)
     {
-        $cart = Session::get('cart', []);
-        $product = Product::findOrFail($productId);
-
-        if (isset($cart[$productId])) {
-        // Nếu sản phẩm đã có trong giỏ, chỉ tăng số lượng
-            $cart[$productId]['quantity'] += 1;
-        } else {
-        // Thêm sản phẩm mới vào giỏ hàng
-        $cart[$productId] = [
-            'name' => $product->name,
-            'price' => $product->price, // Lưu giá đã giảm
-            'discount' => $product->discount, // Lưu phần trăm giảm giá
-            'image_url' => $product->image_url,
-            'quantity' => 1,
-        ];
+        if(!Auth::check()){
+            return redirect()->route('login')->with('error', 'Vui long dang nhap de them vao gio hang');
         }
 
-        // Lưu giỏ hàng vào session
-        Session::put('cart', $cart);
+        $userId = Auth::user()->id; // Lấy ID người dùng đang đăng nhập
+
+        $cartItem = ShoppingCart::where('user_id', $userId)
+                                ->where('product_id', $productId)
+                                ->first();
+        
+        if ($cartItem) {
+            // Nếu sản phẩm đã tồn tại trong giỏ, tăng số lượng lên
+            $cartItem->quantity += 1;
+            $cartItem->save();
+        } else {
+            // Tạo sản phẩm mới trong giỏ hàng
+            $product = Product::findOrFail($productId);
+            ShoppingCart::create([
+                'user_id' => $userId,
+                'product_id' => $productId,
+                'quantity' => 1,
+            ]);
+        }
+    
         return redirect()->route('cart.show')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng!');
     }
-
-
-
-
-
+    
     public function updateCart(Request $request)
     {
-        $cart = Session::get('cart', []);
+        $userId = Auth::user()->id; // Lấy ID người dùng
         $quantities = $request->input('quantities', []);
-        foreach($quantities as $productId => $quantity){
-            if($quantity <= 0){
-                unset($cart[$productId]); // xoá sp khi số lượng về 0 hoặc nhỏ hơn
-            }else{
-                $cart[$productId]['quantity'] = $quantity;
+    
+        foreach ($quantities as $productId => $quantity) {
+            if ($quantity <= 0) {
+                // Xóa mục nếu số lượng <= 0
+                ShoppingCart::where('user_id', $userId)
+                            ->where('product_id', $productId)
+                            ->delete();
+            } else {
+                // Cập nhật số lượng
+                ShoppingCart::where('user_id', $userId)
+                            ->where('product_id', $productId)
+                            ->update(['quantity' => $quantity]);
             }
         }
-        Session::put('cart', $cart); // Cập nhật giỏ hàng trong session
+    
         return redirect()->route('cart.show')->with('success', 'Giỏ hàng đã được cập nhật!');
     }
-
+    
     public function removeFromCart($productId)
     {
-        $cart = session()->get('cart', []);
+        $userId = Auth::user()->id;
+        ShoppingCart::where('user_id', $userId)->where('product_id', $productId)->delete();
 
-        // Xoá sản phẩm khỏi giỏ hàng
-        if (isset($cart[$productId])) {
-            unset($cart[$productId]);
-            session()->put('cart', $cart);
-        }
-
-        return redirect()->route('cart.show')->with('success', 'Sản phẩm đã được xoá khỏi giỏ hàng.');
+        return redirect()->route('cart.show')->with('success', 'San pham da duoc xoa khoi gio hang');
     }
-
-    public function checkoutForm(Request $request)
-    {
-        $user = session('user');
-        $cart = Session::get('cart', []);
-
-        if (empty($cart)) {
-            return redirect()->route('cart.show')->with('error', 'Giỏ hàng của bạn hiện đang trống.');
-        }
-
-        // Tính tổng tiền (bao gồm giảm giá)
-        $totalPrice = 0;
-        foreach ($cart as $productId => $item) {
-            $priceAfterDiscount = $item['price'] * (1 - ($item['discount'] ?? 0) / 100);
-            $totalPrice += $priceAfterDiscount * $item['quantity'];
-        }
-
-        return view('checkout.checkout', compact('cart', 'totalPrice', 'user'));
-    }
-
-
-
-
-    public function processCheckout(Request $request)
-    {
-        $cart = Session::get('cart', []);
-
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $address = $request->input('address');
-        $paymentMethod = $request->input('payment_method');
-        $quantities = $request->input('quantities', []);
-
-        // Kiểm tra số lượng
-        foreach ($quantities as $productId => $quantity) {
-            if ($quantity <= 0) { 
-                return redirect()->back()->with('error', 'Số lượng không hợp lệ cho sản phẩm: ' . $productId);
-            }
-        }
-
-        // Kiểm tra email
-        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return redirect()->back()->with('error', 'Địa chỉ email không hợp lệ.');
-        }
-
-        // Chuẩn bị dữ liệu đơn hàng
-        $orderData = [
-            'name' => $name,
-            'email' => $email,
-            'address' => $address,
-            'payment_method' => $paymentMethod,
-            'cart' => $cart,
-            'total_price' => array_sum(array_map(function($item) {
-            $priceAfterDiscount = $item['price'] * (1 - $item['discount'] / 100);
-                return $priceAfterDiscount * $item['quantity'];
-            }, $cart)),
-        ];
-
-        // Gửi email đơn hàng
-        Mail::to($email)->send(new \App\Mail\OrderPlaced($orderData));
-
-        // Xóa giỏ hàng
-        Session::forget('cart');
-
-        return redirect()->route('order.success')->with('success', 'Đơn hàng của bạn đã được xử lý thành công và email đã được gửi!');
-    }
-
-
+        
 }

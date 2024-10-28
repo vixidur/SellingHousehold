@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('fontawesome-free-6.6.0-web/css/all.min.css') }}">
     <link rel="icon" href="{{ asset('images/logo-home.png') }}" type="image/x-icon" />
     <link rel="stylesheet" href="{{ asset('css/overview.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-3.2.6.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-aio-3.2.6.min.js"></script>
 </head>
@@ -104,7 +103,7 @@
         Notiflix.Notify.success("{{ Session::get('success') }}");
     @endif
     // error message 
-    @if (Session::has('success'))
+    @if (Session::has('error'))
         Notiflix.Notify.error("{{ Session::get('error') }}");
     @endif
 </script>

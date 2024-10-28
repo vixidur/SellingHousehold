@@ -1,4 +1,3 @@
-
 @include('layouts.header')
 <link rel="stylesheet" href="{{ asset('css/products.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -71,8 +70,8 @@
 </div>
 
 <div class="product-section">
-        <h2>CÁC SẢN PHẨM CÓ LIÊN QUAN</h2>
-        <div class="product-container">
+    <h2>CÁC SẢN PHẨM CÓ LIÊN QUAN</h2>
+    <div class="product-container">
             <div class="product-card">
                 <div class="discount">Giảm 50%</div>
                 <img src="{{ asset(path: 'images/Products/hopcom3.png') }}" alt="Product 3">

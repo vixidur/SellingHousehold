@@ -12,48 +12,48 @@ class CartController extends Controller
 {
     public function cartForm()
     {
-        $userId = Auth::user()->id;
-        if (!$userId) {
+        if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
+        }else{
+            $userId = Auth::user()->id;
+            // Lấy các sản phẩm trong giỏ hàng của người dùng
+            $cartItems = ShoppingCart::where('user_id', $userId)
+                ->join('products', 'shopping_carts.product_id', '=', 'products.id')
+                ->select('shopping_carts.*', 'products.name', 'products.price', 'products.image_url', 'products.discount')
+                ->get();
+        
+            // Kiểm tra xem giỏ hàng có sản phẩm không
+            if ($cartItems->isEmpty()) {
+                return view('cart.cart', [
+                    'cart' => [], // Trả về giỏ hàng rỗng
+                    'totalPrice' => 0, // Tổng giá là 0 nếu không có sản phẩm
+                    'totalQuantity' => 0 // Tổng số lượng là 0 nếu không có sản phẩm
+                ]);
+            }
+        
+            // Chuyển đổi dữ liệu thành mảng
+            $cart = $cartItems->mapWithKeys(function ($item) {
+                return [
+                    $item->product_id => [
+                        'name' => $item->name,
+                        'price' => $item->price,
+                        'image_url' => $item->image_url,
+                        'discount' => $item->discount,
+                        'quantity' => $item->quantity,
+                    ]
+                ];
+            })->toArray();
+        
+            // Tính tổng giá
+            $totalPrice = $cartItems->sum(function ($item) {
+                $priceAfterDiscount = $item->price * (1 - ($item->discount ?? 0) / 100);
+                return $priceAfterDiscount * $item->quantity;
+            });
+        
+        
+            // Trả về view với dữ liệu giỏ hàng
+            return view('cart.cart', compact('cart', 'totalPrice'));
         }
-    
-        // Lấy các sản phẩm trong giỏ hàng của người dùng
-        $cartItems = ShoppingCart::where('user_id', $userId)
-            ->join('products', 'shopping_carts.product_id', '=', 'products.id')
-            ->select('shopping_carts.*', 'products.name', 'products.price', 'products.image_url', 'products.discount')
-            ->get();
-    
-        // Kiểm tra xem giỏ hàng có sản phẩm không
-        if ($cartItems->isEmpty()) {
-            return view('cart.cart', [
-                'cart' => [], // Trả về giỏ hàng rỗng
-                'totalPrice' => 0, // Tổng giá là 0 nếu không có sản phẩm
-                'totalQuantity' => 0 // Tổng số lượng là 0 nếu không có sản phẩm
-            ]);
-        }
-    
-        // Chuyển đổi dữ liệu thành mảng
-        $cart = $cartItems->mapWithKeys(function ($item) {
-            return [
-                $item->product_id => [
-                    'name' => $item->name,
-                    'price' => $item->price,
-                    'image_url' => $item->image_url,
-                    'discount' => $item->discount,
-                    'quantity' => $item->quantity,
-                ]
-            ];
-        })->toArray();
-    
-        // Tính tổng giá
-        $totalPrice = $cartItems->sum(function ($item) {
-            $priceAfterDiscount = $item->price * (1 - ($item->discount ?? 0) / 100);
-            return $priceAfterDiscount * $item->quantity;
-        });
-    
-    
-        // Trả về view với dữ liệu giỏ hàng
-        return view('cart.cart', compact('cart', 'totalPrice'));
     }
     
         

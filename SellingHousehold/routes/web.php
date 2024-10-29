@@ -15,9 +15,9 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 // Route cho trang overview
-Route::get('overview', function () {
-    return view('overview.overview'); // Điều chỉnh đường dẫn view nếu cần
-})->name('overview');
+// Route::get('/', function () {
+//     return view('index'); // Điều chỉnh đường dẫn view nếu cần
+// });
 // Route chính
 Route::get('/', [ProductController::class, 'showProducts'])->name('products.show');
 

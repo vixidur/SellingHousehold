@@ -93,9 +93,64 @@
         @endif
     </div>
 </div>
-
 <br>
 
+{{-- SHOW NOTIFY --}}
+<div class="overlay" id="signupForm">
+    <div class="notify-container">
+        <button class="close-btn" onclick="closeForm()">✖</button>
+        <center><img src="{{ asset('images/notify-img.png') }}" alt="logo" class="logo"></center>
+
+        <form class="registration-form">
+            <div class="success-info-customer">
+                <div class="name-customer">
+                    <label for="name">Tên của bạn*</label>
+                    <input type="text" id="name" placeholder="">
+                </div>
+
+                <div class="phone-customer">
+                    <label for="phone">Số điện thoại*</label>
+                    <div class="phone-wrapper">
+                        <span class="country-code"><img src="{{ asset('images/flag-VN.png') }}" alt="Vietnam Flag">
+                            +84</span>
+                        <input type="tel" id="phone" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+            <label for="email">Email*</label>
+            <input type="email" id="email" placeholder="">
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="agreement">
+                <label for="agreement">Bằng cách chọn hộp này, bạn đồng ý với Điều khoản sử dụng của chúng tôi và đồng ý
+                    với <a href="#">Privacy Policy</a>*</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Đăng ký nhận code</button>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    // Hàm hiển thị form khi tải trang
+    window.onload = function() {
+        setTimeout(function() {
+            const overlay = document.getElementById("signupForm");
+            overlay.classList.add('show'); 
+        }, 800); 
+    };
+
+    // Hàm để đóng form
+    function closeForm() {
+        const overlay = document.getElementById("signupForm");
+        overlay.classList.remove('show');
+        setTimeout(() => {
+            overlay.style.display = 'none'; 
+        }, 400);
+    }
+</script>
 
 <script>
     // success message

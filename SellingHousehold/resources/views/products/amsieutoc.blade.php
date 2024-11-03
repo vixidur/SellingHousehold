@@ -1,6 +1,7 @@
 @include('layouts.header')
 <link rel="stylesheet" href="{{ asset('css/products.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 <div class="header">
     <div class="header-item"><img src="{{ asset('images/icon/img_poli_1.png') }}" alt=""> <b>FREESHIP</b> cho đơn
         hàng từ 1.000.000đ</div>
@@ -11,6 +12,62 @@
     <div class="header-item"><img src="{{ asset('images/icon/img_poli_4.png') }}" alt=""> NHẬP MÃ YEUUNETI -
         Giảm 10% cho đơn hàng từ 800.000đ</div>
 </div>
+<div class="product-section">
+        <h2>CÁC SẢN PHẨM: ẤM SIÊU TỐC !</h2>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="discount">Giảm 50%</div>
+                <img src="{{ asset(path: 'images/Products/am1.png') }}" alt="Product 3">
+                <h3>Ấm Siêu Tốc Elmich Diamond EL8406</h3>
+                <p class="price">
+                <span class="new-price">475.000đ</span>
+                <span class="old-price">790.000đ</span>
+                </p>
+                <button class="add-to-cart">
+                    <i class="fa fa-cart-plus"></i>
+                </button>
+            </div>
+
+            <div class="product-card">
+                <div class="discount">Giảm 40%</div>
+                <img src="{{ asset(path: 'images/Products/am2.png') }}" alt="Product 3">
+                <h3>Ấm Siêu Tốc Elmich Ultra Sharp EL8424</h3>
+                <p class="price">
+                <span class="new-price">546.000đ</span>
+                <span class="old-price">950.000đ</span>
+                </p>
+                <button class="add-to-cart">
+                    <i class="fa fa-cart-plus"></i>
+                </button>
+            </div>
+
+            <div class="product-card">
+                <div class="discount">Giảm 41%</div>
+                <img src="{{ asset(path: 'images/Products/am3.png') }}" alt="Product 3">
+                <h3>Ấm Siêu Tốc Elmich Ultra Sharp EL8424</h3>
+                <p class="price">
+                <span class="new-price">756.000đ</span>
+                <span class="old-price">990.000đ</span>
+                </p>
+                <button class="add-to-cart">
+                    <i class="fa fa-cart-plus"></i>
+                </button>
+            </div>
+
+            <div class="product-card">
+                <div class="discount">Giảm 46%</div>
+                <img src="{{ asset(path: 'images/Products/am4.png') }}" alt="Product 3">
+                <h3>Ấm Siêu Tốc Elmich EL8424</h3>
+                <p class="price">
+                <span class="new-price">579.000đ</span>
+                <span class="old-price">800.000đ</span>
+                </p>
+                <button class="add-to-cart">
+                    <i class="fa fa-cart-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 <div class="product-section">
         <h2>CÁC SẢN PHẨM CÓ LIÊN QUAN</h2>
         <div class="product-container">

@@ -1,6 +1,7 @@
 @include('layouts.header')
 <link rel="stylesheet" href="{{ asset('css/products.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 <div class="header">
     <div class="header-item"><img src="{{ asset('images/icon/img_poli_1.png') }}" alt=""> <b>FREESHIP</b> cho đơn
         hàng từ 1.000.000đ</div>
@@ -11,7 +12,6 @@
     <div class="header-item"><img src="{{ asset('images/icon/img_poli_4.png') }}" alt=""> NHẬP MÃ YEUUNETI -
         Giảm 10% cho đơn hàng từ 800.000đ</div>
 </div>
-<link rel="stylesheet" href="{{ asset('css/cart.css') }}">
     <div class="product-section">
         <h2>CÁC SẢN PHẨM: HỘP CƠM !</h2>
         <div class="product-container">

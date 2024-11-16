@@ -12,6 +12,12 @@ body {
     min-height: 100vh;
 }
 
+.text-danger {
+    color: red;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
 header {
     margin-bottom: 10px;
 }
@@ -32,21 +38,23 @@ footer {
     width: 100%;
 }
 
-#fullname, 
+#fullname,
 #email,
 #username,
-#password{
+#password {
     border: 1px solid #2d61c2;
     border-radius: 10px;
     box-shadow: 0 0 5px #2d61c2;
     padding: 10px;
 }
+
 #terms {
     border: 1px solid #2d61c2;
     border-radius: 10px;
     box-shadow: 0 0 5px #2d61c2;
     padding: 10px;
 }
+
 #fullname:focus,
 #email:focus,
 #username:focus,
@@ -61,13 +69,16 @@ footer {
     -webkit-transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
 }
-#terms:focus{
+
+#terms:focus {
     outline: none;
 }
+
 .form-check-input:checked {
     background-color: #007D88;
     border-color: #007D88;
-    transform: scale(1.1); /* Tăng kích thước một chút khi được checked */
+    transform: scale(1.1);
+    /* Tăng kích thước một chút khi được checked */
 }
 
 .form-check-input:checked[type=checkbox] {

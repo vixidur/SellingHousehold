@@ -4,7 +4,9 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+.text-danger{
+    color: red;
+}
 body {
     background-color: #f5f5f5;
     display: flex;

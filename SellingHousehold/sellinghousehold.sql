@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2024 lúc 09:10 PM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.0.30
+-- Thời gian đã tạo: Th10 19, 2024 lúc 06:17 PM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -78,6 +78,34 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `lienhe`
+--
+
+CREATE TABLE `lienhe` (
+  `malienhe` bigint(20) UNSIGNED NOT NULL,
+  `ten` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `noi_dung` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `lienhe`
+--
+
+INSERT INTO `lienhe` (`malienhe`, `ten`, `email`, `noi_dung`, `created_at`, `updated_at`) VALUES
+(1, 'test', 'test@gmail.com', 'test', '2024-11-19 09:09:29', '2024-11-19 09:09:29'),
+(2, 'test', 'asdasdasd@gmail.com', 'test', '2024-11-19 09:14:09', '2024-11-19 09:14:09'),
+(3, 'sss', 'sss@gmail.com', 'sss', '2024-11-19 09:19:08', '2024-11-19 09:19:08'),
+(4, 'To Hoang Vu', 'thv@gmail.com', 'To Hoang Vu', '2024-11-19 09:19:59', '2024-11-19 09:19:59'),
+(6, 'To Hoang Vu', 'sdasdasdasd@gmail.com', 'To Hoang Vu', '2024-11-19 09:20:53', '2024-11-19 09:20:53'),
+(7, 'aaaaaa', 'aaaaaa@gmail.com', 'aaaaaa', '2024-11-19 09:30:37', '2024-11-19 09:30:37'),
+(9, 'aaaa', 'sss@gmail.com', 'ssassssssssssssssss', '2024-11-19 10:16:03', '2024-11-19 10:16:03');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `migrations`
 --
 
@@ -111,7 +139,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (35, '2024_10_19_180801_add_agreed_to_terms_to_users_table', 6),
 (36, '2024_10_20_072202_add_picture_url_to_users_table', 7),
 (37, '2024_10_21_065445_add_cascade_to_products', 8),
-(38, '2024_10_21_160751_add_discount_to_products_table', 8);
+(38, '2024_10_21_160751_add_discount_to_products_table', 8),
+(39, '2024_11_19_154113_create_lienhe_table', 9),
+(40, '2024_11_19_171346_update_email_column_on_lienhe_table', 10);
 
 -- --------------------------------------------------------
 
@@ -367,6 +397,18 @@ CREATE TABLE `reviews` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `rating`, `comment`, `created_at`, `updated_at`) VALUES
+(1, 12, 2, 5, 'Sản phẩm chất lượng cao', NULL, NULL),
+(2, 5, 1, 5, 'Sản phẩm chất lượng cao', NULL, NULL),
+(3, 8, 2, 5, 'Sản phẩm chất lượng cao', NULL, NULL),
+(4, 9, 3, 5, 'Sản phẩm chất lượng cao', NULL, NULL),
+(5, 10, 1, 5, 'Sản phẩm chất lượng cao', NULL, NULL),
+(6, 8, 3, 5, 'Sản phẩm chất lượng cao', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -445,6 +487,12 @@ ALTER TABLE `categories`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Chỉ mục cho bảng `lienhe`
+--
+ALTER TABLE `lienhe`
+  ADD PRIMARY KEY (`malienhe`);
 
 --
 -- Chỉ mục cho bảng `migrations`
@@ -542,10 +590,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `lienhe`
+--
+ALTER TABLE `lienhe`
+  MODIFY `malienhe` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
@@ -581,7 +635,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT cho bảng `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `shopping_carts`

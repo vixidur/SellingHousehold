@@ -22,30 +22,61 @@
         </center>
         <form action="{{ route('register') }}" method="POST">
             @csrf
+
+            <!-- Full Name Field -->
             <div class="input-group">
                 <label for="fullname">Họ và tên</label>
                 <input type="text" id="fullname" placeholder="Vui lòng nhập họ và tên" name="full_name"
                     value="{{ old('full_name') }}" required>
+                @if ($errors->has('full_name'))
+                    <div class="text-danger" style="font-size: 12px; margin-top: 5px;">{{ $errors->first('full_name') }}
+                    </div>
+                @endif
             </div>
+
+            <!-- Email Field -->
             <div class="input-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" placeholder="Vui lòng nhập địa chỉ email" name="email"
                     value="{{ old('email') }}" required>
+                @if ($errors->has('email'))
+                    <div class="text-danger" style="font-size: 12px; margin-top: 5px;">{{ $errors->first('email') }}
+                    </div>
+                @endif
             </div>
+
+            <!-- Username Field -->
             <div class="input-group">
                 <label for="username">Tài khoản</label>
                 <input type="text" id="username" placeholder="Vui lòng nhập tài khoản" name="username"
                     value="{{ old('username') }}" required>
+                @if ($errors->has('username'))
+                    <div class="text-danger" style="font-size: 12px; margin-top: 5px;">{{ $errors->first('username') }}
+                    </div>
+                @endif
             </div>
+
+            <!-- Password Field -->
             <div class="input-group password-group">
                 <label for="password">Mật khẩu</label>
                 <input type="password" id="password" placeholder="Vui lòng nhập mật khẩu" name="password" required>
                 <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                @if ($errors->has('password'))
+                    <div class="text-danger" style="font-size: 12px; margin-top: 5px;">{{ $errors->first('password') }}
+                    </div>
+                @endif
             </div>
+
+            <!-- Terms Agreement -->
             <div class="input-group">
                 <input type="checkbox" id="terms" class="form-check-input" name="agreed_to_terms" required>
                 <label for="terms">Tôi đồng ý các điều khoản của hệ thống.</label>
+                @if ($errors->has('agreed_to_terms'))
+                    <div class="text-danger" style="font-size: 12px; margin-top: 5px;">
+                        {{ $errors->first('agreed_to_terms') }}</div>
+                @endif
             </div>
+
             <button type="submit" class="btn">Đăng Ký</button>
             <p class="login-link">Bạn đã có tài khoản? <a href="{{ route('login') }}">Đăng nhập</a>.</p>
         </form>

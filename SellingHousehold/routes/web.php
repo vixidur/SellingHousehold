@@ -13,7 +13,10 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LienHeController;
+//Route của liên hệ 
+Route::post('/lienhe', [LienHeController::class, 'store']);
+Route::get('/lienhe',[LienHeController::class,'lienhe'])->name('lienhe');
 // Route cho trang overview
 // Route::get('/', function () {
 //     return view('index'); // Điều chỉnh đường dẫn view nếu cần

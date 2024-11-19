@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/loginstyle.css') }}">
     <link rel="icon" href="{{ asset('images/logo-home.png') }}" type="image/x-icon" />
-    <!-- Thêm link SweetAlert2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-3.2.6.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-aio-3.2.6.min.js"></script>
@@ -28,9 +27,21 @@
 
         <form class="login-form" method="POST" action="{{ route('login.post') }}">
             @csrf
+
+            <!-- Hiển thị lỗi chung -->
+            @if ($errors->has('login'))
+                <div class="error-message">
+                    <p style="color: red; text-align: center;">{{ $errors->first('login') }}</p>
+                </div>
+            @endif
+
             <div class="input-group">
                 <label for="username">Tài khoản</label>
-                <input type="text" id="myInput" name="username" placeholder="Nhập tài khoản" required>
+                <input type="text" id="username" name="username" placeholder="Nhập tài khoản"
+                    value="{{ old('username') }}" required>
+                @if ($errors->has('username'))
+                    <p style="color: red; font-size: 0.9em;">{{ $errors->first('username') }}</p>
+                @endif
             </div>
 
             <div class="input-group">
@@ -41,6 +52,9 @@
                         <i class="fas fa-eye"></i>
                     </span>
                 </div>
+                @if ($errors->has('password'))
+                    <p style="color: red; font-size: 0.9em;">{{ $errors->first('password') }}</p>
+                @endif
             </div>
 
             <div class="checkbox-group">
@@ -56,12 +70,11 @@
         </div>
     </div>
 
-    <!-- Include footer -->
     @include('layouts.footer')
 
-    <!-- Thêm SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        // Hiển thị/hide mật khẩu
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
 
@@ -73,17 +86,27 @@
             icon.classList.toggle('fa-eye-slash');
         });
 
+        // Thông báo thành công/thất bại từ session
         @if (Session::has('success'))
             Notiflix.Notify.success("{{ Session::get('success') }}");
         @endif
-        // error message 
+
         @if (Session::has('error'))
             Notiflix.Notify.error("{{ Session::get('error') }}");
         @endif
-    </script>
 
-    @if (session('verify_email'))
-        <script>
+        // Hiển thị lỗi validate
+        @if ($errors->any())
+            Swal.fire({
+                icon: 'error',
+                title: 'Lỗi đăng nhập',
+                html: `{!! implode('<br>', $errors->all()) !!}`,
+                confirmButtonText: 'OK',
+            });
+        @endif
+
+        // Hiển thị xác minh email
+        @if (session('verify_email'))
             Swal.fire({
                 icon: 'success',
                 title: 'Xác minh email của bạn',
@@ -91,8 +114,8 @@
                 showConfirmButton: false,
                 timer: 5000
             });
-        </script>
-    @endif
+        @endif
+    </script>
 </body>
 
 </html>

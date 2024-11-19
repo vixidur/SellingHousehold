@@ -29,7 +29,7 @@
             <ul>
                 <li><a href="#">Giới thiệu về UNETI-HOUSEHOLD</a></li>
                 <li><a href="#">Chứng nhận sản phẩm</a></li>
-                <li><a href="#">Liên hệ - Hỗ trợ</a></li>
+                <li><a href="{{route('lienhe')}}">Liên hệ - Hỗ trợ</a></li>
             </ul>
         </div>
 

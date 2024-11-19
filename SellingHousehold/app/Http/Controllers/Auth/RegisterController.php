@@ -18,14 +18,32 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        // Validate input data
         $validator = Validator::make($request->all(), [
             'full_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:8',
             'agreed_to_terms' => 'required|accepted',
+        ], [
+            'full_name.required' => 'Họ và tên là bắt buộc.',
+            'full_name.string' => 'Họ và tên phải là một chuỗi.',
+            'full_name.max' => 'Họ và tên không được vượt quá 255 ký tự.',
+            'email.required' => 'Email là bắt buộc.',
+            'email.string' => 'Địa chỉ email phải là một chuỗi.',
+            'email.email' => 'Email không hợp lệ.',
+            'email.max' => 'Email không được vượt quá 255 ký tự.',
+            'email.unique' => 'Email này đã được đăng ký.',
+            'username.required' => 'Tài khoản là bắt buộc.',
+            'username.string' => 'Tài khoản phải là một chuỗi.',
+            'username.max' => 'Tài khoản không được vượt quá 255 ký tự.',
+            'username.unique' => 'Tài khoản này đã được đăng ký.',
+            'password.required' => 'Mật khẩu là bắt buộc.',
+            'password.string' => 'Mật khẩu phải là một chuỗi.',
+            'password.min' => 'Mật khẩu phải có ít nhất 8 ký tự.',
+            'agreed_to_terms.required' => 'Bạn cần đồng ý với các điều khoản.',
+            'agreed_to_terms.accepted' => 'Bạn phải chấp nhận các điều khoản.',
         ]);
+
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();

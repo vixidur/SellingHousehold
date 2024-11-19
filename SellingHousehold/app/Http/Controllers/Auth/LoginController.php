@@ -14,10 +14,18 @@ class LoginController extends Controller
     }
 
 public function login(Request $request)
-{
+{ // Validate dữ liệu đầu vào
     $request->validate([
-        'username' => 'required',
-        'password' => 'required',
+        'username' => 'required|string|min:3|max:50', // Username phải là chuỗi, từ 3-50 ký tự
+        'password' => 'required|string|min:6', // Password ít nhất 6 ký tự
+    ], [
+        'username.required' => 'Vui lòng nhập tên người dùng.',
+        'username.string' => 'Tên người dùng phải là một chuỗi ký tự.',
+        'username.min' => 'Tên người dùng phải có ít nhất 3 ký tự.',
+        'username.max' => 'Tên người dùng không được vượt quá 50 ký tự.',
+        'password.required' => 'Vui lòng nhập mật khẩu.',
+        'password.string' => 'Mật khẩu phải là chuỗi ký tự.',
+        'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự.',
     ]);
 
     $credentials = $request->only('username', 'password');
